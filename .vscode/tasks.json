@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "develop",
+			"path": "services/instagram-lite/",
+			"label": "npm: develop - services/instagram-lite",
+			"detail": "ng serve"
+		}
+	]
+}

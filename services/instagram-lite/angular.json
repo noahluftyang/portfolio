@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "instagram-lite"
+    }
+  },
+  "defaultProject": "instagram-lite",
+  "cli": {
+    "analytics": "ea8d13e6-ca4a-4239-8bda-b6942338d32c"
+  }
 }

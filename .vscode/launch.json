@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "name": "Launch @noahluftyang/instagram-lite",
+            "preLaunchTask": "npm: develop - services/instagram-lite",
+            "url": "http://localhost:4200"
+        }
+    ]
+}

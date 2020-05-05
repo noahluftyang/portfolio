@@ -1,7 +1,8 @@
 {
-  "name": "instagram-lite",
+  "name": "@noahluftyang/instagram-lite",
   "version": "0.0.0",
   "scripts": {
+    "develop": "ng serve",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -9,7 +10,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.4",
     "@angular/common": "~9.1.4",
