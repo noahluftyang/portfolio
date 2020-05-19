@@ -1,0 +1,35 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  border: 2px solid red;
+}
+
+.feeds {
+  flex: 1;
+
+  border: 3px solid red;
+}
+
+.bottom-navigation {
+  height: 48px;
+}
+
+.bottom-navigation-items {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.bottom-navigation-item {
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.bottom-navigation-item-link {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}

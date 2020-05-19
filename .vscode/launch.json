@@ -5,13 +5,13 @@
       "type": "firefox",
       "request": "launch",
       "name": "Launch @noahluftyang/instagram-lite",
-      "preLaunchTask": "npm: develop - services/instagram-lite",
+      "webRoot": "${workspaceFolder}/services/instagram-lite",
       "url": "http://localhost:4200"
     },
     {
-      "name": "Flutter",
       "type": "dart",
       "request": "launch",
+      "name": "Launch instagram_lite_native",
       "program": "${workspaceRoot}/services/instagram_lite_native/lib/main.dart"
     }
   ]
