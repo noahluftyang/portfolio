@@ -7,11 +7,11 @@ import { SignupComponent } from '../signup/mod';
 const routes: Routes = [
   {
     component: LoginComponent,
-    path: 'accounts/login',
+    path: 'login',
   },
   {
     component: SignupComponent,
-    path: 'accounts/signup',
+    path: 'signup',
   },
 ];
 

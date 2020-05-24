@@ -1,0 +1,24 @@
+.wrapper {
+  margin: 0 32px;
+}
+
+.logo {
+  height: 32px;
+  margin: 24px auto 40px;
+  text-align: center;
+}
+
+.form {
+  border: 1px solid red;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.form > * + * {
+  margin-top: 8px;
+}
+
+.form__field {
+  margin: 8px;
+}
