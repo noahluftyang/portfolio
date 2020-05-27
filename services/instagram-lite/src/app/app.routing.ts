@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent } from './login/mod';
-import { SignupComponent } from './signup/mod';
-
 const routes: Routes = [
   {
-    component: LoginComponent,
-    path: 'accounts/login',
-  },
-  {
-    component: SignupComponent,
-    path: 'accounts/signup',
+    loadChildren: () =>
+      import('./accounts/accounts.module').then(
+        ({ AccountsModule }) => AccountsModule
+      ),
+    path: 'accounts',
   },
   // {
   //   component: FeedsComponent,

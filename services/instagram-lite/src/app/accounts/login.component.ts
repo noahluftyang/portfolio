@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
   templateUrl: './login.component.html',
 })
-export class LoginComponent implements OnInit {
-  loginForm;
+export class LoginComponent {
+  loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.loginForm = this.formBuilder.group({
@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
       password: '',
     });
   }
-
-  ngOnInit() {}
 
   login() {
     console.log('enter!', this.loginForm.value);
