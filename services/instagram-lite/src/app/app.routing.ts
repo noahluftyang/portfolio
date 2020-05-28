@@ -4,19 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     loadChildren: () =>
-      import('./accounts/accounts.module').then(
+      import('./pages/services.module').then(
+        ({ ServicesModule }) => ServicesModule
+      ),
+    path: '',
+  },
+  {
+    loadChildren: () =>
+      import('./pages/accounts.module').then(
         ({ AccountsModule }) => AccountsModule
       ),
     path: 'accounts',
   },
-  // {
-  //   component: FeedsComponent,
-  //   path: ''
-  // },
-  // {
-  //   component: ExploreComponent,
-  //   path: 'explore'
-  // }
 ];
 
 @NgModule({

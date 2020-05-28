@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent } from './button/mod';
 import { HeaderComponent } from './header/mod';
@@ -7,7 +9,6 @@ import { HeaderComponent } from './header/mod';
 @NgModule({
   declarations: [ButtonComponent, HeaderComponent],
   exports: [ButtonComponent, HeaderComponent],
-  imports: [CommonModule],
-  providers: [],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
 })
 export class SharedModule {}
