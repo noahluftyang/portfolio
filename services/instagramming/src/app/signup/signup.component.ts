@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-page',
-  templateUrl: './signup.component.html',
+  templateUrl: 'signup.component.html',
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;

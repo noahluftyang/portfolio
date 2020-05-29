@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 
+import { ServicesComponent } from './services.component';
 import { ServicesRoutingModule } from './services.routing';
-import { ExploreComponent } from '../explore/mod';
-import { FeedsComponent } from '../feeds/mod';
 
 @NgModule({
-  declarations: [ExploreComponent, FeedsComponent],
+  declarations: [ServicesComponent],
   imports: [ServicesRoutingModule],
 })
 export class ServicesModule {}

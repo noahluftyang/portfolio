@@ -1,5 +1,5 @@
 {
-  "name": "@noahluftyang/instagram-lite",
+  "name": "@noahluftyang/instagramming",
   "version": "0.0.0",
   "scripts": {
     "develop": "ng serve",

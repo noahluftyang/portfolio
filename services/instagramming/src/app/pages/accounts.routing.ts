@@ -3,11 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from '../login/mod';
 import { SignupComponent } from '../signup/mod';
+import { AccountsComponent } from './accounts.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { component: LoginComponent, path: 'login' },
-  { component: SignupComponent, path: 'signup' },
+  {
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'login' },
+      { component: LoginComponent, path: 'login' },
+      { component: SignupComponent, path: 'signup' },
+    ],
+    component: AccountsComponent,
+    path: '',
+  },
 ];
 
 @NgModule({
