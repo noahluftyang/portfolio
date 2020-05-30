@@ -4,8 +4,8 @@
     {
       "type": "firefox",
       "request": "launch",
-      "name": "Launch @noahluftyang/instagram-lite",
-      "webRoot": "${workspaceFolder}/services/instagram-lite",
+      "name": "Launch @noahluftyang/instagramming",
+      "webRoot": "${workspaceFolder}/services/instagramming",
       "url": "http://localhost:4200"
     },
     {

@@ -1,12 +1,19 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "npm",
-			"script": "develop",
-			"path": "services/instagram-lite/",
-			"label": "npm: develop - services/instagram-lite",
-			"detail": "ng serve"
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "develop",
+      "path": "services/instagramming/",
+      "label": "npm: develop - services/instagramming",
+      "detail": "ng serve"
+    },
+    {
+      "type": "npm",
+      "script": "develop",
+      "path": "services/instagramming-server/",
+      "label": "npm: develop - services/instagramming-server",
+      "detail": "nest start --debug --watch"
+    }
+  ]
 }

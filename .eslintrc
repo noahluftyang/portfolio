@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "plugins": ["simple-import-sort"],
+  "rules": {
+    "simple-import-sort/sort": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint",
+      "parserOptions": {
+        "project": "tsconfig.json",
+        "sourceType": "module"
+      }
+    }
+  ]
+}
