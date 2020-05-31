@@ -1,19 +1,18 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 
-import { AuthMiddleware } from '../shared/middlewares/mod';
-import {
-  AccountService,
-  PrismaService,
-  UserService,
-} from '../shared/services/mod';
+import { PrismaService, UserService } from '../shared/services/mod';
 import { AccountController } from './account.controller';
+import { AccountService } from './account.service';
+import { LocalStrategy } from './local.strategy';
 
 @Module({
   controllers: [AccountController],
-  providers: [AccountService, PrismaService, UserService],
+  imports: [
+    PassportModule,
+    JwtModule.register({ secret: 'secret', signOptions: { expiresIn: '60s' } }),
+  ],
+  providers: [AccountService, LocalStrategy, PrismaService, UserService],
 })
-export class AccountModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes('accounts');
-  }
-}
+export class AccountModule {}

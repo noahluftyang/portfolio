@@ -1,12 +1,17 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
+import { JwtStrategy } from '../shared/guards/mod';
 import { AuthMiddleware } from '../shared/middlewares/mod';
-import { PrismaService, UserService } from '../shared/services/mod';
+import {
+  PostService,
+  PrismaService,
+  UserService,
+} from '../shared/services/mod';
 import { UserController } from './user.controller';
 
 @Module({
   controllers: [UserController],
-  providers: [PrismaService, UserService],
+  providers: [JwtStrategy, PostService, PrismaService, UserService],
 })
 export class UserModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

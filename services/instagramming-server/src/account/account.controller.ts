@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 
 import { LoginUserDto, RegisterUserDto } from '../dto/mod';
-import { AccountService } from '../shared/services/mod';
+import { AccountService } from './account.service';
+import { LocalAuthGuard } from './local-auth.guard';
 
 @ApiTags('accounts')
 @Controller('accounts')
@@ -11,8 +12,9 @@ export class AccountController {
 
   @ApiBody({ type: LoginUserDto })
   @Post('login')
-  async login(@Body() loginUserDto: LoginUserDto): Promise<any> {
-    return this.accountService.login(loginUserDto);
+  @UseGuards(LocalAuthGuard)
+  async login(@Req() req): Promise<any> {
+    return this.accountService.login(req.user);
   }
 
   @ApiBody({ type: RegisterUserDto })
