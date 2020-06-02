@@ -1,7 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 import { JwtStrategy } from '../shared/guards/mod';
-import { AuthMiddleware } from '../shared/middlewares/mod';
 import {
   PostService,
   PrismaService,
@@ -13,8 +12,4 @@ import { UserController } from './user.controller';
   controllers: [UserController],
   providers: [JwtStrategy, PostService, PrismaService, UserService],
 })
-export class UserModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes('accounts');
-  }
-}
+export class UserModule {}

@@ -11,7 +11,10 @@ import { LocalStrategy } from './local.strategy';
   controllers: [AccountController],
   imports: [
     PassportModule,
-    JwtModule.register({ secret: 'secret', signOptions: { expiresIn: '60s' } }),
+    JwtModule.register({
+      secret: 'secret',
+      signOptions: { expiresIn: '600s' },
+    }),
   ],
   providers: [AccountService, LocalStrategy, PrismaService, UserService],
 })
