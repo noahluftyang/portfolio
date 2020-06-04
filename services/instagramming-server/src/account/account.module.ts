@@ -10,6 +10,7 @@ import {
   GoogleStrategy,
   LocalStrategy,
 } from './strategies/mod';
+import { AccountResolver } from './account.resolver';
 
 @Module({
   controllers: [AccountController],
@@ -26,6 +27,7 @@ import {
     GoogleStrategy,
     LocalStrategy,
     UserService,
+    AccountResolver,
   ],
 })
 export class AccountModule {}

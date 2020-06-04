@@ -1,0 +1,19 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  updateUser(data: UpdateUserDto!): User!
+}
+
+type Query {
+  profile: User!
+}
+
+input UpdateUserDto {
+  username: String
+}
+
+type User {
+  id: ID!
+}

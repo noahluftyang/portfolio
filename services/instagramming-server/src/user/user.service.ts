@@ -43,4 +43,12 @@ export class UserService {
 
     return user;
   }
+
+  async update(id: number, data) {
+    return this.prisma.user.upsert({
+      create: data,
+      update: data,
+      where: { id },
+    });
+  }
 }
