@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/interfaces/mod';
 
-import { PrismaService } from './prisma.service';
+import { PrismaService } from '../shared/services/mod';
 
 @Injectable()
 export class UserService {
@@ -32,6 +32,14 @@ export class UserService {
 
   async findByEmail(email: string): Promise<any> {
     const user = await this.prisma.user.findOne({ where: { email } });
+
+    return user;
+  }
+
+  async findBySocialId(socialId: string): Promise<User> {
+    const user = await this.prisma.socialAccount
+      .findOne({ where: { id: socialId } })
+      .user();
 
     return user;
   }

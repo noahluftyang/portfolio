@@ -1,13 +1,9 @@
-import {
-  BadRequestException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { hash } from 'bcrypt';
 
-import { RegisterUserDto } from '../dto/mod';
-import { UserService } from '../shared/services/mod';
+import { UserService } from '../user/mod';
+import { RegisterUserDto } from './dto/mod';
 
 @Injectable()
 export class AccountService {

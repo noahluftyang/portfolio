@@ -1,11 +1,15 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 
-import { PrismaService, UserService } from '../shared/services/mod';
+import { UserService } from '../user/mod';
 import { AccountController } from './account.controller';
 import { AccountService } from './account.service';
-import { LocalStrategy } from './local.strategy';
+import {
+  FacebookStrategy,
+  GoogleStrategy,
+  LocalStrategy,
+} from './strategies/mod';
 
 @Module({
   controllers: [AccountController],
@@ -16,6 +20,12 @@ import { LocalStrategy } from './local.strategy';
       signOptions: { expiresIn: '600s' },
     }),
   ],
-  providers: [AccountService, LocalStrategy, PrismaService, UserService],
+  providers: [
+    AccountService,
+    FacebookStrategy,
+    GoogleStrategy,
+    LocalStrategy,
+    UserService,
+  ],
 })
 export class AccountModule {}

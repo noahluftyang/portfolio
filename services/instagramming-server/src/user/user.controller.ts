@@ -11,7 +11,7 @@ import { Request } from 'express';
 
 import { User } from '../interfaces/mod';
 import { JwtAuthGuard } from '../shared/guards/mod';
-import { UserService } from '../shared/services/mod';
+import { UserService } from './user.service';
 
 @ApiBearerAuth()
 @ApiTags('users')

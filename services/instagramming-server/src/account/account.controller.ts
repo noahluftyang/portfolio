@@ -1,9 +1,13 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 
-import { LoginUserDto, RegisterUserDto } from '../dto/mod';
 import { AccountService } from './account.service';
-import { LocalAuthGuard } from './local-auth.guard';
+import { LoginUserDto, RegisterUserDto } from './dto/mod';
+import {
+  FacebookAuthGuard,
+  GoogleAuthGuard,
+  LocalAuthGuard,
+} from './guards/mod';
 
 @ApiTags('accounts')
 @Controller('accounts')
@@ -24,14 +28,23 @@ export class AccountController {
   }
 
   @Get('facebook')
+  @UseGuards(FacebookAuthGuard)
   facebookLogin() {}
 
   @Get('facebook/callback')
+  @UseGuards(FacebookAuthGuard)
   facebookLoginCallback() {}
 
   @Get('google')
+  @UseGuards(GoogleAuthGuard)
   googleLogin() {}
 
   @Get('google/callback')
-  googleLoginCallback() {}
+  @UseGuards(GoogleAuthGuard)
+  googleLoginCallback() {
+    console.log('enter!');
+
+    return null;
+    // return this.accountService.generateToken();
+  }
 }
