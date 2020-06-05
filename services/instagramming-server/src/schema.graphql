@@ -2,12 +2,29 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Auth {
+  id: ID!
+}
+
+input LoginUserDto {
+  email: String!
+  password: String!
+}
+
 type Mutation {
   updateUser(data: UpdateUserDto!): User!
+  login(data: LoginUserDto!): Auth!
+  register(data: RegisterUserDto!): Auth!
 }
 
 type Query {
   profile: User!
+}
+
+input RegisterUserDto {
+  email: String!
+  password: String!
+  username: String
 }
 
 input UpdateUserDto {
