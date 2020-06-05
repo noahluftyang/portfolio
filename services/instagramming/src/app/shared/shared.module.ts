@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/mod';
 
 @NgModule({
   declarations: [ButtonComponent, HeaderComponent],
-  exports: [ButtonComponent, HeaderComponent],
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
+  exports: [ButtonComponent, HeaderComponent, ReactiveFormsModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule]
 })
 export class SharedModule {}

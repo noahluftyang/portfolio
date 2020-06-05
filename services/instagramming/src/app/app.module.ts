@@ -12,12 +12,11 @@ import { ServicesModule } from './pages/services.module';
   bootstrap: [AppComponent],
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    CoreModule,
-    SharedModule,
     AccountsModule,
-    ServicesModule,
     AppRoutingModule,
-  ],
+    BrowserModule,
+    ServicesModule,
+    SharedModule
+  ]
 })
 export class AppModule {}
