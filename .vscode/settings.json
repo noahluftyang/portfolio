@@ -1,9 +1,9 @@
 {
   "deno.enable": false,
-  "vsicons.presets.nestjs": true,
+  "eslint.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "vsicons.presets.angular": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "eslint.enable": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  }
 }

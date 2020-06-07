@@ -4,10 +4,10 @@ import { User } from './user.model';
 
 @ObjectType()
 export class Auth {
-  @Field(type => ID)
-  id: number;
+  @Field()
+  accessToken: string;
+  @Field()
+  refreshToken: string;
+
   user: User;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
 }

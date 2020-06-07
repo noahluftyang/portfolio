@@ -1,6 +1,10 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { hash } from 'bcrypt';
+import { compare, hash } from 'bcrypt';
 
 import { UserService } from '../user/mod';
 import { RegisterUserDto } from './dto/mod';
@@ -12,25 +16,37 @@ export class AccountService {
     private readonly userService: UserService,
   ) {}
 
-  async login(user): Promise<any> {
-    const token = this.jwtService.sign({
-      id: user.id,
-      email: user.email,
-      username: user.username,
+  generateToken(payload) {
+    const accessToken = this.jwtService.sign(payload);
+    const refreshToken = this.jwtService.sign(payload, {
+      expiresIn: '6000s',
     });
 
-    return { token };
+    return { accessToken, refreshToken };
+  }
+
+  async login(payload): Promise<any> {
+    const { email, password } = payload;
+
+    const _user = await this.userService.findByEmail(email);
+
+    if (!_user) {
+      throw new UnauthorizedException();
+    }
+
+    if (!compare(password, _user.password)) {
+      throw new UnauthorizedException();
+    }
+
+    return this.generateToken({
+      id: _user.id,
+      email: _user.email,
+      username: _user.username,
+    });
   }
 
   async register(payload: RegisterUserDto): Promise<any> {
     const { email, password, username } = payload;
-
-    const _user = await this.userService.findByEmail(email);
-
-    if (_user) {
-      throw new BadRequestException();
-    }
-
     const encryptedPassword = await hash(password, 10);
 
     const data = {
@@ -39,8 +55,12 @@ export class AccountService {
       username,
     };
 
-    const user = await this.userService.create(data);
+    try {
+      const user = await this.userService.create(data);
 
-    return { user };
+      return { user };
+    } catch (error) {
+      throw new ConflictException();
+    }
   }
 }

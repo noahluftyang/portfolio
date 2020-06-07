@@ -3,7 +3,8 @@
 # ------------------------------------------------------
 
 type Auth {
-  id: ID!
+  accessToken: String!
+  refreshToken: String!
 }
 
 input LoginUserDto {
