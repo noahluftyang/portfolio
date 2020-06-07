@@ -12,14 +12,28 @@ input LoginUserDto {
   password: String!
 }
 
+type Media {
+  id: ID!
+  url: String!
+  thumbnailUrl: String!
+  ownerId: Float!
+}
+
 type Mutation {
   updateUser(data: UpdateUserDto!): User!
   login(data: LoginUserDto!): Auth!
   register(data: RegisterUserDto!): Auth!
+  postMedia(data: PostMediaDto!): Media!
+}
+
+input PostMediaDto {
+  url: String!
 }
 
 type Query {
   profile: User!
+  mediaList: [Media!]!
+  userMedia: [Media!]!
 }
 
 input RegisterUserDto {

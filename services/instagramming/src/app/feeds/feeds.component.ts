@@ -1,20 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { FeedsService } from '../core/services/mod';
+import { MediaService } from '../core/services/mod';
 
 @Component({
   selector: 'app-feeds-page',
   templateUrl: './feeds.component.html',
-  styleUrls: ['./feeds.component.css'],
+  styleUrls: ['./feeds.component.css']
 })
-export class FeedsComponent implements OnInit {
-  constructor(
-    private readonly feedsService: FeedsService,
-    private readonly router: Router
-  ) {}
+export class FeedsComponent implements OnInit, OnDestroy {
+  private querySubscription: Subscription;
+  feeds: any[];
+
+  constructor(private mediaService: MediaService) {}
 
   ngOnInit() {
-    this.feedsService.readFeeds();
+    this.querySubscription = this.mediaService.readFeeds().subscribe(
+      data => {
+        console.log(data);
+        this.feeds = [{ id: 1 }, { id: 2 }, { id: 3 }];
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.querySubscription.unsubscribe();
   }
 }

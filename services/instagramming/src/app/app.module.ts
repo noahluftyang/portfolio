@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/mod';
+import { CoreModule } from './core/mod';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent],
-  imports: [AppRoutingModule, BrowserModule, SharedModule]
+  imports: [BrowserModule, CoreModule, AppRoutingModule]
 })
 export class AppModule {}

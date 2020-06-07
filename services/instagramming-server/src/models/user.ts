@@ -1,6 +1,6 @@
 import { Field, HideField, ID, ObjectType } from '@nestjs/graphql';
 
-import { SocialAccount } from './social-account.model';
+import { SocialAccount } from './social-account';
 
 @ObjectType()
 export class User {

@@ -1,6 +1,6 @@
 import { Field, HideField, ID, ObjectType } from '@nestjs/graphql';
 
-import { User } from './user.model';
+import { User } from './user';
 
 @ObjectType()
 export class Auth {

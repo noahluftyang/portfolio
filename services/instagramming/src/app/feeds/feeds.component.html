@@ -1,27 +1,7 @@
-<section class="home-page">
+<section class="feeds-page">
   <header>header</header>
   <ul class="feeds">
-    <li>list</li>
+    <li *ngFor="let feed of feeds">{{ feed.id }}</li>
   </ul>
-  <nav class="bottom-navigation">
-    <ul class="bottom-navigation-items">
-      <li class="bottom-navigation-item">
-        <a class="bottom-navigation-item-link" routerLink="/">home</a>
-      </li>
-      <li class="bottom-navigation-item">
-        <a class="bottom-navigation-item-link" routerLink="/explore">explore</a>
-      </li>
-      <li class="bottom-navigation-item">
-        <a class="bottom-navigation-item-link" routerLink="/post">post</a>
-      </li>
-      <li class="bottom-navigation-item">
-        <a class="bottom-navigation-item-link" routerLink="/activity">
-          activity
-        </a>
-      </li>
-      <li class="bottom-navigation-item">
-        <a class="bottom-navigation-item-link" routerLink="/profile">profile</a>
-      </li>
-    </ul>
-  </nav>
+  <app-navigation></app-navigation>
 </section>

@@ -1,0 +1,20 @@
+.explore-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.media-list-wrapper {
+  flex: 1;
+}
+
+.media-list {
+  display: grid;
+  gap: 2px;
+  grid-auto-rows: minmax(100px, 33vw);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.media {
+  border: 1px solid #333;
+}

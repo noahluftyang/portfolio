@@ -4,6 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     loadChildren: () =>
+      import('./feeds/feeds.module').then(({ FeedsModule }) => FeedsModule),
+    path: ''
+  },
+  {
+    loadChildren: () =>
+      import('./explore/explore.module').then(
+        ({ ExploreModule }) => ExploreModule
+      ),
+    path: 'explore'
+  },
+  {
+    loadChildren: () =>
       import('./login/login.module').then(({ LoginModule }) => LoginModule),
     path: 'accounts/login'
   },

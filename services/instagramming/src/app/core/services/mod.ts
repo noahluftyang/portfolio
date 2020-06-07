@@ -1,1 +1,2 @@
-export { FeedsService } from './feeds.service';
+export { AccountsService } from './accounts.service';
+export { MediaService } from './media.service';

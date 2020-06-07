@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AccountsService } from '../accounts.service';
+import { AccountsService } from '../core/services/mod';
 
 @Component({
   selector: 'app-login-page',
@@ -14,20 +14,20 @@ export class LoginComponent {
 
   constructor(
     private accountsService: AccountsService,
+    private router: Router,
     formBuilder: FormBuilder
   ) {
     this.loginForm = formBuilder.group({
-      username: '',
+      email: '',
       password: ''
     });
   }
 
   login() {
-    console.log('enter!', this.loginForm.value);
-
     this.accountsService.login(this.loginForm.value).subscribe(
       data => {
         console.log(data);
+        this.router.navigateByUrl('/');
       },
       error => {
         console.error(error);
@@ -35,7 +35,5 @@ export class LoginComponent {
     );
   }
 
-  googleLogin() {
-    this.accountsService.googleLogin().subscribe();
-  }
+  googleLogin() {}
 }

@@ -1,2 +1,3 @@
-export { Auth } from './auth.model';
-export { User } from './user.model';
+export { Auth } from './auth';
+export { Media } from './media';
+export { User } from './user';

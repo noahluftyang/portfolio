@@ -22,12 +22,10 @@ export class UserService {
   }
 
   async findById(id: number): Promise<User> {
-    const user = await this.prisma.user.findOne({
+    return await this.prisma.user.findOne({
       select: { id: true, email: true, username: true },
       where: { id },
     });
-
-    return user;
   }
 
   async findByEmail(email: string): Promise<any> {
