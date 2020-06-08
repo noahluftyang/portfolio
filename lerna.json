@@ -1,7 +1,5 @@
 {
   "version": "0.0.0",
-  "packages": [
-    "services/*"
-  ],
-  "npmClient": "npm"
+  "npmClient": "npm",
+  "packages": ["services/*"]
 }
