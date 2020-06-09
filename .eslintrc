@@ -2,7 +2,8 @@
   "root": true,
   "extends": "prettier",
   "parserOptions": {
-    "ecmaVersion": 2017
+    "ecmaVersion": 2017,
+    "sourceType": "module"
   },
   "env": {
     "node": true
@@ -18,8 +19,7 @@
       "files": ["*.ts"],
       "parser": "@typescript-eslint",
       "parserOptions": {
-        "project": "tsconfig.json",
-        "sourceType": "module"
+        "project": "tsconfig.json"
       }
     }
   ]

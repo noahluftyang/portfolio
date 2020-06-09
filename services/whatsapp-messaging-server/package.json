@@ -12,7 +12,7 @@
     "apollo-server": "2.14.3",
     "apollo-server-koa": "2.14.3",
     "bcrypt": "4.0.1",
-    "graphql": "15.1.0",
+    "graphql": "14.6.0",
     "graphql-tools": "6.0.7",
     "koa-helmet": "5.2.0",
     "koa-logger": "3.2.1",
