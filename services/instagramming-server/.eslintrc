@@ -1,13 +1,13 @@
 {
-  "env": {
-    "jest": true
-  },
   "extends": [
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "prettier/@typescript-eslint"
   ],
+  "env": {
+    "jest": true
+  },
   "plugins": ["@typescript-eslint/eslint-plugin"],
   "rules": {
     "@typescript-eslint/interface-name-prefix": "off",

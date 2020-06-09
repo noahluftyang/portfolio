@@ -11,10 +11,6 @@ async function bootstrap() {
   });
   app.use(helmet());
   app.enableCors();
-  // app.enableCors({
-  //   credentials: true,
-  //   origin: '*',
-  // });
 
   // Build Swaggger Doc
   const options = new DocumentBuilder()

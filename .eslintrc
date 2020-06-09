@@ -1,11 +1,17 @@
 {
   "root": true,
+  "extends": "prettier",
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
   "env": {
     "node": true
   },
-  "plugins": ["simple-import-sort"],
+  "plugins": ["no-secrets", "prettier", "simple-import-sort"],
   "rules": {
-    "simple-import-sort/sort": "error"
+    "no-secrets/no-secrets": "error",
+    "prettier/prettier": "warn",
+    "simple-import-sort/sort": "warn"
   },
   "overrides": [
     {

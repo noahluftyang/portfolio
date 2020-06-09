@@ -5,15 +5,22 @@
       "type": "npm",
       "script": "develop",
       "path": "services/instagramming/",
-      "label": "npm: develop - services/instagramming",
+      "label": "npm: develop - @portfolio/instagramming",
       "detail": "ng serve"
     },
     {
       "type": "npm",
       "script": "develop",
       "path": "services/instagramming-server/",
-      "label": "npm: develop - services/instagramming-server",
+      "label": "npm: develop - @portfolio/instagramming-server",
       "detail": "nest start --debug --watch"
+    },
+    {
+      "type": "npm",
+      "script": "develop",
+      "path": "services/whatsapp-messaging-server/",
+      "label": "npm: develop - @portfolio/whatsapp-messaging-server",
+      "detail": "nodemon"
     },
     {
       "type": "docker-build",
@@ -28,17 +35,13 @@
     {
       "type": "docker-run",
       "label": "docker-run: release",
-      "dependsOn": [
-        "docker-build"
-      ],
+      "dependsOn": ["docker-build"],
       "platform": "node"
     },
     {
       "type": "docker-run",
       "label": "docker-run: debug",
-      "dependsOn": [
-        "docker-build"
-      ],
+      "dependsOn": ["docker-build"],
       "dockerRun": {
         "env": {
           "DEBUG": "*",

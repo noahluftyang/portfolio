@@ -3,7 +3,7 @@
   "eslint.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "vsicons.presets.angular": true,
-  "[typescript]": {
+  "[javascript,typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

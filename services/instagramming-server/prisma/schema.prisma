@@ -28,6 +28,11 @@ model User {
   @@map("users")
 }
 
+enum Provider {
+  FACEBOOK
+  GOOGLE
+}
+
 model SocialAccount {
   id       String   @id
   userId   Int
@@ -35,11 +40,6 @@ model SocialAccount {
   provider Provider
 
   @@map("social_accounts")
-}
-
-enum Provider {
-  FACEBOOK
-  GOOGLE
 }
 
 model Follow {
