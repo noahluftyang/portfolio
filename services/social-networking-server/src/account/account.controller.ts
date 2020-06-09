@@ -26,25 +26,4 @@ export class AccountController {
   register(@Body() registerUserDto: RegisterUserDto) {
     return this.accountService.register(registerUserDto);
   }
-
-  @Get('facebook')
-  @UseGuards(FacebookAuthGuard)
-  facebookLogin() {}
-
-  @Get('facebook/callback')
-  @UseGuards(FacebookAuthGuard)
-  facebookLoginCallback() {}
-
-  @Get('google')
-  @UseGuards(GoogleAuthGuard)
-  googleLogin() {}
-
-  @Get('google/callback')
-  @UseGuards(GoogleAuthGuard)
-  googleLoginCallback() {
-    console.log('enter!');
-
-    return null;
-    // return this.accountService.generateToken();
-  }
 }

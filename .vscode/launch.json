@@ -2,24 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "firefox",
-      "request": "launch",
-      "name": "Launch @noahluftyang/instagramming",
-      "webRoot": "${workspaceFolder}/services/instagramming",
-      "url": "http://localhost:4200"
-    },
-    {
       "type": "dart",
       "request": "launch",
       "name": "Launch instagram_lite_native",
       "program": "${workspaceRoot}/services/instagram_lite_native/lib/main.dart"
-    },
-    {
-      "name": "Docker Node.js Launch",
-      "type": "docker",
-      "request": "launch",
-      "preLaunchTask": "docker-run: debug",
-      "platform": "node"
     }
   ]
 }

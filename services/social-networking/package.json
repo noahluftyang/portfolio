@@ -1,5 +1,5 @@
 {
-  "name": "@noahluftyang/instagramming",
+  "name": "@portfolio/social-networking",
   "version": "0.0.0",
   "scripts": {
     "develop": "ng serve",

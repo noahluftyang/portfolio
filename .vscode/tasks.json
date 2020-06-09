@@ -4,53 +4,23 @@
     {
       "type": "npm",
       "script": "develop",
-      "path": "services/instagramming/",
-      "label": "npm: develop - @portfolio/instagramming",
+      "path": "services/social-networking/",
+      "label": "npm: develop - @portfolio/social-networking",
       "detail": "ng serve"
     },
     {
       "type": "npm",
       "script": "develop",
-      "path": "services/instagramming-server/",
-      "label": "npm: develop - @portfolio/instagramming-server",
+      "path": "services/social-networking-server/",
+      "label": "npm: develop - @portfolio/social-networking-server",
       "detail": "nest start --debug --watch"
     },
     {
       "type": "npm",
       "script": "develop",
-      "path": "services/whatsapp-messaging-server/",
-      "label": "npm: develop - @portfolio/whatsapp-messaging-server",
+      "path": "services/chatting-server/",
+      "label": "npm: develop - @portfolio/chatting-server",
       "detail": "nodemon"
-    },
-    {
-      "type": "docker-build",
-      "label": "docker-build",
-      "platform": "node",
-      "dockerBuild": {
-        "dockerfile": "${workspaceFolder}/Dockerfile",
-        "context": "${workspaceFolder}",
-        "pull": true
-      }
-    },
-    {
-      "type": "docker-run",
-      "label": "docker-run: release",
-      "dependsOn": ["docker-build"],
-      "platform": "node"
-    },
-    {
-      "type": "docker-run",
-      "label": "docker-run: debug",
-      "dependsOn": ["docker-build"],
-      "dockerRun": {
-        "env": {
-          "DEBUG": "*",
-          "NODE_ENV": "development"
-        }
-      },
-      "node": {
-        "enableDebugging": true
-      }
     }
   ]
 }
