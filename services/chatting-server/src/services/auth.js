@@ -19,9 +19,7 @@ class AuthService extends DataSource {
     this.context = config.context;
   }
 
-  async login(payload) {
-    const { email, password } = payload;
-
+  async login(email, password) {
     let _user;
 
     try {
