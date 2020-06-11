@@ -6,10 +6,7 @@ import { UserService } from 'src/user/mod';
 
 @Injectable()
 export class FacebookStrategy extends PassportStrategy(Strategy) {
-  constructor(
-    configService: ConfigService,
-    private readonly userService: UserService,
-  ) {
+  constructor(configService: ConfigService, private userService: UserService) {
     super({
       clientID: configService.get<string>('FACEBOOK_APP_ID'),
       clientSecret: configService.get<string>('FACEBOOK_APP_SECRET'),

@@ -9,6 +9,7 @@ enum Provider {
 export class SocialAccount {
   @Field(type => ID)
   id: string;
+
   userId: number;
   provider: Provider;
 }

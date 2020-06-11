@@ -1,33 +1,25 @@
 import { Module } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 
+import { PrismaService } from '../shared/services/mod';
 import { UserService } from '../user/mod';
-import { AccountController } from './account.controller';
-import { AccountService } from './account.service';
-import {
-  FacebookStrategy,
-  GoogleStrategy,
-  LocalStrategy,
-} from './strategies/mod';
 import { AccountResolver } from './account.resolver';
+import { AccountService } from './account.service';
+import { LocalStrategy } from './strategies/mod';
 
 @Module({
-  controllers: [AccountController],
   imports: [
     PassportModule,
-    JwtModule.register({
-      secret: 'secret',
-      signOptions: { expiresIn: '600s' },
+    JwtModule.registerAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        secret: configService.get('JWT_SECRET', 'secret'),
+        signOptions: { expiresIn: '1h' },
+      }),
     }),
   ],
-  providers: [
-    AccountService,
-    FacebookStrategy,
-    GoogleStrategy,
-    LocalStrategy,
-    UserService,
-    AccountResolver,
-  ],
+  providers: [AccountService, AccountResolver, LocalStrategy, PrismaService, UserService],
 })
 export class AccountModule {}

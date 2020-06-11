@@ -1,52 +1,43 @@
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/interfaces/mod';
 
 import { PrismaService } from '../shared/services/mod';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
-  async create(data): Promise<User> {
-    const user = await this.prisma.user.create({ data });
-
-    return user;
+  create(data): Promise<any> {
+    return this.prisma.user.create({ data });
   }
 
-  async findAll(): Promise<User[]> {
-    const users = await this.prisma.user.findMany({
-      select: { id: true, email: true, username: true },
-    });
-
-    return users;
+  findAll(): Promise<any[]> {
+    return this.prisma.user.findMany({ select: { id: true, email: true, username: true } });
   }
 
-  async findById(id: number): Promise<User> {
-    return await this.prisma.user.findOne({
+  findById(id: number): Promise<any> {
+    return this.prisma.user.findOne({
       select: { id: true, email: true, username: true },
       where: { id },
     });
   }
 
-  async findByEmail(email: string): Promise<any> {
-    const user = await this.prisma.user.findOne({ where: { email } });
-
-    return user;
+  findByEmail(email: string): Promise<any> {
+    return this.prisma.user.findOne({ where: { email } });
   }
 
-  async findBySocialId(socialId: string): Promise<User> {
-    const user = await this.prisma.socialAccount
-      .findOne({ where: { id: socialId } })
-      .user();
-
-    return user;
+  findBySocialId(socialId: string): Promise<any> {
+    return this.prisma.socialAccount.findOne({ where: { id: socialId } }).user();
   }
 
-  async update(id: number, data) {
+  update(id: number, data) {
     return this.prisma.user.upsert({
       create: data,
       update: data,
       where: { id },
     });
+  }
+
+  findUserMediaList(id: number) {
+    return this.prisma.user.findOne({ where: { id } }).media({ where: { deletedAt: null } });
   }
 }

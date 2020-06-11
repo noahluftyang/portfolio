@@ -6,10 +6,7 @@ import { UserService } from 'src/user/mod';
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(OAuth2Strategy) {
-  constructor(
-    configService: ConfigService,
-    private readonly userService: UserService,
-  ) {
+  constructor(configService: ConfigService, private userService: UserService) {
     super({
       clientID: configService.get<string>('GOOGLE_CLIENT_ID'),
       clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET'),

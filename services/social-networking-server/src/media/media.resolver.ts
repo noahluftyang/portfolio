@@ -1,16 +1,42 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { createParamDecorator, ExecutionContext, UseGuards } from '@nestjs/common';
+import { Args, GqlExecutionContext, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { createWriteStream } from 'fs';
+import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
-import { Media } from '../models/mod';
+import { JwtAuthGuard } from '../shared/guards/mod';
+import { UserService } from '../user/mod';
 import { PostMediaDto } from './dto/mod';
+import { Media } from './media.model';
 import { MediaService } from './media.service';
 
-@Resolver(of => Media)
-export class MediaResolver {
-  constructor(private mediaService: MediaService) {}
+const CurrentUser = createParamDecorator((data: unknown, context: ExecutionContext) => {
+  const _context = GqlExecutionContext.create(context);
 
-  @Mutation(returns => Media)
-  postMedia(@Args('data') data: PostMediaDto) {
-    return this.mediaService.create(data);
+  return _context.getContext().req.user;
+});
+
+@Resolver(of => Media)
+// @UseGuards(JwtAuthGuard)
+export class MediaResolver {
+  constructor(private mediaService: MediaService, private userService: UserService) {}
+
+  // TODO: file upload to cloud storage
+  @Mutation(returns => Boolean)
+  postMedia(
+    // @Args('data') data: PostMediaDto,
+    @Args({ name: 'file', type: () => GraphQLUpload }) { createReadStream, filename }: FileUpload
+  ): Promise<boolean> {
+    // return this.mediaService.create(data);
+    return new Promise((resolve, reject) =>
+      createReadStream()
+        .pipe(createWriteStream(`./media/${filename}`))
+        .on('finish', () => resolve(true))
+        .on('error', error => {
+          console.log('enter!!', error);
+
+          reject(false);
+        })
+    );
   }
 
   @Query(returns => [Media])
@@ -19,7 +45,7 @@ export class MediaResolver {
   }
 
   @Query(returns => [Media])
-  userMedia() {
-    return this.mediaService.findByUserId(1);
+  myMediaList(@CurrentUser() user) {
+    return this.userService.findUserMediaList(user.id);
   }
 }

@@ -1,20 +1,10 @@
-import { Global, Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { GraphQLModule } from '@nestjs/graphql';
+import { Module } from '@nestjs/common';
 
-import { PrismaService } from './services/mod';
+import { FirebaseService, PrismaService } from './services/mod';
 import { JwtStrategy } from './strategies/mod';
 
-@Global()
 @Module({
-  exports: [PrismaService],
-  imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    GraphQLModule.forRoot({
-      autoSchemaFile: './src/schema.graphql',
-      playground: true,
-    }),
-  ],
-  providers: [JwtStrategy, PrismaService],
+  exports: [FirebaseService, PrismaService],
+  providers: [FirebaseService, JwtStrategy, PrismaService],
 })
 export class SharedModule {}

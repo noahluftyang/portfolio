@@ -4,7 +4,7 @@ import { PrismaService } from '../shared/services/mod';
 
 @Injectable()
 export class CommentService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
   async create(data): Promise<any> {
     const comment = await this.prisma.comment.create({ data });

@@ -1,28 +1,29 @@
 import { Injectable } from '@nestjs/common';
 
-import { PrismaService } from '../shared/services/mod';
+import { FirebaseService, PrismaService } from '../shared/services/mod';
+import { Media } from './media.model';
 
 @Injectable()
 export class MediaService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private firebase: FirebaseService, private prisma: PrismaService) {}
 
-  async create(data: any): Promise<any> {
-    const media = await this.prisma.media.create({ data });
+  create(data: any): Promise<any> {
+    console.log(this.firebase.storage);
 
-    return media;
+    return this.prisma.media.create({ data });
   }
 
-  findAll(): Promise<any[]> {
-    return this.prisma.media.findMany();
+  findAll(): Promise<Media[]> {
+    console.log(this.firebase.storage.bucket);
+
+    return this.prisma.media.findMany({ where: { deletedAt: null } });
   }
 
-  async findById(id: number): Promise<any> {
-    const media = await this.prisma.media.findOne({ where: { id } });
-
-    return media;
+  findById(id: number): Promise<Media> {
+    return this.prisma.media.findOne({ where: { id } });
   }
 
-  findByUserId(userId: number) {
-    return this.prisma.user.findOne({ where: { id: userId } }).media();
+  findMediaComments(id: number): Promise<any> {
+    return this.prisma.media.findOne({ where: { id } }).comments({ where: { deletedAt: null } });
   }
 }

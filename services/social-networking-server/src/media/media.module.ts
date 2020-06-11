@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
 
+import { SharedModule } from '../shared/mod';
+import { UserService } from '../user/mod';
 import { MediaResolver } from './media.resolver';
 import { MediaService } from './media.service';
 
 @Module({
-  providers: [MediaResolver, MediaService],
+  imports: [SharedModule],
+  providers: [MediaResolver, MediaService, UserService],
 })
 export class MediaModule {}
