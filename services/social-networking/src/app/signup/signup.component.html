@@ -4,12 +4,17 @@
   </header>
   <nav>한국어</nav>
   <article>
-    <form [formGroup]="signupForm">
+    <form class="form" [formGroup]="signupForm" (ngSubmit)="signup()">
       <label>
-        <input placeholder="이메일 주소" />
+        <input class="input" formControlName="email" placeholder="이메일 주소" type="email" />
       </label>
-      <button type="submit">다음</button>
+      <label>
+        <input class="input" formControlName="password" placeholder="비밀번호" type="password" />
+      </label>
+      <label>
+        <input class="input" formControlName="username" placeholder="이름" />
+      </label>
+      <app-button type="submit">가입하기</app-button>
     </form>
-    <button>Facebook으로 가입하기</button>
   </article>
 </main>

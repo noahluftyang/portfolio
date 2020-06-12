@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 32px;
+
+  & > * + * {
+    margin-top: 16px;
+  }
+}
+
+.input {
+  border: 0;
+  border-radius: 32px;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.3) inset, -4px -4px 8px 0 rgba(255, 255, 255, 0.3) inset;
+  padding: 16px 24px;
+  width: 100%;
+}

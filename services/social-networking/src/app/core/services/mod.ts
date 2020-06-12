@@ -1,2 +1,2 @@
-export { AccountsService } from './accounts.service';
+export { AccountService } from './account.service';
 export { MediaService } from './media.service';

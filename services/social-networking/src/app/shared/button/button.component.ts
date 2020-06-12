@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-button',
+  styleUrls: ['./button.component.scss'],
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
 })
-export class ButtonComponent {}
+export class ButtonComponent {
+  type: string = 'button';
+}

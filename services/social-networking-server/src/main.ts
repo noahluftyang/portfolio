@@ -16,7 +16,7 @@ async function bootstrap() {
 
   // Build Swaggger Doc
   const options = new DocumentBuilder()
-    .setTitle('Instagramming API')
+    .setTitle('SocialNetworking API')
     .setDescription('TODO')
     .setVersion('1.0')
     .addBearerAuth()

@@ -1,12 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
-import { AccountsService, MediaService } from './services/mod';
+import { FirebaseModule } from './firebase.module';
 import { GraphQLModule } from './graphql.module';
+import { AccountsService, MediaService } from './services/mod';
 
 @NgModule({
-  imports: [CommonModule, GraphQLModule, HttpClientModule],
-  providers: [AccountsService, MediaService]
+  imports: [FirebaseModule, GraphQLModule, HttpClientModule],
+  providers: [AccountsService, MediaService],
 })
 export class CoreModule {}

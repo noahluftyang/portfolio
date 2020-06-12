@@ -2,34 +2,23 @@
   <nav>한국어</nav>
   <article>
     <section class="wrapper">
-      <h1 class="logo">Instagram Lite</h1>
+      <h1 class="logo">Social Networking</h1>
       <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
-        <app-button>
+        <app-button (click)="facebookLogin()">
           Facebook으로 계속하기
         </app-button>
-        <!-- <a href="http://localhost:8000/accounts/google" target="_blank">
+        <app-button (click)="googleLogin()">
           Google로 계속하기
-        </a> -->
-        <!-- <button type="button" (click)="googleLogin()">
-          Google로 계속하기
-        </button> -->
-        <div>또는</div>
-        <label class="form__field">
-          <input
-            formControlName="email"
-            placeholder="전화번호, 사용자 이름 또는 이메일"
-            type="text"
-          />
+        </app-button>
+        <p>또는</p>
+        <label>
+          <input class="input" formControlName="email" placeholder="이메일 주소" type="email" />
         </label>
-        <label class="form__field">
-          <input
-            formControlName="password"
-            placeholder="비밀번호"
-            type="password"
-          />
+        <label>
+          <input class="input" formControlName="password" placeholder="비밀번호" type="password" />
         </label>
         <a>비밀번호를 잊으셨나요?</a>
-        <button type="submit">로그인</button>
+        <app-button type="submit">로그인</app-button>
         <p>
           계정이 없으신가요?
           <a routerLink="/accounts/signup">가입하기</a>

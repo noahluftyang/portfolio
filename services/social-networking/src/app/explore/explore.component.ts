@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { MediaService } from '../core/services/mod';
 
 @Component({
   selector: 'app-explore-page',
+  styleUrls: ['./explore.component.scss'],
   templateUrl: './explore.component.html',
-  styleUrls: ['./explore.component.css']
 })
 export class ExploreComponent implements OnInit, OnDestroy {
   private querySubscription: Subscription;
