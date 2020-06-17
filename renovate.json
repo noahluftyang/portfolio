@@ -1,0 +1,11 @@
+{
+  "extends": ["config:base"],
+  "baseBranches": ["master"],
+  "packageRules": [
+    {
+      "automerge": true,
+      "depTypeList": ["devDependencies"]
+    }
+  ],
+  "pin": true
+}
