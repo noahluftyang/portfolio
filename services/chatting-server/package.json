@@ -16,7 +16,7 @@
     "apollo-server-koa": "2.14.5",
     "bcrypt": "4.0.1",
     "express": "4.17.1",
-    "graphql": "14.6.0",
+    "graphql": "15.1.0",
     "graphql-tools": "6.0.10",
     "koa-bodyparser": "4.3.0",
     "koa-helmet": "5.2.0",
