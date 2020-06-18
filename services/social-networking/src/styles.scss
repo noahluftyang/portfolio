@@ -1,7 +1,13 @@
 @import 'sanitize.css';
 @import '@fortawesome/fontawesome-free/css/all.css';
 
-button {
+a {
+  cursor: pointer;
+}
+
+button,
+[type='button'] {
+  cursor: pointer;
   display: block;
 
   &:focus {

@@ -14,6 +14,20 @@ const loginMutation = gql`
   }
 `;
 
+const signupMutation = gql`
+  mutation Register($data: RegisterUser) {
+    register(data: $data) {
+      accessToken
+    }
+  }
+`;
+
+const connectSocialMutation = gql`
+  mutation ConnectSocial($data) {
+
+  }
+`;
+
 @Injectable()
 export class AccountService {
   constructor(private apollo: Apollo, private firebaseAuth: AngularFireAuth) {}
@@ -30,10 +44,28 @@ export class AccountService {
     return this.firebaseAuth.signInWithPopup(provider);
   }
 
+  async connectGoogleAccount() {
+    const provider = new auth.GoogleAuthProvider();
+
+    const { user } = await this.firebaseAuth.signInWithPopup(provider);
+
+    this.apollo.mutate({
+      mutation: connectSocialMutation,
+      variables: { data: { id: user.uid, provider: 'GOOGLE' } },
+    });
+  }
+
   login({ email, password }) {
     return this.apollo.mutate({
       mutation: loginMutation,
       variables: { data: { email, password } },
+    });
+  }
+
+  signup({ email, password, username }) {
+    return this.apollo.mutate({
+      mutation: signupMutation,
+      variables: { data: { email, password, username } },
     });
   }
 }

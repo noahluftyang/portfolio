@@ -26,4 +26,9 @@ export class UserResolver {
   updateUser(@Args('data') data: UpdateUserDto, @CurrentUser() user: User) {
     return this.userService.update(user.id, data);
   }
+
+  @Mutation('success')
+  connectSocialAccount(@Args('data') data: UpdateUserDto, @CurrentUser() user: User) {
+    return null;
+  }
 }

@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
-import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+// import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    canActivate: [AngularFireAuthGuard],
+    // canActivate: [AngularFireAuthGuard],
     loadChildren: () => import('./feeds/feeds.module').then(({ FeedsModule }) => FeedsModule),
     path: '',
   },
   {
-    canActivate: [AngularFireAuthGuard],
+    // canActivate: [AngularFireAuthGuard],
     loadChildren: () =>
       import('./explore/explore.module').then(({ ExploreModule }) => ExploreModule),
     path: 'explore',
+  },
+  {
+    // canActivate: [AngularFireAuthGuard],
+    loadChildren: () =>
+      import('./profile/profile.module').then(({ ProfileModule }) => ProfileModule),
+    path: 'profile',
   },
   {
     loadChildren: () => import('./login/login.module').then(({ LoginModule }) => LoginModule),

@@ -1,12 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { AccountService } from '../core/services/mod';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile.component.html',
 })
-export class ProfileComponent implements OnInit {
-  constructor(private router: ActivatedRoute) {}
+export class ProfileComponent {
+  constructor(private accountService: AccountService, private router: ActivatedRoute) {}
 
-  ngOnInit() {}
+  async connectGoogleAccount() {
+    const test = await this.accountService.connectGoogleAccount();
+
+    console.log(test.user.uid);
+  }
 }
