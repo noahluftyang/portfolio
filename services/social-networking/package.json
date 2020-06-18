@@ -2,12 +2,11 @@
   "name": "@portfolio/social-networking",
   "version": "0.0.0",
   "scripts": {
-    "develop": "ng serve",
-    "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
+    "develop": "ng serve",
+    "start": "ng serve",
+    "lint": "eslint {e2e,src}/**/*.ts",
     "test": "ng test",
-    "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "dependencies": {

@@ -18,17 +18,17 @@ export class AccountResolver {
 
   @Mutation(returns => Auth)
   @UseGuards(LocalAuthGuard)
-  login(@Args('data') data: LoginUserDto, @CurrentUser() user) {
+  login(@Args('data') data: LoginUserDto, @CurrentUser() user): any {
     return this.accountService.generateToken(user);
   }
 
   @Mutation(returns => Auth)
-  register(@Args('data') data: RegisterUserDto) {
+  register(@Args('data') data: RegisterUserDto): Promise<any> {
     return this.accountService.register(data);
   }
 
   @Mutation(returns => Token)
-  refreshToken(@Args('token') token: string) {
+  refreshToken(@Args('token') token: string): any {
     return this.accountService.refreshToken(token);
   }
 }
