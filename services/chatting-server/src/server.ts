@@ -1,9 +1,9 @@
-const { PrismaClient } = require('@prisma/client');
-const { ApolloServer } = require('apollo-server-express');
+import { PrismaClient } from '@prisma/client';
+import { ApolloServer } from 'apollo-server-express';
 
-const { app } = require('./app');
-const { schema } = require('./schema/bootstrap');
-const { AuthService } = require('./services/auth');
+import { app } from './app';
+import { schema } from './schema/bootstrap';
+import { AuthService } from './services/auth';
 
 const prisma = new PrismaClient();
 

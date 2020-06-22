@@ -1,7 +1,7 @@
-const { resolve } = require('path');
-const swaggerJSDoc = require('swagger-jsdoc');
+import { resolve } from 'path';
+import swaggerJSDoc from 'swagger-jsdoc';
 
-const packageInfo = require('../package.json');
+import packageInfo from '../package.json';
 
 const options = {
   apis: [
@@ -14,4 +14,4 @@ const options = {
   },
 };
 
-exports.spec = swaggerJSDoc(options);
+export const spec = swaggerJSDoc(options);
