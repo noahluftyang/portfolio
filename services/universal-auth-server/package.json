@@ -10,7 +10,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "firebase-admin": "8.12.1",
-    "helmet": "3.23.2",
+    "helmet": "3.23.3",
     "pino-http": "5.2.0"
   },
   "devDependencies": {
