@@ -6,8 +6,11 @@
   border: 2px solid red;
 }
 
+.top-navigation {
+  border-bottom: 1px solid #dbdbdb;
+  height: 45px;
+}
+
 .feeds {
   flex: 1;
-
-  border: 3px solid red;
 }

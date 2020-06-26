@@ -5,8 +5,8 @@ import { MediaService } from '../core/services/mod';
 
 @Component({
   selector: 'app-feeds-page',
-  templateUrl: './feeds.component.html',
-  styleUrls: ['./feeds.component.css']
+  styleUrls: ['feeds.component.css'],
+  templateUrl: 'feeds.component.html',
 })
 export class FeedsComponent implements OnInit, OnDestroy {
   private querySubscription: Subscription;
@@ -14,19 +14,19 @@ export class FeedsComponent implements OnInit, OnDestroy {
 
   constructor(private mediaService: MediaService) {}
 
-  ngOnInit() {
-    this.querySubscription = this.mediaService.readFeeds().subscribe(
-      data => {
-        console.log(data);
-        this.feeds = [{ id: 1 }, { id: 2 }, { id: 3 }];
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  }
+  // ngOnInit() {
+  //   this.querySubscription = this.mediaService.readFeeds().subscribe(
+  //     data => {
+  //       console.log(data);
+  //       this.feeds = [{ id: 1 }, { id: 2 }, { id: 3 }];
+  //     },
+  //     error => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 
-  ngOnDestroy() {
-    this.querySubscription.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.querySubscription.unsubscribe();
+  // }
 }

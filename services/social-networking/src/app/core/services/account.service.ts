@@ -15,7 +15,7 @@ const loginMutation = gql`
 `;
 
 const signupMutation = gql`
-  mutation Register($data: RegisterUser) {
+  mutation Register($data: RegisterUserDto!) {
     register(data: $data) {
       accessToken
     }
@@ -23,8 +23,10 @@ const signupMutation = gql`
 `;
 
 const connectSocialMutation = gql`
-  mutation ConnectSocial($data) {
-
+  mutation ConnectSocial($data: ConnectSocialDto!) {
+    connectSocial(data: $data) {
+      accessToken
+    }
   }
 `;
 
@@ -56,16 +58,19 @@ export class AccountService {
   }
 
   login({ email, password }) {
-    return this.apollo.mutate({
-      mutation: loginMutation,
-      variables: { data: { email, password } },
-    });
+    return this.firebaseAuth.signInWithEmailAndPassword(email, password);
   }
 
   signup({ email, password, username }) {
-    return this.apollo.mutate({
-      mutation: signupMutation,
-      variables: { data: { email, password, username } },
-    });
+    return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+
+    // return this.apollo.mutate({
+    //   mutation: signupMutation,
+    //   variables: { data: { email, password, username } },
+    // });
+  }
+
+  signout() {
+    return this.firebaseAuth.signOut();
   }
 }
