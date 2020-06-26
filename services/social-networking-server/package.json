@@ -33,7 +33,7 @@
     "firebase-admin": "8.12.1",
     "graphql": "15.1.0",
     "graphql-subscriptions": "1.1.0",
-    "graphql-tools": "6.0.10",
+    "graphql-tools": "6.0.11",
     "helmet": "3.23.2",
     "nestjs-pino": "1.2.0",
     "passport": "0.4.1",
