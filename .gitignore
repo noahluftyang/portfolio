@@ -462,3 +462,6 @@ fabric.properties
 
 # Media storage
 media/*
+
+# credentials
+service-account.json

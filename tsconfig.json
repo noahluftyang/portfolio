@@ -1,4 +1,6 @@
 {
   "compileOnSave": false,
-  "compilerOptions": {}
+  "compilerOptions": {
+    "resolveJsonModule": true
+  }
 }

@@ -11,8 +11,8 @@ import { AccountService } from '../core/services/mod';
   templateUrl: 'profile.component.html',
 })
 export class ProfileComponent implements OnDestroy {
-  username: string;
   private userSubscription: Subscription;
+  username: string;
 
   constructor(
     private accountService: AccountService,

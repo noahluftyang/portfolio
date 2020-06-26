@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { AccountService } from '../core/services/mod';
 
@@ -10,7 +11,8 @@ import { AccountService } from '../core/services/mod';
   styleUrls: ['login.component.scss'],
   templateUrl: 'login.component.html',
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
+  private userSubscription: Subscription;
   loginForm: FormGroup;
 
   constructor(
@@ -19,44 +21,40 @@ export class LoginComponent {
     formBuilder: FormBuilder,
     router: Router
   ) {
-    firebaseAuth.onAuthStateChanged(user => {
+    this.userSubscription = firebaseAuth.authState.subscribe(user => {
       if (user) {
-        console.log(user);
-        // var displayName = user.displayName;
-        // var email = user.email;
-        // var emailVerified = user.emailVerified;
-        // var photoURL = user.photoURL;
-        // var isAnonymous = user.isAnonymous;
-        // var uid = user.uid;
-        // var providerData = user.providerData;
-        router.navigateByUrl('/');
+        const uid = user.uid;
+
+        accountService.issueToken(uid).subscribe(
+          ({ accessToken }: any) => {
+            console.log(accessToken);
+            router.navigateByUrl('/');
+          },
+          error => {
+            console.error(error);
+          }
+        );
       }
     });
-
     this.loginForm = formBuilder.group({
       email: '',
       password: '',
     });
   }
 
-  async facebookLogin() {
-    const result = await this.accountService.facebookLogin();
-
-    console.log(result);
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
-  async googleLogin() {
-    const result = await this.accountService.googleLogin();
-
-    console.log(result);
+  facebookLogin(): void {
+    this.accountService.facebookLogin();
   }
 
-  async login() {
-    try {
-      const response = await this.accountService.login(this.loginForm.value);
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
+  googleLogin(): void {
+    this.accountService.googleLogin();
+  }
+
+  login(): void {
+    this.accountService.login(this.loginForm.value);
   }
 }

@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Apollo } from 'apollo-angular';
 import { auth } from 'firebase/app';
 import gql from 'graphql-tag';
+import { HttpClient } from '@angular/common/http';
 
 const loginMutation = gql`
   mutation Login($data: LoginUserDto!) {
@@ -32,7 +33,11 @@ const connectSocialMutation = gql`
 
 @Injectable()
 export class AccountService {
-  constructor(private apollo: Apollo, private firebaseAuth: AngularFireAuth) {}
+  constructor(
+    private apollo: Apollo,
+    private firebaseAuth: AngularFireAuth,
+    private http: HttpClient
+  ) {}
 
   facebookLogin() {
     const provider = new auth.FacebookAuthProvider();
@@ -59,6 +64,10 @@ export class AccountService {
 
   login({ email, password }) {
     return this.firebaseAuth.signInWithEmailAndPassword(email, password);
+  }
+
+  issueToken(uid: string) {
+    return this.http.post('http://localhost:8000/token', { uid });
   }
 
   signup({ email, password, username }) {

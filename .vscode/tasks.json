@@ -21,6 +21,13 @@
       "path": "services/chatting-server/",
       "label": "npm: develop - @portfolio/chatting-server",
       "detail": "nodemon"
+    },
+    {
+      "type": "npm",
+      "script": "develop",
+      "path": "services/universal-auth-server/",
+      "label": "npm: develop - @portfolio/universal-auth-server",
+      "detail": "nodemon"
     }
   ]
 }
