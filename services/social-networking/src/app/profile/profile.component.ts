@@ -35,10 +35,17 @@ export class ProfileComponent implements OnDestroy {
     this.userSubscription.unsubscribe();
   }
 
-  async connectGoogleAccount() {
-    const test = await this.accountService.connectGoogleAccount();
+  async connectGoogle() {
+    const observable = await this.accountService.connectGoogle();
 
-    console.log(test.user.uid);
+    observable.subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   signout(): void {

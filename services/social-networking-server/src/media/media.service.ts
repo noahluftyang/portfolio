@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { FirebaseService, PrismaService } from '../shared/services/mod';
+import { FirebaseService, PrismaService } from '../services/mod';
 import { Media } from './media.model';
 
 @Injectable()

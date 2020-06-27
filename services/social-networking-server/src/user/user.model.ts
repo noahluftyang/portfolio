@@ -1,6 +1,6 @@
 import { HideField, ObjectType } from '@nestjs/graphql';
 
-import { Model } from './base.model';
+import { Model } from '../models/mod';
 import { SocialAccount } from './social-account.model';
 
 @ObjectType()

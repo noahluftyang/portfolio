@@ -3,11 +3,11 @@ import { Args, GqlExecutionContext, Mutation, Query, Resolver } from '@nestjs/gr
 import { createWriteStream } from 'fs';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
-import { JwtAuthGuard } from '../shared/guards/mod';
+import { JwtAuthGuard } from '../guards/mod';
 import { UserService } from '../user/mod';
-import { PostMediaDto } from './dto/mod';
 import { Media } from './media.model';
 import { MediaService } from './media.service';
+import { PostMediaDto } from './post-media.dto';
 
 const CurrentUser = createParamDecorator((data: unknown, context: ExecutionContext) => {
   const _context = GqlExecutionContext.create(context);

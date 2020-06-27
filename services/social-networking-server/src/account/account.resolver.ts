@@ -1,10 +1,12 @@
 import { createParamDecorator, ExecutionContext, UseGuards } from '@nestjs/common';
 import { Args, GqlExecutionContext, Mutation, Resolver } from '@nestjs/graphql';
 
-import { Auth, Token } from '../shared/models/mod';
+import { LocalAuthGuard } from '../guards/mod';
 import { AccountService } from './account.service';
-import { LoginUserDto, RegisterUserDto } from './dto/mod';
-import { LocalAuthGuard } from './guards/mod';
+import { Auth } from './auth.model';
+import { LoginUserDto } from './login-user.dto';
+import { RegisterUserDto } from './register-user.dto';
+import { Token } from './token.model';
 
 const CurrentUser = createParamDecorator((data: unknown, context: ExecutionContext) => {
   const _context = GqlExecutionContext.create(context);

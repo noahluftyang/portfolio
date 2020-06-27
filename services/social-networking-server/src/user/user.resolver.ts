@@ -1,9 +1,11 @@
 import { createParamDecorator, ExecutionContext, UseGuards } from '@nestjs/common';
 import { Args, GqlExecutionContext, Mutation, Query, Resolver } from '@nestjs/graphql';
 
-import { JwtAuthGuard } from '../shared/guards/mod';
-import { User } from '../shared/models/mod';
-import { UpdateUserDto } from './dto/mod';
+import { JwtAuthGuard } from '../guards/mod';
+import { ResponseBody } from '../models/mod';
+import { ConnectSocialDto } from './connect-social.dto';
+import { UpdateUserDto } from './update-user.dto';
+import { User } from './user.model';
 import { UserService } from './user.service';
 
 const CurrentUser = createParamDecorator((data: unknown, context: ExecutionContext) => {
@@ -27,8 +29,8 @@ export class UserResolver {
     return this.userService.update(user.id, data);
   }
 
-  @Mutation('success')
-  connectSocialAccount(@Args('data') data: UpdateUserDto, @CurrentUser() user: User) {
-    return null;
+  @Mutation(returns => ResponseBody)
+  connectSocial(@Args('data') data: ConnectSocialDto, @CurrentUser() user: User) {
+    return this.userService.connectSocial(user.id, data);
   }
 }

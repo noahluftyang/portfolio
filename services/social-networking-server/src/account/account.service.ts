@@ -2,9 +2,9 @@ import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/co
 import { JwtService } from '@nestjs/jwt';
 import { hash } from 'bcrypt';
 
-import { Token } from '../shared/models/mod';
 import { UserService } from '../user/mod';
-import { RegisterUserDto } from './dto/mod';
+import { RegisterUserDto } from './register-user.dto';
+import { Token } from './token.model';
 
 @Injectable()
 export class AccountService {

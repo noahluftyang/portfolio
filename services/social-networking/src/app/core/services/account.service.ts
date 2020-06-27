@@ -26,7 +26,11 @@ const signupMutation = gql`
 const connectSocialMutation = gql`
   mutation ConnectSocial($data: ConnectSocialDto!) {
     connectSocial(data: $data) {
+<<<<<<< Updated upstream
       accessToken
+=======
+      status
+>>>>>>> Stashed changes
     }
   }
 `;
@@ -51,12 +55,12 @@ export class AccountService {
     return this.firebaseAuth.signInWithPopup(provider);
   }
 
-  async connectGoogleAccount() {
+  async connectGoogle() {
     const provider = new auth.GoogleAuthProvider();
 
     const { user } = await this.firebaseAuth.signInWithPopup(provider);
 
-    this.apollo.mutate({
+    return this.apollo.mutate({
       mutation: connectSocialMutation,
       variables: { data: { id: user.uid, provider: 'GOOGLE' } },
     });

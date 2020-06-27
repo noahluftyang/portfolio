@@ -23,4 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Lint using eslint
-        run: npm run lint
+        uses: docker://github/super-linter:v2.1.1
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_TYPESCRIPT_ES: true

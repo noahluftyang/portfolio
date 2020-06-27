@@ -1,6 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
-import { Model } from '../shared/models/mod';
+import { Model } from '../models/mod';
 
 @ObjectType()
 export class Media extends Model {

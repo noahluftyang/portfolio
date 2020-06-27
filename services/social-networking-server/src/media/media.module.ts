@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { SharedModule } from '../shared/mod';
+import { SharedModule } from '../shared.module';
 import { UserService } from '../user/mod';
 import { MediaResolver } from './media.resolver';
 import { MediaService } from './media.service';

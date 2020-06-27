@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ResponseBody {
+  status: String!
+}
+
+type User {
+  id: ID!
+}
+
 type Token {
   accessToken: String!
   refreshToken: String!
@@ -12,29 +20,26 @@ type Auth {
   refreshToken: String!
 }
 
-type User {
+type Media {
   id: ID!
+  url: String!
 }
 
 type Comment {
   text: String!
 }
 
-type Media {
-  id: ID!
-  url: String!
-}
-
 type Query {
   me: User!
   hello: String!
-  mediaComments(id: Float!): [Comment!]!
   mediaList: [Media!]!
   myMediaList: [Media!]!
+  mediaComments(id: Float!): [Comment!]!
 }
 
 type Mutation {
   updateUser(data: UpdateUserDto!): User!
+  connectSocial(data: ConnectSocialDto!): ResponseBody!
   login(data: LoginUserDto!): Auth!
   register(data: RegisterUserDto!): Auth!
   refreshToken(token: String!): Token!
@@ -43,6 +48,12 @@ type Mutation {
 
 input UpdateUserDto {
   username: String
+}
+
+input ConnectSocialDto {
+  id: String!
+  provider: Float!
+  userId: Float!
 }
 
 input LoginUserDto {

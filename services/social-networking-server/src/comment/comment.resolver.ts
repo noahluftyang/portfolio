@@ -1,6 +1,6 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
 
-import { MediaService } from '../media/media.service';
+import { MediaService } from '../media/mod';
 import { Comment } from './comment.model';
 import { CommentService } from './comment.service';
 

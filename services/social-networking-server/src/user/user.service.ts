@@ -1,10 +1,14 @@
 import { Injectable } from '@nestjs/common';
 
-import { PrismaService } from '../shared/services/mod';
+import { PrismaService } from '../services/mod';
 
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) {}
+
+  connectSocial(userId: number, data): Promise<any> {
+    return this.prisma.socialAccount.create({ data: { ...data, userId } });
+  }
 
   create(data): Promise<any> {
     return this.prisma.user.create({ data });
