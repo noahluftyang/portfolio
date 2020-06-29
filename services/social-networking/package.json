@@ -27,7 +27,7 @@
     "apollo-link": "1.2.14",
     "firebase": "7.15.5",
     "graphql-tag": "2.10.3",
-    "graphql": "15.1.0",
+    "graphql": "15.2.0",
     "rxjs": "6.5.5",
     "sanitize.css": "11.0.1",
     "tslib": "2.0.0",
