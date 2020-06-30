@@ -15,7 +15,7 @@
     "errorhandler": "1.5.1",
     "express": "4.17.1",
     "firebase-admin": "8.12.1",
-    "graphql": "15.1.0",
+    "graphql": "15.2.0",
     "graphql-tools": "6.0.11",
     "helmet": "3.23.3",
     "mongoose": "5.9.20",
