@@ -13052,15 +13052,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-nexus-prisma@0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-0.15.0.tgz#c25ffb540a1e5babc1632a6d6cba873397b221f4"
-  integrity sha512-KphlvfaSK4d4ilS1ffP72UFqISkSLnHMMFGoshgO/igMPCDLwQVbwGIgFXMEl7GRh/r9NfaiEj64ir5D16gbjQ==
-  dependencies:
-    camelcase "^6.0.0"
-    fs-extra "^9.0.0"
-    outdent "^0.7.1"
-    pluralize "^8.0.0"
+nexus-prisma@0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-0.16.0.tgz#b4e5ec2fdf91cf9a76cc952ee16d31b5859d8eda"
+  integrity sha512-alg5kzUU8ASPqEt/WJd16HaBdQx1qBieIPzEPRNPakWJs82shis3eJxTIgm8kiuDSV28h/oJZJXPMaQTBYRLEA==
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -13708,11 +13703,6 @@ osenv@^0.1.4, osenv@^0.1.5:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-outdent@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/outdent/-/outdent-0.7.1.tgz#e9b400443622a97760b0bc74fa3223252ccd02a2"
-  integrity sha512-VjIzdUHunL74DdhcwMDt5FhNDQ8NYmTkuW0B+usIV2afS9aWT/1c9z1TsnFW349TP3nxmYeUl7Z++XpJRByvgg==
-
 p-cancelable@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/p-cancelable/-/p-cancelable-1.1.0.tgz#d078d15a3af409220c886f1d9a0ca2e441ab26cc"
@@ -14235,11 +14225,6 @@ plist@^3.0.1:
     base64-js "^1.2.3"
     xmlbuilder "^9.0.7"
     xmldom "0.1.x"
-
-pluralize@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
-  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
 pnp-webpack-plugin@1.6.4:
   version "1.6.4"
