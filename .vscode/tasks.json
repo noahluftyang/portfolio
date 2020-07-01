@@ -24,9 +24,9 @@
     },
     {
       "type": "npm",
+      "label": "npm: develop - @portfolio/universal-auth-server",
       "script": "develop",
       "path": "services/universal-auth-server/",
-      "label": "npm: develop - @portfolio/universal-auth-server",
       "detail": "nodemon"
     },
     {
@@ -42,17 +42,13 @@
     {
       "type": "docker-run",
       "label": "docker-run: release",
-      "dependsOn": [
-        "docker-build"
-      ],
+      "dependsOn": ["docker-build"],
       "platform": "node"
     },
     {
       "type": "docker-run",
       "label": "docker-run: debug",
-      "dependsOn": [
-        "docker-build"
-      ],
+      "dependsOn": ["docker-build"],
       "dockerRun": {
         "env": {
           "DEBUG": "*",

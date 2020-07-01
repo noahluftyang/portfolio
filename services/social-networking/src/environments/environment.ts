@@ -1,6 +1,24 @@
+import {
+  apiKey,
+  appId,
+  authDomain,
+  databaseURL,
+  messagingSenderId,
+  projectId,
+  storageBucket,
+} from '../../firebase-config.json';
+
 export const environment = {
   production: false,
-  firebase: {},
+  firebase: {
+    apiKey,
+    appId,
+    authDomain,
+    databaseURL,
+    messagingSenderId,
+    projectId,
+    storageBucket,
+  },
 };
 
 /*

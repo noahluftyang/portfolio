@@ -4,15 +4,19 @@ import gql from 'graphql-tag';
 
 const mediaListQuery = gql`
   query MediaList {
-    mediaList {
-      id
-    }
+    media
   }
 `;
 
-const userMediaQuery = gql`
-  query UserMedia {
-    userMedia {
+const userFeedsQuery = gql`
+  query UserFeeds {
+    user
+  }
+`;
+
+const userUploadsQuery = gql`
+  query UserUploads {
+    user {
       id
     }
   }
@@ -22,11 +26,15 @@ const userMediaQuery = gql`
 export class MediaService {
   constructor(private apollo: Apollo) {}
 
-  readFeeds() {
-    return this.apollo.watchQuery({ query: userMediaQuery }).valueChanges;
+  mediaList() {
+    return this.apollo.watchQuery({ query: mediaListQuery }).valueChanges;
   }
 
-  readMedia() {
-    return this.apollo.watchQuery({ query: mediaListQuery }).valueChanges;
+  feeds() {
+    return this.apollo.watchQuery({ query: userFeedsQuery }).valueChanges;
+  }
+
+  uploads() {
+    return this.apollo.watchQuery({ query: userUploadsQuery }).valueChanges;
   }
 }

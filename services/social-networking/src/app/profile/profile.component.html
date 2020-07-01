@@ -1,12 +1,16 @@
-<<<<<<< Updated upstream
 <section class="profile-page">
   <nav class="top-navigation">
     <header>{{ username }}</header>
   </nav>
   <main class="profile">
-    <header>
-      profile overview
+    <header class="profile-header">
+      <img src="{{ profileImage }}" />
+      <section class="profile-username">
+        <h2>{{ username }}</h2>
+        <app-button>프로필 편집</app-button>
+      </section>
     </header>
+    <div>description</div>
     <ul>
       user uploads
     </ul>
@@ -15,12 +19,5 @@
     <!-- <app-button (click)="connectGoogleAccount()">Connect with Google</app-button> -->
     <button (click)="signout()">로그아웃</button>
   </main>
-=======
-<section>
-  <header>header</header>
-  <section>
-    <app-button (click)="connectGoogle()">Connect with Google</app-button>
-  </section>
->>>>>>> Stashed changes
   <app-navigation></app-navigation>
 </section>

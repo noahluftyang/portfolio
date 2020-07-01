@@ -33,7 +33,7 @@ type Query {
   me: User!
   hello: String!
   mediaList: [Media!]!
-  myMediaList: [Media!]!
+  userUploads: [Media!]!
   mediaComments(id: Float!): [Comment!]!
 }
 

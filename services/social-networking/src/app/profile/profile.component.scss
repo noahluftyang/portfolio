@@ -20,3 +20,29 @@
 .profile {
   flex: 1;
 }
+
+.profile-header {
+  display: flex;
+  margin: 30px 16px 24px;
+
+  img {
+    border-radius: 50%;
+    height: 77px;
+    width: 77px;
+  }
+
+  & > * + * {
+    margin-left: 28px;
+  }
+}
+
+.profile-username {
+  flex: 1;
+
+  h2 {
+    margin-bottom: 12px;
+  }
+}
+
+.profile-description {
+}

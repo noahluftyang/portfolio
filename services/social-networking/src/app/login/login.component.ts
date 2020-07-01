@@ -21,21 +21,7 @@ export class LoginComponent implements OnDestroy {
     formBuilder: FormBuilder,
     router: Router
   ) {
-    this.userSubscription = firebaseAuth.authState.subscribe(user => {
-      if (user) {
-        const uid = user.uid;
-
-        accountService.issueToken(uid).subscribe(
-          ({ accessToken }: any) => {
-            console.log(accessToken);
-            router.navigateByUrl('/');
-          },
-          error => {
-            console.error(error);
-          }
-        );
-      }
-    });
+    this.userSubscription = firebaseAuth.authState.subscribe(this.bootstrap);
     this.loginForm = formBuilder.group({
       email: '',
       password: '',
@@ -45,6 +31,24 @@ export class LoginComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
+
+  bootstrap = async (user: firebase.User) => {
+    if (user) {
+      const token = await user.getIdToken();
+      console.log(token);
+      // this.router.navigateByUrl('/');
+      // const uid = user.uid;
+      // accountService.issueToken(uid).subscribe(
+      //   ({ accessToken }: any) => {
+      //     console.log(accessToken);
+      //     router.navigateByUrl('/');
+      //   },
+      //   error => {
+      //     console.error(error);
+      //   }
+      // );
+    }
+  };
 
   facebookLogin(): void {
     this.accountService.facebookLogin();

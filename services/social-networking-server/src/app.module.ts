@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -24,8 +24,9 @@ import { UserModule } from './user/mod';
         playground: configService.get('NODE_ENV') === 'production' ? false : true,
       }),
     }),
+    HttpModule,
     LoggerModule.forRoot(),
-    ServeStaticModule.forRoot({ rootPath: resolve(process.cwd(), 'media') }),
+    // ServeStaticModule.forRoot({ rootPath: resolve(process.cwd(), 'media') }),
     AccountModule,
     CommentModule,
     MediaModule,

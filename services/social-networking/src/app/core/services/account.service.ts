@@ -1,36 +1,16 @@
 import 'firebase/auth';
 
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Apollo } from 'apollo-angular';
 import { auth } from 'firebase/app';
 import gql from 'graphql-tag';
-import { HttpClient } from '@angular/common/http';
-
-const loginMutation = gql`
-  mutation Login($data: LoginUserDto!) {
-    login(data: $data) {
-      accessToken
-    }
-  }
-`;
-
-const signupMutation = gql`
-  mutation Register($data: RegisterUserDto!) {
-    register(data: $data) {
-      accessToken
-    }
-  }
-`;
 
 const connectSocialMutation = gql`
   mutation ConnectSocial($data: ConnectSocialDto!) {
     connectSocial(data: $data) {
-<<<<<<< Updated upstream
-      accessToken
-=======
       status
->>>>>>> Stashed changes
     }
   }
 `;
@@ -75,12 +55,7 @@ export class AccountService {
   }
 
   signup({ email, password, username }) {
-    return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
-
-    // return this.apollo.mutate({
-    //   mutation: signupMutation,
-    //   variables: { data: { email, password, username } },
-    // });
+    return this.http.post('http://localhost:8001/signup', { email, password });
   }
 
   signout() {

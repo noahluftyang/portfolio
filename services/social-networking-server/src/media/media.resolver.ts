@@ -3,7 +3,7 @@ import { Args, GqlExecutionContext, Mutation, Query, Resolver } from '@nestjs/gr
 import { createWriteStream } from 'fs';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
-import { JwtAuthGuard } from '../guards/mod';
+import { AuthGuard } from '../guards/mod';
 import { UserService } from '../user/mod';
 import { Media } from './media.model';
 import { MediaService } from './media.service';
@@ -16,7 +16,7 @@ const CurrentUser = createParamDecorator((data: unknown, context: ExecutionConte
 });
 
 @Resolver(of => Media)
-// @UseGuards(JwtAuthGuard)
+@UseGuards(AuthGuard)
 export class MediaResolver {
   constructor(private mediaService: MediaService, private userService: UserService) {}
 
@@ -45,7 +45,8 @@ export class MediaResolver {
   }
 
   @Query(returns => [Media])
-  myMediaList(@CurrentUser() user) {
+  userUploads(@CurrentUser() user) {
+    console.log(user);
     return this.userService.findUserMediaList(user.id);
   }
 }

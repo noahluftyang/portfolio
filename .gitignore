@@ -463,5 +463,6 @@ fabric.properties
 # Media storage
 media/*
 
-# credentials
+# firebase
+firebase-config.json
 service-account.json

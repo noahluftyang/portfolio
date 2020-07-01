@@ -8,9 +8,9 @@
       "program": "${workspaceRoot}/services/instagram_lite_native/lib/main.dart"
     },
     {
-      "name": "Docker Node.js Launch",
       "type": "docker",
       "request": "launch",
+      "name": "Launch Node.js in Docker",
       "preLaunchTask": "docker-run: debug",
       "platform": "node"
     }

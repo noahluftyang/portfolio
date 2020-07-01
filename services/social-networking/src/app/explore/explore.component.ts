@@ -15,7 +15,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
   constructor(private mediaService: MediaService) {}
 
   ngOnInit() {
-    this.querySubscription = this.mediaService.readMedia().subscribe(
+    this.querySubscription = this.mediaService.mediaList().subscribe(
       data => {
         console.log(data);
         this.mediaList = [{ id: 1 }, { id: 2 }, { id: 3 }];

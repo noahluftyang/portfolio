@@ -10,55 +10,54 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id             Int             @id @default(autoincrement())
-  email          String          @unique
-  password       String
-  username       String?
-  createdAt      DateTime        @map("created_at") @default(now())
-  updatedAt      DateTime        @map("updated_at") @updatedAt
-  deletedAt      DateTime?       @map("deleted_at")
-  socialAccounts SocialAccount[] @relation("user_social_accounts")
-  followers      Follow[]        @relation("user_followers")
-  following      Follow[]        @relation("user_following")
-  media          Media[]         @relation("user_media")
-  comments       Comment[]       @relation("user_comments")
-  replies        Reply[]         @relation("user_replies")
+// model User {
+//   id             Int             @id @default(autoincrement())
+//   email          String          @unique
+//   password       String
+//   username       String?
+//   createdAt      DateTime        @map("created_at") @default(now())
+//   updatedAt      DateTime        @map("updated_at") @updatedAt
+//   deletedAt      DateTime?       @map("deleted_at")
+//   socialAccounts SocialAccount[] @relation("user_social_accounts")
+//   followers      Follow[]        @relation("user_followers")
+//   following      Follow[]        @relation("user_following")
+//   media          Media[]         @relation("user_media")
+//   comments       Comment[]       @relation("user_comments")
+//   replies        Reply[]         @relation("user_replies")
 
-  @@map("users")
-}
+//   @@map("users")
+// }
 
-enum Provider {
-  FACEBOOK
-  GOOGLE
-}
+// enum Provider {
+//   FACEBOOK
+//   GOOGLE
+// }
 
-model SocialAccount {
-  id       String   @id
-  userId   Int
-  user     User     @relation("user_social_accounts", fields: [userId], references: [id])
-  provider Provider
+// model SocialAccount {
+//   id       String   @id
+//   userId   Int
+//   user     User     @relation("user_social_accounts", fields: [userId], references: [id])
+//   provider Provider
 
-  @@map("social_accounts")
-}
+//   @@map("social_accounts")
+// }
 
-model Follow {
-  followerId  Int  @map("follower_id")
-  follower    User @relation("user_followers", fields: [followerId], references: [id])
-  followingId Int  @map("following_id")
-  following   User @relation("user_following", fields: [followingId], references: [id])
+// model Follow {
+//   followerId  Int  @map("follower_id")
+//   follower    User @relation("user_followers", fields: [followerId], references: [id])
+//   followingId Int  @map("following_id")
+//   following   User @relation("user_following", fields: [followingId], references: [id])
 
-  @@id([followerId, followingId])
-  @@map("follows")
-}
+//   @@id([followerId, followingId])
+//   @@map("follows")
+// }
 
 model Media {
   id               Int       @id @default(autoincrement())
   url              String
   thumbnailUrl     String    @map("thumbnail_url")
   likeCount        Int       @map("like_count")
-  ownerId          Int       @map("owner_id")
-  owner            User      @relation("user_media", fields: [ownerId], references: [id])
+  ownerId          String    @map("owner_id")
   isCommentEnabled Boolean   @map("is_comment_enabled")
   createdAt        DateTime  @map("created_at") @default(now())
   updatedAt        DateTime  @map("updated_at") @updatedAt
@@ -73,8 +72,7 @@ model Comment {
   text      String
   likeCount Int       @map("like_count")
   hidden    Boolean
-  authorId  Int       @map("author_id")
-  author    User      @relation("user_comments", fields: [authorId], references: [id])
+  writerId  String    @map("writer_id")
   mediaId   Int       @map("media_id")
   media     Media     @relation("media_comments", fields: [mediaId], references: [id])
   createdAt DateTime  @map("created_at") @default(now())
@@ -90,8 +88,7 @@ model Reply {
   text      String
   likeCount Int       @map("like_count")
   hidden    Boolean
-  authorId  Int       @map("author_id")
-  author    User      @relation("user_replies", fields: [authorId], references: [id])
+  writerId  String    @map("writer_id")
   commentId Int       @map("comment_id")
   comment   Comment   @relation("comment_replies", fields: [commentId], references: [id])
   createdAt DateTime  @map("created_at") @default(now())
