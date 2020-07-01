@@ -1,19 +1,16 @@
-import { Module, HttpModule } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { LoggerModule } from 'nestjs-pino';
 import { resolve } from 'path';
 
-import { AccountModule } from './account/mod';
-import { AppController } from './app.controller';
 import { AppResolver } from './app.resolver';
+import { AuthMiddleware } from './auth.middleware';
 import { CommentModule } from './comment/mod';
 import { MediaModule } from './media/mod';
-import { UserModule } from './user/mod';
 
 @Module({
-  controllers: [AppController],
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     GraphQLModule.forRootAsync({
@@ -24,14 +21,15 @@ import { UserModule } from './user/mod';
         playground: configService.get('NODE_ENV') === 'production' ? false : true,
       }),
     }),
-    HttpModule,
     LoggerModule.forRoot(),
     // ServeStaticModule.forRoot({ rootPath: resolve(process.cwd(), 'media') }),
-    AccountModule,
     CommentModule,
     MediaModule,
-    UserModule,
   ],
   providers: [AppResolver],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(AuthMiddleware).forRoutes('/graphql');
+  }
+}

@@ -2,24 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ResponseBody {
-  status: String!
-}
-
-type User {
-  id: ID!
-}
-
-type Token {
-  accessToken: String!
-  refreshToken: String!
-}
-
-type Auth {
-  accessToken: String!
-  refreshToken: String!
-}
-
 type Media {
   id: ID!
   url: String!
@@ -30,7 +12,6 @@ type Comment {
 }
 
 type Query {
-  me: User!
   hello: String!
   mediaList: [Media!]!
   userUploads: [Media!]!
@@ -38,33 +19,7 @@ type Query {
 }
 
 type Mutation {
-  updateUser(data: UpdateUserDto!): User!
-  connectSocial(data: ConnectSocialDto!): ResponseBody!
-  login(data: LoginUserDto!): Auth!
-  register(data: RegisterUserDto!): Auth!
-  refreshToken(token: String!): Token!
   postMedia(file: Upload!): Boolean!
-}
-
-input UpdateUserDto {
-  username: String
-}
-
-input ConnectSocialDto {
-  id: String!
-  provider: Float!
-  userId: Float!
-}
-
-input LoginUserDto {
-  email: String!
-  password: String!
-}
-
-input RegisterUserDto {
-  email: String!
-  password: String!
-  username: String
 }
 
 """The `Upload` scalar type represents a file upload."""

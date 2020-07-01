@@ -17,9 +17,9 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private accountService: AccountService,
+    private router: Router,
     firebaseAuth: AngularFireAuth,
-    formBuilder: FormBuilder,
-    router: Router
+    formBuilder: FormBuilder
   ) {
     this.userSubscription = firebaseAuth.authState.subscribe(this.bootstrap);
     this.loginForm = formBuilder.group({
@@ -34,9 +34,7 @@ export class LoginComponent implements OnDestroy {
 
   bootstrap = async (user: firebase.User) => {
     if (user) {
-      const token = await user.getIdToken();
-      console.log(token);
-      // this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/');
       // const uid = user.uid;
       // accountService.issueToken(uid).subscribe(
       //   ({ accessToken }: any) => {

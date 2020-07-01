@@ -1,32 +1,37 @@
+import { plainToClass } from 'class-transformer';
+import { IsEmail, IsNotEmpty, MinLength, validateOrReject } from 'class-validator';
 import { Router } from 'express';
 
-import { firebase } from './firebase';
+import { createUser, verifyAccessToken } from './firebase';
+
+class CreateUserDto {
+  @IsNotEmpty()
+  displayName: string;
+
+  @IsEmail()
+  email: string;
+
+  @MinLength(8)
+  password: string;
+}
 
 export const router = Router();
 
-router.post('/token', async (req, res) => {
-  const { uid } = req.body;
-
-  try {
-    const accessToken = await firebase.auth().createCustomToken(uid);
-
-    return res.status(201).json({ accessToken });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send();
-  }
-});
-
 router.post('/signup', async (req, res) => {
-  const data = req.body;
+  const createUserDto = plainToClass(CreateUserDto, req.body);
 
   try {
-    const user = await firebase.auth().createUser(data);
-    console.log(user);
-
-    return res.status(201).json({ message: 'success' });
+    await validateOrReject(createUserDto);
   } catch (error) {
-    return res.status(500).send();
+    return res.status(400).send(error);
+  }
+
+  try {
+    await createUser(createUserDto);
+
+    return res.status(201).json({ status: 'SUCCESS' });
+  } catch (error) {
+    return res.status(500).send(error);
   }
 });
 
@@ -34,21 +39,20 @@ router.post('/verify', async (req, res) => {
   const { authorization } = req.headers;
 
   if (!authorization) {
-    return res.status(401).send();
+    return res.status(401).send({ status: 'INVALID_TOKEN' });
   }
 
   const [scheme, accessToken] = authorization.split(' ');
 
   if (scheme !== 'Bearer') {
-    return res.status(401).send();
+    return res.status(401).send({ status: 'INVALID_TOKEN' });
   }
 
   try {
-    const user = await firebase.auth().verifyIdToken(accessToken);
-    console.log(user);
+    const user = await verifyAccessToken(accessToken);
 
     return res.status(200).send({ user });
   } catch (error) {
-    return res.status(500).send();
+    return res.status(500).send(error);
   }
 });

@@ -3,22 +3,19 @@ import { Args, GqlExecutionContext, Mutation, Query, Resolver } from '@nestjs/gr
 import { createWriteStream } from 'fs';
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
-import { AuthGuard } from '../guards/mod';
-import { UserService } from '../user/mod';
+import { AuthGuard } from '../auth.guard';
 import { Media } from './media.model';
 import { MediaService } from './media.service';
 import { PostMediaDto } from './post-media.dto';
 
 const CurrentUser = createParamDecorator((data: unknown, context: ExecutionContext) => {
-  const _context = GqlExecutionContext.create(context);
-
-  return _context.getContext().req.user;
+  return GqlExecutionContext.create(context).getContext().req.user;
 });
 
 @Resolver(of => Media)
 @UseGuards(AuthGuard)
 export class MediaResolver {
-  constructor(private mediaService: MediaService, private userService: UserService) {}
+  constructor(private mediaService: MediaService) {}
 
   // TODO: file upload to cloud storage
   @Mutation(returns => Boolean)
@@ -45,8 +42,7 @@ export class MediaResolver {
   }
 
   @Query(returns => [Media])
-  userUploads(@CurrentUser() user) {
-    console.log(user);
-    return this.userService.findUserMediaList(user.id);
+  userUploads(@CurrentUser() user): Promise<Media[]> {
+    return this.mediaService.findAllFromUser(user.uid);
   }
 }

@@ -1,6 +1,7 @@
 {
   "deno.enable": false,
   "eslint.enable": true,
+  "npm.packageManager": "yarn",
   "typescript.tsdk": "node_modules/typescript/lib",
   "vsicons.presets.angular": true,
   "[javascript]": {
