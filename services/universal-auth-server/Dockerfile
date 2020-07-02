@@ -1,5 +1,5 @@
 # Build stage
-FROM node:12-alpine  AS builder
+FROM node:12-alpine AS builder
 
 WORKDIR /app
 
@@ -19,6 +19,8 @@ ENV NODE_ENV production
 
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/dist ./dist
+
+RUN yarn
 
 EXPOSE 8000
 CMD ["yarn", "start"]

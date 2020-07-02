@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "experimentalDecorators": true,
+    "module": "commonjs",
     "outDir": "./dist",
     "resolveJsonModule": true
   },

@@ -1,7 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ServeStaticModule } from '@nestjs/serve-static';
 import { LoggerModule } from 'nestjs-pino';
 import { resolve } from 'path';
 
@@ -22,7 +21,6 @@ import { MediaModule } from './media/mod';
       }),
     }),
     LoggerModule.forRoot(),
-    // ServeStaticModule.forRoot({ rootPath: resolve(process.cwd(), 'media') }),
     CommentModule,
     MediaModule,
   ],

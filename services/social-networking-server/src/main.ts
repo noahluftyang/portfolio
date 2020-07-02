@@ -4,6 +4,8 @@ import * as helmet from 'helmet';
 
 import { AppModule } from './app.module';
 
+const PORT = process.env.PORT || 8000;
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: ['log', 'error', 'warn'],
@@ -11,7 +13,7 @@ async function bootstrap() {
   app.use(helmet());
   app.enableCors();
 
-  await app.listen(8000);
+  await app.listen(PORT);
 }
 
 bootstrap();

@@ -12,8 +12,10 @@ import { router } from './routes';
 
 export const app = express();
 
+const REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
+
 const logger = pino();
-const client = createClient();
+const client = createClient(REDIS_URL);
 const RedisStore = connect(session);
 
 app.use(helmet());
