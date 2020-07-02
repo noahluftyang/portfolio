@@ -1,8 +1,24 @@
-FROM node:12.18-alpine
+# Build stage
+FROM node:12-alpine  AS builder
+
+WORKDIR /app
+
+COPY package.json ./
+
+RUN yarn
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN yarn build
+
+# Running stage
+FROM node:12-alpine
+
 ENV NODE_ENV production
-WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
+
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/dist ./dist
+
 EXPOSE 8000
-CMD npm start
+CMD ["yarn", "start"]
