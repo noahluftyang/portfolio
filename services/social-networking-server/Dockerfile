@@ -9,14 +9,14 @@ WORKDIR /app
 RUN npm install -g @prisma/cli --unsafe-perm
 
 COPY prisma/schema.prisma ./
-COPY package*.json ./
+COPY package.json ./
 
-RUN npm ci
+RUN yarn
 
 COPY tsconfig*.json ./
 COPY src ./src
 
-RUN npm run build
+RUN yarn build
 
 # Running stage
 FROM node:12
@@ -24,8 +24,8 @@ FROM node:12
 ENV NODE_ENV production
 
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/package.json ./
 COPY --from=builder /app/dist ./dist
 
 EXPOSE 8000
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]
