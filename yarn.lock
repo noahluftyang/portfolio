@@ -13190,10 +13190,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-nexus-prisma@0.16.0:
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-0.16.0.tgz#b4e5ec2fdf91cf9a76cc952ee16d31b5859d8eda"
-  integrity sha512-alg5kzUU8ASPqEt/WJd16HaBdQx1qBieIPzEPRNPakWJs82shis3eJxTIgm8kiuDSV28h/oJZJXPMaQTBYRLEA==
+nexus-prisma@0.16.2:
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-0.16.2.tgz#c2923f97c7565352eb532190ea46873a4982c9de"
+  integrity sha512-vtEtYrdpu+IG5oFtsbVdHA+Sd+Zm51qMURtXkVC1VIcEJ8Zj+xGe9at2nsU9g/QcRwx4t0DcQIdXTd8pu+thmQ==
 
 nice-try@^1.0.4:
   version "1.0.5"
