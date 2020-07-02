@@ -29,7 +29,7 @@
     "firebase": "7.15.5",
     "graphql": "15.2.0",
     "graphql-tag": "2.10.3",
-    "rxjs": "6.5.5",
+    "rxjs": "6.6.0",
     "sanitize.css": "11.0.1",
     "tslib": "2.0.0",
     "zone.js": "0.10.3"
