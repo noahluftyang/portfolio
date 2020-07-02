@@ -1,9 +1,17 @@
-import { NestMiddleware } from '@nestjs/common';
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 import fetch from 'node-fetch';
 
+@Injectable()
 export class AuthMiddleware implements NestMiddleware {
-  async use(req: Request, res: Response, next: any): Promise<Response | void> {
+  private authApiURL: string;
+
+  constructor(configService: ConfigService) {
+    this.authApiURL = configService.get<string>('AUTH_API_URL');
+  }
+
+  async use(req: Request, res: Response, next: any): Promise<void> {
     const { authorization } = req.headers;
 
     if (!authorization) {
@@ -11,7 +19,7 @@ export class AuthMiddleware implements NestMiddleware {
     }
 
     try {
-      const response = await fetch('http://localhost:8001/verify', {
+      const response = await fetch(`${this.authApiURL}/verify`, {
         headers: { authorization },
         method: 'POST',
       });

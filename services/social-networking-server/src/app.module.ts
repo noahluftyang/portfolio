@@ -17,7 +17,7 @@ import { MediaModule } from './media/mod';
       useFactory: (configService: ConfigService) => ({
         autoSchemaFile: resolve(process.cwd(), 'src/schema.graphql'),
         context: ({ req }) => ({ req }),
-        playground: configService.get('NODE_ENV') === 'production' ? false : true,
+        playground: configService.get<'production' | 'development'>('NODE_ENV') !== 'production',
       }),
     }),
     LoggerModule.forRoot(),
