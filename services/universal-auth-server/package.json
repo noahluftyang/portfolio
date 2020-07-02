@@ -17,5 +17,11 @@
     "helmet": "3.23.3",
     "pino-http": "5.2.0",
     "redis": "3.0.2"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
