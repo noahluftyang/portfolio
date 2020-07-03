@@ -54,6 +54,20 @@ export class MediaService {
       );
   }
 
+  explore(): void {
+    this.apollo
+      .watchQuery({ query: userFeedsQuery })
+      .valueChanges.pipe(map(({ data }) => data.feeds))
+      .subscribe(
+        feeds => {
+          this.mediaList = feeds;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+  }
+
   uploads(): void {
     this.apollo
       .watchQuery({ query: userUploadsQuery })

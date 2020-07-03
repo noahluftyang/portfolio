@@ -6,6 +6,8 @@ import {
 } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
 
+import { PostComponent } from './post/post.component';
+
 const routes: Routes = [
   {
     canActivate: [AngularFireAuthGuard],
@@ -20,6 +22,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./explore/explore.module').then(({ ExploreModule }) => ExploreModule),
     path: 'explore',
+  },
+  {
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: () => redirectUnauthorizedTo(['accounts', 'login']) },
+    component: PostComponent,
+    path: 'create',
   },
   {
     canActivate: [AngularFireAuthGuard],

@@ -1,0 +1,17 @@
+<section>
+  <nav class="top-navigation">
+    <header>
+      <button (click)="back()">
+        <img src="assets/chevron-left.svg" />
+      </button>
+      <h1>새 게시물</h1>
+      <button type="submit">공유</button>
+    </header>
+  </nav>
+  <form [formGroup]="mediaForm" (ngSubmit)="postMedia()">
+    <main>
+      <img [src]="mediaUrl" />
+      문구 입력...
+    </main>
+  </form>
+</section>

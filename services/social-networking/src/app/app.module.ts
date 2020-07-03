@@ -7,11 +7,19 @@ import { AppComponent } from './app.component';
 import { FirebaseModule } from './firebase.module';
 import { GraphQLModule } from './graphql.module';
 import { AccountService, MediaService } from './services/mod';
+import { SharedModule } from './shared/mod';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent],
-  imports: [AppRoutingModule, BrowserModule, FirebaseModule, GraphQLModule, HttpClientModule],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    FirebaseModule,
+    GraphQLModule,
+    HttpClientModule,
+    SharedModule,
+  ],
   providers: [AccountService, MediaService],
 })
 export class AppModule {}

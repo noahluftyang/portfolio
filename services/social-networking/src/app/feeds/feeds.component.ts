@@ -6,7 +6,7 @@ import { MediaService } from '../services/mod';
 
 @Component({
   selector: 'app-feeds-page',
-  styleUrls: ['feeds.component.css'],
+  styleUrls: ['feeds.component.scss'],
   templateUrl: 'feeds.component.html',
 })
 export class FeedsComponent implements OnInit, OnDestroy {

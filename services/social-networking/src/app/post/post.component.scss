@@ -1,0 +1,16 @@
+.top-navigation {
+  border-bottom: 1px solid #dbdbdb;
+  height: 45px;
+
+  header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  h1 {
+    flex: 1;
+    text-align: center;
+  }
+}
