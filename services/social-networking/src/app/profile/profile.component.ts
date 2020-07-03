@@ -1,26 +1,24 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { AccountService, MediaService } from '../core/services/mod';
+import { AccountService, MediaService } from '../services/mod';
 
 @Component({
   selector: 'app-profile-page',
   styleUrls: ['profile.component.scss'],
   templateUrl: 'profile.component.html',
 })
-export class ProfileComponent implements OnDestroy {
+export class ProfileComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription;
   profileImage: string;
   username: string;
 
   constructor(
     private accountService: AccountService,
-    private mediaService: MediaService,
-    private router: Router,
     private titleService: Title,
+    public mediaService: MediaService,
     firebaseAuth: AngularFireAuth
   ) {
     this.userSubscription = firebaseAuth.authState.subscribe(this.bootstrap);
@@ -32,14 +30,12 @@ export class ProfileComponent implements OnDestroy {
       this.username = user.displayName;
 
       this.titleService.setTitle(`@${this.username} • Social Networking 사진 및 동영상`);
-      this.mediaService.uploads().subscribe(data => {
-        console.log(data);
-      });
-      return;
     }
-
-    this.router.navigateByUrl('/accounts/login');
   };
+
+  ngOnInit(): void {
+    this.mediaService.uploads();
+  }
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();

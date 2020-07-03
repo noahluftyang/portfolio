@@ -37,12 +37,12 @@ export class MediaResolver {
   }
 
   @Query(returns => [Media])
-  mediaList() {
+  feeds(@CurrentUser() user): Promise<Media[]> {
     return this.mediaService.findAll();
   }
 
   @Query(returns => [Media])
-  userUploads(@CurrentUser() user): Promise<Media[]> {
+  uploads(@CurrentUser() user): Promise<Media[]> {
     return this.mediaService.findAllFromUser(user.uid);
   }
 }

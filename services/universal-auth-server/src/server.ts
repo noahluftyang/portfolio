@@ -1,7 +1,6 @@
 import { app } from './app';
+import { config } from './config';
 
-const PORT = process.env.PORT || 8000;
-
-app.listen({ port: PORT }, () => {
-  console.log(`🚀  Server ready at http://localhost:${PORT}`);
+app.listen({ port: config.PORT }, () => {
+  console.log(`🚀  Server ready at http://localhost:${config.PORT}`);
 });

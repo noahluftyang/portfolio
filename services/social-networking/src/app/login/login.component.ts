@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { AccountService } from '../core/services/mod';
+import { AccountService } from '../services/mod';
 
 @Component({
   selector: 'app-login-page',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnDestroy {
     firebaseAuth: AngularFireAuth,
     formBuilder: FormBuilder
   ) {
-    this.userSubscription = firebaseAuth.authState.subscribe(this.bootstrap);
+    // this.userSubscription = firebaseAuth.authState.subscribe(this.bootstrap);
     this.loginForm = formBuilder.group({
       email: '',
       password: '',
@@ -29,7 +29,7 @@ export class LoginComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    //   this.userSubscription.unsubscribe();
   }
 
   bootstrap = async (user: firebase.User) => {

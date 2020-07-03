@@ -3,9 +3,9 @@ FROM node:12-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json ./
+COPY package.json yarn.lock ./
 
-RUN yarn
+RUN yarn --frozen-lockfile
 
 COPY tsconfig.json ./
 COPY src ./src
@@ -17,10 +17,10 @@ FROM node:12-alpine
 
 ENV NODE_ENV production
 
-COPY --from=builder /app/package.json ./
+COPY --from=builder /app/package.json /app/yarn.lock ./
 COPY --from=builder /app/dist ./dist
 
-RUN yarn
+RUN yarn --frozen-lockfile
 
 EXPOSE 8000
 CMD ["yarn", "start"]

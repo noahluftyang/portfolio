@@ -3,7 +3,7 @@
     <header>header</header>
   </nav>
   <ul class="feeds">
-    <li *ngFor="let feed of feeds">{{ feed.id }}</li>
+    <li *ngFor="let feed of mediaService.mediaList">{{ feed.id }}</li>
   </ul>
   <app-navigation></app-navigation>
 </section>

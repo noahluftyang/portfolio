@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "@nestjs/cli": "7.4.1",
+    "@nestjs/schematics": "7.0.1",
+    "@nestjs/testing": "7.3.1",
     "@types/passport": "1.0.3"
   },
   "engines": {

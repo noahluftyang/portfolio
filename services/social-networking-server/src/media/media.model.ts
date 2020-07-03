@@ -8,6 +8,12 @@ export class Media extends Model {
   url: string;
 
   thumbnailUrl: string;
+
+  @Field()
   likeCount: number;
+
+  @Field()
+  ownerId: string;
+
   isCommentEnabled: boolean;
 }

@@ -15,8 +15,11 @@
       user uploads
     </ul>
     <nav>tab</nav>
-    <article>grid</article>
-    <!-- <app-button (click)="connectGoogleAccount()">Connect with Google</app-button> -->
+    <article>
+      <ul>
+        <li *ngFor="let upload of mediaService.mediaList">{{upload.id}}</li>
+      </ul>
+    </article>
     <button (click)="signout()">로그아웃</button>
   </main>
   <app-navigation></app-navigation>

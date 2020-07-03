@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AccountService } from '../core/services/mod';
+import { AccountService } from '../services/mod';
 
 @Component({
   selector: 'app-signup-page',

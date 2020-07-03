@@ -5,6 +5,8 @@
 type Media {
   id: ID!
   url: String!
+  likeCount: Float!
+  ownerId: String!
 }
 
 type Comment {
@@ -13,8 +15,8 @@ type Comment {
 
 type Query {
   hello: String!
-  mediaList: [Media!]!
-  userUploads: [Media!]!
+  feeds: [Media!]!
+  uploads: [Media!]!
   mediaComments(id: Float!): [Comment!]!
 }
 

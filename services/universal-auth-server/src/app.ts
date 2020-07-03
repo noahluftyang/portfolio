@@ -8,14 +8,13 @@ import * as helmet from 'helmet';
 import * as pino from 'pino-http';
 import { createClient } from 'redis';
 
+import { config } from './config';
 import { router } from './routes';
 
 export const app = express();
 
-const REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
-
 const logger = pino();
-const client = createClient(REDIS_URL);
+const client = createClient(config.REDIS_URL);
 const RedisStore = connect(session);
 
 app.use(helmet());
