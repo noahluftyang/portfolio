@@ -24,7 +24,7 @@
     "@types/helmet": "0.0.47",
     "@types/jasmine": "3.5.11",
     "@types/jasminewd2": "2.0.8",
-    "@types/jest": "26.0.3",
+    "@types/jest": "26.0.4",
     "@types/node": "14.0.14",
     "@types/passport": "1.0.3",
     "@types/passport-facebook": "2.1.10",
