@@ -1,6 +1,7 @@
 import { plainToClass } from 'class-transformer';
 import { IsEmail, IsNotEmpty, MinLength, validateOrReject } from 'class-validator';
 import { Router } from 'express';
+import { authenticate } from 'passport';
 
 import { createUser, verifyAccessToken } from './firebase';
 
@@ -16,6 +17,15 @@ class CreateUserDto {
 }
 
 export const router = Router();
+
+router.get('/google', authenticate('google', { scope: ['email'] }));
+
+router.get(
+  '/google/callback',
+  authenticate('google', { successRedirect: 'http://localhost:3000' })
+);
+
+router.post('/login', authenticate('local'));
 
 router.post('/signup', async (req, res) => {
   const createUserDto = plainToClass(CreateUserDto, req.body);
