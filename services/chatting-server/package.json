@@ -16,7 +16,7 @@
     "apollo-server-express": "2.15.1",
     "errorhandler": "1.5.1",
     "express": "4.17.1",
-    "graphql": "15.2.0",
+    "graphql": "15.3.0",
     "graphql-tools": "6.0.12",
     "helmet": "3.23.3",
     "mongoose": "5.9.21",
