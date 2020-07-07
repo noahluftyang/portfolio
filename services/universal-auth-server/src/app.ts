@@ -31,5 +31,5 @@ app.use(
 );
 app.use(json());
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 app.use(router);

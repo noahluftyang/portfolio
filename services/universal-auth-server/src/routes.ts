@@ -1,19 +1,21 @@
+import { hash } from 'bcrypt';
 import { plainToClass } from 'class-transformer';
 import { IsEmail, IsNotEmpty, MinLength, validateOrReject } from 'class-validator';
 import { Router } from 'express';
 import { authenticate } from 'passport';
 
-import { createUser, verifyAccessToken } from './firebase';
+import { verifyAccessToken } from './firebase';
+import { prisma } from './prisma';
 
 class CreateUserDto {
-  @IsNotEmpty()
-  displayName: string;
-
   @IsEmail()
   email: string;
 
   @MinLength(8)
   password: string;
+
+  @IsNotEmpty()
+  username: string;
 }
 
 export const router = Router();
@@ -25,7 +27,9 @@ router.get(
   authenticate('google', { successRedirect: 'http://localhost:3000' })
 );
 
-router.post('/login', authenticate('local'));
+router.post('/login', authenticate('local'), (req, res) =>
+  res.status(200).send({ status: 'SUCCESS', token: req.session.id })
+);
 
 router.post('/signup', async (req, res) => {
   const createUserDto = plainToClass(CreateUserDto, req.body);
@@ -37,15 +41,25 @@ router.post('/signup', async (req, res) => {
   }
 
   try {
-    await createUser(createUserDto);
+    const { password, ...payload } = createUserDto;
+    const encryptedPassword = await hash(password, 10);
 
-    return res.status(201).json({ status: 'SUCCESS' });
+    await prisma.user.create({ data: { ...payload, password: encryptedPassword } });
+
+    return res.status(201).send({ status: 'SUCCESS' });
   } catch (error) {
+    // Unique email error
+    if (error.code === 'P2002') {
+      return res.status(400).send({ status: 'DUPLICATED_EMAIL' });
+    }
+
     return res.status(500).send(error);
   }
 });
 
 router.post('/verify', async (req, res) => {
+  console.log(req.session, req.user);
+
   const { authorization } = req.headers;
 
   if (!authorization) {
