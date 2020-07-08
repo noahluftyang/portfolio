@@ -2,6 +2,7 @@ import { hash } from 'bcrypt';
 import { plainToClass } from 'class-transformer';
 import { IsEmail, IsNotEmpty, MinLength, validateOrReject } from 'class-validator';
 import { Router } from 'express';
+import { sign } from 'jsonwebtoken';
 import { authenticate } from 'passport';
 
 import { verifyAccessToken } from './firebase';
@@ -27,9 +28,11 @@ router.get(
   authenticate('google', { successRedirect: 'http://localhost:4200' })
 );
 
-router.post('/login', authenticate('local'), (req, res) =>
-  res.status(200).send({ status: 'SUCCESS' })
-);
+router.post('/login', authenticate('local'), (req, res) => {
+  const accessToken = sign(req.user, 'secret');
+
+  return res.status(200).send({ status: 'SUCCESS', accessToken });
+});
 
 router.post('/signup', async (req, res) => {
   const createUserDto = plainToClass(CreateUserDto, req.body);
@@ -57,26 +60,4 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post('/verify', authenticate('jwt'), async (req, res) => {
-  console.log(req.session, req.user);
-
-  const { authorization } = req.headers;
-
-  if (!authorization) {
-    return res.status(401).send({ status: 'INVALID_TOKEN' });
-  }
-
-  const [scheme, accessToken] = authorization.split(' ');
-
-  if (scheme !== 'Bearer') {
-    return res.status(401).send({ status: 'INVALID_TOKEN' });
-  }
-
-  try {
-    const user = await verifyAccessToken(accessToken);
-
-    return res.status(200).send({ user });
-  } catch (error) {
-    return res.status(500).send(error);
-  }
-});
+router.post('/verify', authenticate('jwt'), (req, res) => res.status(200).send({ user: req.user }));

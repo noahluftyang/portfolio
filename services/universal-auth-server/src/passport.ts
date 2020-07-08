@@ -1,6 +1,5 @@
 import { User } from '@prisma/client';
 import { compare } from 'bcrypt';
-import { Request } from 'express';
 import { sign } from 'jsonwebtoken';
 import * as passport from 'passport';
 import { Strategy as FacebookStrategy } from 'passport-facebook';
@@ -13,18 +12,6 @@ import { Strategy as TwitterStrategy } from 'passport-twitter';
 
 import { config } from './config';
 import { prisma } from './prisma';
-
-function cookieExtractor(req: Request) {
-  console.log('enter!', req.cookies['user']);
-
-  let token: any = null;
-
-  if (req && req.cookies) {
-    token = req.cookies['jwt'];
-  }
-
-  return token;
-}
 
 passport.serializeUser((user: User, done) => {
   const accessToken = sign(user, 'secret');
@@ -78,6 +65,7 @@ passport.use(
     }
   )
 );
+
 passport.use(
   new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
     let _user: User;
@@ -89,20 +77,21 @@ passport.use(
     }
 
     if (!_user) {
-      return done({ message: 'Incorrect username' });
+      return done({ status: 'INVALID_ACCOUNT' });
     }
 
     if (!compare(password, _user.password)) {
-      return done({ status: 'INCORRECT_PASSWORD' });
+      return done({ status: 'INVALID_ACCOUNT' });
     }
 
     return done(null, { id: _user.id, email: _user.email, username: _user.username });
   })
 );
+
 passport.use(
   new JwtStrategy(
     {
-      jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: 'secret',
     },
     async (payload, done) => {
