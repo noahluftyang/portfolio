@@ -6,7 +6,7 @@
     "build": "ng build",
     "develop": "ng serve",
     "start": "ng serve",
-    "lint": "eslint {e2e,src}/**/*.ts",
+    "lint": "ng lint",
     "test": "ng test",
     "e2e": "ng e2e"
   },
