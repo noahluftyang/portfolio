@@ -1,6 +1,10 @@
 @import 'sanitize.css';
 @import '@fortawesome/fontawesome-free/css/all.css';
 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 a {
   cursor: pointer;
 }

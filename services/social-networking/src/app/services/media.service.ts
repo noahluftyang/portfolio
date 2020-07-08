@@ -43,7 +43,7 @@ export class MediaService {
   feeds(): void {
     this.apollo
       .watchQuery({ query: userFeedsQuery })
-      .valueChanges.pipe(map(({ data }) => data.feeds))
+      .valueChanges.pipe(map(({ data }: any) => data.feeds))
       .subscribe(
         feeds => {
           this.mediaList = feeds;

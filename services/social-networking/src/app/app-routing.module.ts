@@ -10,22 +10,22 @@ import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
   {
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectUnauthorizedTo(['accounts', 'login']) },
+    // canActivate: [AngularFireAuthGuard],
+    // data: { authGuardPipe: () => redirectUnauthorizedTo(['accounts', 'login']) },
     loadChildren: () => import('./feeds/feeds.module').then(({ FeedsModule }) => FeedsModule),
     path: '',
     pathMatch: 'full',
   },
   {
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectUnauthorizedTo(['accounts', 'login']) },
+    // canActivate: [AngularFireAuthGuard],
+    // data: { authGuardPipe: () => redirectUnauthorizedTo(['accounts', 'login']) },
     loadChildren: () =>
       import('./explore/explore.module').then(({ ExploreModule }) => ExploreModule),
     path: 'explore',
   },
   {
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectUnauthorizedTo(['accounts', 'login']) },
+    // canActivate: [AngularFireAuthGuard],
+    // data: { authGuardPipe: () => redirectUnauthorizedTo(['accounts', 'login']) },
     component: PostComponent,
     path: 'create',
   },
@@ -37,14 +37,14 @@ const routes: Routes = [
     path: 'profile',
   },
   {
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectLoggedInTo(['/']) },
+    // canActivate: [AngularFireAuthGuard],
+    // data: { authGuardPipe: () => redirectLoggedInTo(['/']) },
     loadChildren: () => import('./login/login.module').then(({ LoginModule }) => LoginModule),
     path: 'accounts/login',
   },
   {
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectLoggedInTo(['/']) },
+    // canActivate: [AngularFireAuthGuard],
+    // data: { authGuardPipe: () => redirectLoggedInTo(['/']) },
     loadChildren: () => import('./signup/signup.module').then(({ SignupModule }) => SignupModule),
     path: 'accounts/signup',
   },

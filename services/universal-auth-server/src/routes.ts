@@ -24,11 +24,11 @@ router.get('/google', authenticate('google', { scope: ['email'] }));
 
 router.get(
   '/google/callback',
-  authenticate('google', { successRedirect: 'http://localhost:3000' })
+  authenticate('google', { successRedirect: 'http://localhost:4200' })
 );
 
 router.post('/login', authenticate('local'), (req, res) =>
-  res.status(200).send({ status: 'SUCCESS', token: req.session.id })
+  res.status(200).send({ status: 'SUCCESS' })
 );
 
 router.post('/signup', async (req, res) => {
@@ -57,7 +57,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post('/verify', async (req, res) => {
+router.post('/verify', authenticate('jwt'), async (req, res) => {
   console.log(req.session, req.user);
 
   const { authorization } = req.headers;

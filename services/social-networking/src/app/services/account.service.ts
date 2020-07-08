@@ -95,4 +95,8 @@ export class AccountService {
       console.error(error);
     }
   }
+
+  verify() {
+    return this.http.post('http://localhost:8001/verify', null, { withCredentials: true });
+  }
 }
