@@ -22,7 +22,7 @@
     "@angular/router": "10.0.3",
     "@fortawesome/fontawesome-free": "5.13.1",
     "apollo-angular": "1.10.0",
-    "apollo-angular-link-http": "1.10.0",
+    "apollo-angular-link-http": "1.11.0",
     "apollo-cache-inmemory": "1.6.6",
     "apollo-client": "2.6.10",
     "apollo-link": "1.2.14",
