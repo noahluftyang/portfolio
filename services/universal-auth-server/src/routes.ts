@@ -59,6 +59,11 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+router.post('/signout', authenticate('jwt', { session: false }), (req, res) => {
+  // TODO: token expire
+  return res.status(200).send({ status: 'SUCCESS' });
+});
+
 router.post('/verify', authenticate('jwt', { session: false }), (req, res) =>
   res.status(200).send({ user: req.user })
 );

@@ -16,9 +16,15 @@
     </ul>
     <nav>tab</nav>
     <article>
-      <ul>
-        <li *ngFor="let upload of mediaService.mediaList">{{upload.id}}</li>
-      </ul>
+      <mat-grid-list cols="3">
+        <mat-grid-tile *ngFor="let upload of mediaService.mediaList">{{ upload.id }}</mat-grid-tile>
+        <mat-grid-tile>1</mat-grid-tile>
+        <mat-grid-tile>2</mat-grid-tile>
+        <mat-grid-tile>3</mat-grid-tile>
+        <mat-grid-tile>4</mat-grid-tile>
+        <mat-grid-tile>5</mat-grid-tile>
+        <mat-grid-tile>6</mat-grid-tile>
+      </mat-grid-list>
     </article>
     <button (click)="signout()">로그아웃</button>
   </main>
