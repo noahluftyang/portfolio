@@ -1,33 +1,16 @@
+// import { Strategy as FacebookStrategy } from 'passport-facebook';
+// import { Strategy as GithubStrategy } from 'passport-github';
+// import { Strategy as KakaoStrategy } from 'passport-kakao';
+// import { Strategy as TwitterStrategy } from 'passport-twitter';
 import { User } from '@prisma/client';
 import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import * as passport from 'passport';
-import { Strategy as FacebookStrategy } from 'passport-facebook';
-import { Strategy as GithubStrategy } from 'passport-github';
 import { OAuth2Strategy as GoogleStrategy } from 'passport-google-oauth';
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
-import { Strategy as KakaoStrategy } from 'passport-kakao';
 import { Strategy as LocalStrategy } from 'passport-local';
-import { Strategy as TwitterStrategy } from 'passport-twitter';
 
 import { config } from './config';
 import { prisma } from './prisma';
-
-passport.serializeUser((user: User, done) => {
-  const accessToken = sign(user, 'secret');
-
-  return done(null, accessToken);
-});
-
-passport.deserializeUser(async (id: number, done) => {
-  const user = await prisma.user.findOne({ where: { id } });
-
-  if (!user) {
-    return done('error');
-  }
-
-  return done(null, user);
-});
 
 passport.use(
   new GoogleStrategy(
@@ -46,8 +29,8 @@ passport.use(
       }
 
       if (!_user) {
-        const { id, email, username, ...newUser } = await prisma.user.create({
-          data: {
+        const { id, email, username, ...newUser } = await prisma.user.upsert({
+          create: {
             email: profile._json.email,
             socialAccounts: {
               create: {
@@ -55,6 +38,17 @@ passport.use(
                 provider: 'GOOGLE',
               },
             },
+          },
+          update: {
+            socialAccounts: {
+              create: {
+                id: profile.id,
+                provider: 'GOOGLE',
+              },
+            },
+          },
+          where: {
+            email: profile._json.email,
           },
         });
 
@@ -80,7 +74,9 @@ passport.use(
       return done({ status: 'INVALID_ACCOUNT' });
     }
 
-    if (!compare(password, _user.password)) {
+    const passwordMatch = await compare(password, _user.password);
+
+    if (!passwordMatch) {
       return done({ status: 'INVALID_ACCOUNT' });
     }
 
@@ -95,6 +91,8 @@ passport.use(
       secretOrKey: 'secret',
     },
     async (payload, done) => {
+      console.log(payload);
+
       let _user: User;
 
       try {

@@ -5,7 +5,6 @@ import { Router } from 'express';
 import { sign } from 'jsonwebtoken';
 import { authenticate } from 'passport';
 
-import { verifyAccessToken } from './firebase';
 import { prisma } from './prisma';
 
 class CreateUserDto {
@@ -21,14 +20,14 @@ class CreateUserDto {
 
 export const router = Router();
 
-router.get('/google', authenticate('google', { scope: ['email'] }));
+router.get('/google', authenticate('google', { scope: ['email'], session: false }));
 
 router.get(
   '/google/callback',
-  authenticate('google', { successRedirect: 'http://localhost:4200' })
+  authenticate('google', { session: false, successRedirect: 'http://localhost:4200' })
 );
 
-router.post('/login', authenticate('local'), (req, res) => {
+router.post('/login', authenticate('local', { session: false }), (req, res) => {
   const accessToken = sign(req.user, 'secret');
 
   return res.status(200).send({ status: 'SUCCESS', accessToken });
@@ -60,4 +59,6 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post('/verify', authenticate('jwt'), (req, res) => res.status(200).send({ user: req.user }));
+router.post('/verify', authenticate('jwt', { session: false }), (req, res) =>
+  res.status(200).send({ user: req.user })
+);

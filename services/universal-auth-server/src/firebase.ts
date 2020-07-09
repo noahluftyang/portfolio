@@ -1,4 +1,4 @@
-import { auth } from 'firebase-admin';
+import { auth, storage } from 'firebase-admin';
 import { credential, initializeApp, ServiceAccount } from 'firebase-admin';
 
 import * as serviceAccount from './service-account.json';
@@ -11,4 +11,12 @@ export function createUser(data) {
 
 export function verifyAccessToken(accessToken) {
   return auth().verifyIdToken(accessToken);
+}
+
+export function uploadMedia(media64Str) {
+  const file = storage().bucket().file('test.png');
+  const imageBuffer = Buffer.from(media64Str, 'base64');
+  const imageByteArray = new Uint8Array(imageBuffer);
+
+  return file.save(imageByteArray);
 }
