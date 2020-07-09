@@ -5,15 +5,18 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import { setContext } from 'apollo-link-context';
 
-const uri = 'http://localhost:8000/graphql';
+import { environment } from '../environments/environment';
+import { StorageService } from './services/mod';
 
-function createApollo(httpLink: HttpLink) {
+const API_URL = `${environment.apiURL}/graphql`;
+
+function createApollo(httpLink: HttpLink, storageService: StorageService) {
   // Get the authentication token from local storage if it exists
-  const token = localStorage.getItem('token');
+  const accessToken = storageService.get('accessToken');
   const auth = setContext((operation, context) => ({
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${accessToken}` },
   }));
-  const link = ApolloLink.from([auth, httpLink.create({ uri })]);
+  const link = ApolloLink.from([auth, httpLink.create({ uri: API_URL })]);
   const cache = new InMemoryCache();
 
   return { cache, link };
@@ -23,7 +26,7 @@ function createApollo(httpLink: HttpLink) {
   exports: [ApolloModule, HttpLinkModule],
   providers: [
     {
-      deps: [HttpLink],
+      deps: [HttpLink, StorageService],
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,
     },

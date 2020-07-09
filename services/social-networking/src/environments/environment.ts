@@ -10,6 +10,7 @@ import {
 
 export const environment = {
   production: false,
+  apiURL: 'http://localhost:8000',
   authApiURL: 'http://localhost:8001',
   firebase: {
     apiKey,
