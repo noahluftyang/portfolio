@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
-import {
-  AngularFireAuthGuard,
-  redirectLoggedInTo,
-  redirectUnauthorizedTo,
-} from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './auth.guard';
 import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
@@ -30,21 +26,18 @@ const routes: Routes = [
     path: 'create',
   },
   {
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectUnauthorizedTo(['accounts', 'login']) },
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./profile/profile.module').then(({ ProfileModule }) => ProfileModule),
     path: 'profile',
   },
   {
-    // canActivate: [AngularFireAuthGuard],
-    // data: { authGuardPipe: () => redirectLoggedInTo(['/']) },
+    // canActivate: [AuthGuard],
     loadChildren: () => import('./login/login.module').then(({ LoginModule }) => LoginModule),
     path: 'accounts/login',
   },
   {
     // canActivate: [AngularFireAuthGuard],
-    // data: { authGuardPipe: () => redirectLoggedInTo(['/']) },
     loadChildren: () => import('./signup/signup.module').then(({ SignupModule }) => SignupModule),
     path: 'accounts/signup',
   },

@@ -4,8 +4,6 @@ import gql from 'graphql-tag';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AccountService } from './account.service';
-
 const userFeedsQuery = gql`
   query UserFeeds {
     feeds {
@@ -32,13 +30,7 @@ const userUploadsQuery = gql`
 export class MediaService {
   mediaList: Observable<any[]>;
 
-  constructor(private apollo: Apollo, accountService: AccountService) {
-    accountService.currentUser.subscribe(async user => {
-      const accessToken = await user.getIdToken();
-
-      localStorage.setItem('token', accessToken);
-    });
-  }
+  constructor(private apollo: Apollo) {}
 
   feeds(): void {
     this.apollo

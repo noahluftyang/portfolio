@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AccountService } from './services/mod';
 
 @Component({
@@ -11,13 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {
-    this.accountService.verify().subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    this.accountService.verify();
   }
 }

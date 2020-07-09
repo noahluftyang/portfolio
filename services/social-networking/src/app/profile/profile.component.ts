@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 
@@ -11,18 +10,14 @@ import { AccountService, MediaService } from '../services/mod';
   templateUrl: 'profile.component.html',
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  private userSubscription: Subscription;
   profileImage: string;
   username: string;
 
   constructor(
     private accountService: AccountService,
     private titleService: Title,
-    public mediaService: MediaService,
-    firebaseAuth: AngularFireAuth
-  ) {
-    this.userSubscription = firebaseAuth.authState.subscribe(this.bootstrap);
-  }
+    public mediaService: MediaService
+  ) {}
 
   bootstrap = (user: firebase.User): void => {
     if (user) {
@@ -38,20 +33,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
-  }
-
-  async connectGoogle() {
-    const observable = await this.accountService.connectGoogle();
-
-    observable.subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    // this.userSubscription.unsubscribe();
   }
 
   signout(): void {

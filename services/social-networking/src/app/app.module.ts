@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirebaseModule } from './firebase.module';
 import { GraphQLModule } from './graphql.module';
-import { AccountService, MediaService } from './services/mod';
+import { AccountService, MediaService, StorageService } from './services/mod';
 import { SharedModule } from './shared/mod';
 
 @NgModule({
@@ -20,6 +20,6 @@ import { SharedModule } from './shared/mod';
     HttpClientModule,
     SharedModule,
   ],
-  providers: [AccountService, MediaService],
+  providers: [AccountService, MediaService, StorageService],
 })
 export class AppModule {}

@@ -91,14 +91,12 @@ passport.use(
       secretOrKey: 'secret',
     },
     async (payload, done) => {
-      console.log(payload);
-
       let _user: User;
 
       try {
         _user = await prisma.user.findOne({ where: { id: payload.id } });
       } catch (error) {
-        return done(error);
+        return done({ status: 'UNAUTHORIZED' });
       }
 
       return done(null, { id: _user.id, email: _user.email, username: _user.username });
