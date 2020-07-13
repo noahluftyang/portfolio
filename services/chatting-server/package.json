@@ -19,7 +19,7 @@
     "graphql": "15.3.0",
     "graphql-tools": "6.0.12",
     "helmet": "3.23.3",
-    "mongoose": "5.9.23",
+    "mongoose": "5.9.24",
     "nexus-prisma": "0.16.2",
     "pino-http": "5.2.0",
     "swagger-ui-express": "4.1.4"
