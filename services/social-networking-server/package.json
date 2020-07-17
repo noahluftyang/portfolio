@@ -29,7 +29,7 @@
     "firebase-admin": "9.0.0",
     "graphql": "15.3.0",
     "graphql-subscriptions": "1.1.0",
-    "graphql-tools": "6.0.13",
+    "graphql-tools": "6.0.14",
     "helmet": "3.23.3",
     "nestjs-pino": "1.2.0",
     "reflect-metadata": "0.1.13",
