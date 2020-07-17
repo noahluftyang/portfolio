@@ -1,0 +1,22 @@
+{
+  "name": "@portfolio/chatting",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "next build",
+    "develop": "next dev",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "tailwindcss": "1.4.6"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

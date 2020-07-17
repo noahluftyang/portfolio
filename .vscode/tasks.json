@@ -18,6 +18,13 @@
     {
       "type": "npm",
       "script": "develop",
+      "path": "services/chatting/",
+      "label": "npm: develop - @portfolio/chatting",
+      "detail": "next dev"
+    },
+    {
+      "type": "npm",
+      "script": "develop",
       "path": "services/chatting-server/",
       "label": "npm: develop - @portfolio/chatting-server",
       "detail": "nodemon"
