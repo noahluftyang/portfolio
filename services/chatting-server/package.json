@@ -12,14 +12,14 @@
   "dependencies": {
     "@nexus/schema": "0.14.0",
     "@prisma/client": "2.2.2",
-    "apollo-server": "2.15.1",
-    "apollo-server-express": "2.15.1",
+    "apollo-server": "2.16.0",
+    "apollo-server-express": "2.16.0",
     "errorhandler": "1.5.1",
     "express": "4.17.1",
     "graphql": "15.3.0",
     "graphql-tools": "6.0.14",
     "helmet": "3.23.3",
-    "mongoose": "5.9.24",
+    "mongoose": "5.9.25",
     "nexus-prisma": "0.16.2",
     "pino-http": "5.2.0",
     "swagger-ui-express": "4.1.4"
