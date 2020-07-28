@@ -34,7 +34,7 @@
     "graphql-tag": "2.10.4",
     "rxjs": "6.6.0",
     "sanitize.css": "11.0.1",
-    "tailwindcss": "1.5.2",
+    "tailwindcss": "1.6.0",
     "tslib": "2.0.0",
     "zone.js": "0.10.3"
   },
