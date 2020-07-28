@@ -1,14 +1,15 @@
 {
   "name": "@noahluftyang/portfolio",
-  "license": "MIT",
-  "author": {
-    "email": "euihyun.yang.9x@gmail.com",
-    "name": "Euihyun_Yang"
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/noahluftyang/portfolio/issues",
+    "email": "euihyun.yang.9x@gmail.com"
   },
   "repository": "git@github.com:noahluftyang/portfolio.git",
-  "bugs": {
-    "email": "euihyun.yang.9x@gmail.com",
-    "url": "https://github.com/noahluftyang/portfolio/issues"
+  "license": "MIT",
+  "author": {
+    "name": "Euihyun_Yang",
+    "email": "euihyun.yang.9x@gmail.com"
   },
   "scripts": {
     "postinstall": "lerna bootstrap",
@@ -22,6 +23,8 @@
     "@angular-eslint/schematics": "0.0.1-alpha.32",
     "@angular-eslint/template-parser": "0.0.1-alpha.32",
     "@prisma/cli": "2.3.0",
+    "@stillmine/eslint-config": "0.20.0",
+    "@stillmine/tsconfig": "0.20.0",
     "@types/bcrypt": "3.0.0",
     "@types/compression": "1.7.0",
     "@types/connect-redis": "0.0.14",
@@ -41,14 +44,7 @@
     "@types/react": "16.9.43",
     "@types/redis": "2.8.25",
     "@types/supertest": "2.0.10",
-    "@typescript-eslint/eslint-plugin": "3.7.1",
-    "@typescript-eslint/parser": "3.7.1",
     "eslint": "7.5.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-import": "2.22.0",
-    "eslint-plugin-no-secrets": "0.6.8",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-simple-import-sort": "5.0.3",
     "husky": "4.2.5",
     "jest": "26.1.0",
     "lerna": "3.22.1",
@@ -61,6 +57,5 @@
     "ts-node": "8.10.2",
     "tsconfig-paths": "3.9.0",
     "typescript": "3.9.7"
-  },
-  "private": true
+  }
 }

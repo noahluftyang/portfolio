@@ -2,5 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "resolveJsonModule": true
-  }
+  },
+  "extends": "@stillmine/tsconfig"
 }
