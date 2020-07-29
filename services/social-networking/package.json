@@ -31,7 +31,7 @@
     "apollo-link-context": "1.0.20",
     "firebase": "7.17.1",
     "graphql": "15.3.0",
-    "graphql-tag": "2.10.4",
+    "graphql-tag": "2.11.0",
     "rxjs": "6.6.0",
     "sanitize.css": "11.0.1",
     "tailwindcss": "1.5.2",
