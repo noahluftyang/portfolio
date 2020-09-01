@@ -22,7 +22,7 @@
     "@angular-eslint/eslint-plugin-template": "0.0.1-alpha.32",
     "@angular-eslint/schematics": "0.0.1-alpha.32",
     "@angular-eslint/template-parser": "0.0.1-alpha.32",
-    "@prisma/cli": "2.3.0",
+    "@prisma/cli": "2.6.0",
     "@stillmine/eslint-config": "0.20.2",
     "@stillmine/tsconfig": "0.20.0",
     "@types/bcrypt": "3.0.0",
