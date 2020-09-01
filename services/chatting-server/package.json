@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@nexus/schema": "0.14.0",
-    "@prisma/client": "2.3.0",
+    "@prisma/client": "2.6.0",
     "apollo-server": "2.16.1",
     "apollo-server-express": "2.16.1",
     "errorhandler": "1.5.1",
