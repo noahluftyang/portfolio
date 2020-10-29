@@ -41,7 +41,7 @@
     "@types/passport-local": "1.0.33",
     "@types/passport-twitter": "1.0.36",
     "@types/pino-http": "5.0.3",
-    "@types/react": "16.9.43",
+    "@types/react": "16.9.55",
     "@types/redis": "2.8.25",
     "@types/supertest": "2.0.10",
     "eslint": "7.5.0",
