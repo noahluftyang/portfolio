@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nexus/schema": "0.14.0",
+    "@nexus/schema": "0.17.0",
     "@prisma/client": "2.3.0",
     "apollo-server": "2.16.1",
     "apollo-server-express": "2.16.1",
