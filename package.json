@@ -16,7 +16,7 @@
     "lint": "lerna run lint"
   },
   "devDependencies": {
-    "@angular-builders/jest": "10.0.0",
+    "@angular-builders/jest": "10.0.1",
     "@angular-eslint/builder": "0.0.1-alpha.32",
     "@angular-eslint/eslint-plugin": "0.0.1-alpha.32",
     "@angular-eslint/eslint-plugin-template": "0.0.1-alpha.32",
