@@ -30,7 +30,7 @@
     "graphql": "15.3.0",
     "graphql-subscriptions": "1.1.0",
     "graphql-tools": "6.2.6",
-    "helmet": "3.23.3",
+    "helmet": "4.2.0",
     "nestjs-pino": "1.2.0",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.2"
