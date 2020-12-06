@@ -1820,10 +1820,10 @@
   dependencies:
     "@types/express" "*"
 
-"@types/pino-http@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@types/pino-http/-/pino-http-5.0.3.tgz#21460710117fd290ad9193a2f17ffed429b32100"
-  integrity sha512-t4dndRXBxr3CBLJWgQvbDUXY0lwJ23uR1A8xcam4vL2t1Z5Dijl14U140h1j6pdyljvul2FgsEj1FO52KKhNZg==
+"@types/pino-http@5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@types/pino-http/-/pino-http-5.0.6.tgz#9a8f4e7976753b4e68e6653f0ff3f2dca8a008e9"
+  integrity sha512-JAIADDYjq621p451z9L6zD+m4nlzZ3Fz/LLTqZNJtS06YFUthf9bfFRKPwuBw42nqMwUhI5fIHgfK7IrXS9GaQ==
   dependencies:
     "@types/pino" "*"
 
