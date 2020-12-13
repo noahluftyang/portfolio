@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@okta/oidc-middleware": "4.0.1",
-    "@prisma/client": "2.2.2",
+    "@prisma/client": "2.3.0",
     "bcrypt": "5.0.0",
     "body-parser": "1.19.0",
-    "class-sanitizer": "0.0.5",
-    "class-transformer": "0.2.3",
+    "class-sanitizer": "1.0.1",
+    "class-transformer": "0.3.1",
     "class-validator": "0.12.2",
     "compression": "1.7.4",
     "connect-redis": "5.0.0",
@@ -26,7 +26,7 @@
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "express-session": "1.17.1",
-    "helmet": "3.23.3",
+    "helmet": "4.2.0",
     "passport": "0.4.1",
     "passport-facebook": "3.0.0",
     "passport-github": "1.1.0",
@@ -35,11 +35,11 @@
     "passport-kakao": "1.0.0",
     "passport-local": "1.0.0",
     "passport-twitter": "1.0.4",
-    "pino-http": "5.2.0",
+    "pino-http": "5.3.0",
     "redis": "3.0.2"
   },
   "devDependencies": {
-    "nodemon": "2.0.4",
+    "nodemon": "2.0.6",
     "rimraf": "3.0.2",
     "typescript": "3.9.7"
   },
