@@ -50,10 +50,10 @@
   dependencies:
     "@typescript-eslint/experimental-utils" "2.31.0"
 
-"@angular-eslint/schematics@0.0.1-alpha.32":
-  version "0.0.1-alpha.32"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/schematics/-/schematics-0.0.1-alpha.32.tgz#30a556084a0ee993c4437f1f3c28ada48d43a47f"
-  integrity sha512-eLeNgWEvtBrAXyJEfNuUucOkkJKHI0ID6SZTdtjUWiUev/fb9W5eqC2VHqsKB9kU4s+5FuTucFeNuUxBTif3kg==
+"@angular-eslint/schematics@0.0.1-alpha.33":
+  version "0.0.1-alpha.33"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/schematics/-/schematics-0.0.1-alpha.33.tgz#24b53a5d82f4d43c664d55f5d6ba1e1f07938e68"
+  integrity sha512-9fVl/r+XymUWtRDF0aQ+KDiVmrGAMmxI30ieCNUDBJFT8/GyxEyMDYSSFPJu+dN95gz+BV76nXxc/WbMvHux7w==
 
 "@angular-eslint/template-parser@0.0.1-alpha.33":
   version "0.0.1-alpha.33"
