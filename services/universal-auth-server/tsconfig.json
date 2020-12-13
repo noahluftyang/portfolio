@@ -4,7 +4,12 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "outDir": "./dist",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "constants/*": ["src/constants/*"],
+      "dto/*": ["src/dto/*"],
+      "models/*": ["src/models/*"]
+    }
   },
   "exclude": ["dist", "node_modules"],
   "include": ["src/**/*"]

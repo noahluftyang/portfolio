@@ -1,6 +1,8 @@
 import * as dotenv from 'dotenv';
 
-dotenv.config();
+const STAGE = process.env.NODE_ENV || 'local';
+
+dotenv.config({ path: `.env.${STAGE}` });
 
 export const config = {
   GOOGLE: {

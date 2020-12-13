@@ -3,11 +3,30 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URI")
 }
 
 generator client {
   provider = "prisma-client-js"
+}
+
+enum Service {
+  CHATTING
+  SOCIAL_NETWORKING
+}
+
+model User {
+  id             Int             @id @default(autoincrement())
+  email          String          @unique
+  password       String?
+  username       String?
+  service        Service
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @updatedAt @map("updated_at")
+  deletedAt      DateTime?       @map("deleted_at")
+  socialAccounts SocialAccount[] @relation("user_social_accounts")
+
+  @@map("users")
 }
 
 enum Provider {
@@ -18,19 +37,6 @@ enum Provider {
   KAKAO
   NAVER
   TWITTER
-}
-
-model User {
-  id             Int             @id @default(autoincrement())
-  email          String          @unique
-  password       String?
-  username       String?
-  createdAt      DateTime        @map("created_at") @default(now())
-  updatedAt      DateTime        @map("updated_at") @updatedAt
-  deletedAt      DateTime?       @map("deleted_at")
-  socialAccounts SocialAccount[] @relation("user_social_accounts")
-
-  @@map("users")
 }
 
 model SocialAccount {

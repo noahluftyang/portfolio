@@ -23,15 +23,16 @@ passport.use(
       let _user: User;
 
       try {
-        _user = await prisma.socialAccount.findOne({ where: { id: profile.id } }).user();
+        _user = await prisma.socialAccount.findUnique({ where: { id: profile.id } }).user();
       } catch (error) {
         return done(error);
       }
 
       if (!_user) {
-        const { id, email, username, ...newUser } = await prisma.user.upsert({
+        const { id, email, username } = await prisma.user.upsert({
           create: {
             email: profile._json.email,
+            service: 'SOCIAL_NETWORKING',
             socialAccounts: {
               create: {
                 id: profile.id,
@@ -65,19 +66,19 @@ passport.use(
     let _user: User;
 
     try {
-      _user = await prisma.user.findOne({ where: { email } });
+      _user = await prisma.user.findUnique({ where: { email } });
     } catch (error) {
       return done(error);
     }
 
     if (!_user) {
-      return done({ status: 'INVALID_ACCOUNT' });
+      return done(null, false);
     }
 
     const passwordMatch = await compare(password, _user.password);
 
     if (!passwordMatch) {
-      return done({ status: 'INVALID_ACCOUNT' });
+      return done(null, false);
     }
 
     return done(null, { id: _user.id, email: _user.email, username: _user.username });
@@ -94,7 +95,7 @@ passport.use(
       let _user: User;
 
       try {
-        _user = await prisma.user.findOne({ where: { id: payload.id } });
+        _user = await prisma.user.findUnique({ where: { id: payload.id } });
       } catch (error) {
         return done({ status: 'UNAUTHORIZED' });
       }

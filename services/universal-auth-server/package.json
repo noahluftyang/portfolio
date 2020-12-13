@@ -2,14 +2,13 @@
   "name": "@portfolio/universal-auth-server",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "src/server.ts",
+  "main": "dist/server.ts",
   "scripts": {
-    "postinstall": "yarn prisma:generate",
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "develop": "nodemon",
+    "develop": "nodemon src/server.ts",
     "prisma:generate": "prisma generate",
-    "start": "node dist/server.js"
+    "start": "node ."
   },
   "dependencies": {
     "@okta/oidc-middleware": "4.0.2",
@@ -39,6 +38,7 @@
     "redis": "3.0.2"
   },
   "devDependencies": {
+    "@prisma/cli": "2.13.0",
     "nodemon": "2.0.6",
     "rimraf": "3.0.2",
     "typescript": "4.1.3"

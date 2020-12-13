@@ -1,22 +1,13 @@
 import { hash } from 'bcrypt';
 import { plainToClass } from 'class-transformer';
-import { IsEmail, IsNotEmpty, MinLength, validateOrReject } from 'class-validator';
+import { validateOrReject } from 'class-validator';
+import { MESSAGES, STATUS } from 'constants/mod';
+import { CreateUserDto } from 'dto/mod';
 import { Router } from 'express';
 import { sign } from 'jsonwebtoken';
 import { authenticate } from 'passport';
 
 import { prisma } from './prisma';
-
-class CreateUserDto {
-  @IsEmail()
-  email: string;
-
-  @MinLength(8)
-  password: string;
-
-  @IsNotEmpty()
-  username: string;
-}
 
 export const router = Router();
 
@@ -27,10 +18,23 @@ router.get(
   authenticate('google', { session: false, successRedirect: 'http://localhost:4200' })
 );
 
-router.post('/login', authenticate('local', { session: false }), (req, res) => {
-  const accessToken = sign(req.user, 'secret');
+router.post('/signin', (req, res) => {
+  authenticate('local', { session: false }, (error, user) => {
+    if (error != null) {
+      return res.status(500).end();
+    }
 
-  return res.status(200).send({ status: 'SUCCESS', accessToken });
+    if (!user) {
+      return res.status(401).send({
+        status: STATUS.실패,
+        message: MESSAGES.INVALID_ACCOUNT,
+      });
+    }
+
+    const accessToken = sign(user, 'secret');
+
+    return res.status(200).send({ status: STATUS.성공, accessToken });
+  })(req, res);
 });
 
 router.post('/signup', async (req, res) => {
@@ -39,6 +43,8 @@ router.post('/signup', async (req, res) => {
   try {
     await validateOrReject(createUserDto);
   } catch (error) {
+    console.log(error);
+
     return res.status(400).send(error);
   }
 
@@ -60,7 +66,6 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/signout', authenticate('jwt', { session: false }), (req, res) => {
-  // TODO: token expire
   return res.status(200).send({ status: 'SUCCESS' });
 });
 
