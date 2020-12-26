@@ -2,7 +2,10 @@
   "root": true,
   "extends": "@stillmine",
   "rules": {
+    "@typescript-eslint/no-extra-parens": "off",
     "eqeqeq": ["error", "always", { "null": "ignore" }],
-    "no-eq-null": "off"
+    "max-lines-per-function": "off",
+    "no-eq-null": "off",
+    "node/no-unpublished-require": "off"
   }
 }

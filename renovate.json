@@ -4,7 +4,8 @@
   "packageRules": [
     {
       "automerge": true,
-      "depTypeList": ["devDependencies"]
+      "depTypeList": ["devDependencies"],
+      "schedule": ["after 9pm on sunday"]
     }
   ],
   "pin": true

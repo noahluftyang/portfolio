@@ -1,0 +1,4 @@
+{
+  "presets": ["@emotion/css-prop"],
+  "plugins": ["@emotion", "lodash"]
+}

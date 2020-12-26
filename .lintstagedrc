@@ -1,4 +1,4 @@
 {
   "*.js": "eslint",
-  "*.ts": "eslint"
+  "*.{ts,tsx}": "eslint"
 }
