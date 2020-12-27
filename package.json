@@ -58,7 +58,7 @@
     "@types/passport-twitter": "1.0.36",
     "@types/pino-http": "5.0.6",
     "@types/react": "17.0.0",
-    "@types/react-native": "0.63.2",
+    "@types/react-native": "0.63.42",
     "@types/redis": "2.8.28",
     "@types/supertest": "2.0.10",
     "babel-plugin-lodash": "3.3.4",
