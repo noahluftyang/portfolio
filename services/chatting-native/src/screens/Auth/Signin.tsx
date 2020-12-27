@@ -1,10 +1,12 @@
 import { css } from '@emotion/native';
 import { flex } from '@portfolio/styles';
+import { FormInput } from 'components/mod';
 import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
-import { Button, Subheading, Text, TextInput, Title } from 'react-native-paper';
+import { Button, Subheading, Text, Title } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as api from 'requests/signin';
 
 interface Fields {
   email: string;
@@ -32,38 +34,31 @@ export const SigninScreen = () => {
         <Title>환영합니다!</Title>
         <Subheading>로그인하세요.</Subheading>
         <Text style={css(`margin-top: 24px`)}>계정 정보</Text>
-        <Controller
+        <FormInput.Text
+          autoFocus
           control={control}
-          name="password"
-          render={props => (
-            <TextInput autoFocus placeholder="이메일" style={css(`margin-top: 8px`)} {...props} />
-          )}
+          name="email"
+          placeholder="이메일"
           rules={{ required: true }}
+          style={css(`margin-top: 8px`)}
         />
-        <Controller
+        <FormInput.Text
           control={control}
           name="password"
-          render={props => (
-            <TextInput
-              placeholder="비밀번호"
-              secureTextEntry
-              style={css(`margin-top: 16px`)}
-              {...props}
-            />
-          )}
+          placeholder="비밀번호"
           rules={{ required: true }}
+          secureTextEntry
+          style={css(`margin-top: 16px`)}
         />
         <Button
-          disabled={!isValid || isSubmitting}
+          disabled={isSubmitting || !isValid}
           loading={isSubmitting}
           mode="contained"
           style={css(`margin-top: 16px`)}
-          onPress={handleSubmit(fields => {
-            try {
-              console.log(fields);
-            } catch (error) {
-              console.error(error);
-            }
+          onPress={handleSubmit(async fields => {
+            const responseBody = await api.signin(fields);
+
+            console.log(responseBody);
           })}
         >
           로그인

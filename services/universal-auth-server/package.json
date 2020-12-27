@@ -4,6 +4,7 @@
   "license": "MIT",
   "main": "dist/server.ts",
   "scripts": {
+    "postinstall": "yarn prisma:generate",
     "prebuild": "rimraf dist",
     "build": "tsc",
     "develop": "nodemon src/server.ts",
@@ -12,7 +13,6 @@
   },
   "dependencies": {
     "@okta/oidc-middleware": "4.0.2",
-    "@prisma/client": "2.13.0",
     "bcrypt": "5.0.0",
     "body-parser": "1.19.0",
     "class-sanitizer": "1.0.1",
@@ -22,8 +22,6 @@
     "connect-redis": "5.0.0",
     "cookie-parser": "1.4.5",
     "cors": "2.8.5",
-    "dotenv": "8.2.0",
-    "express": "4.17.1",
     "express-session": "1.17.1",
     "helmet": "4.2.0",
     "passport": "0.4.1",
@@ -34,14 +32,10 @@
     "passport-kakao": "1.0.0",
     "passport-local": "1.0.0",
     "passport-twitter": "1.0.4",
-    "pino-http": "5.3.0",
     "redis": "3.0.2"
   },
-  "devDependencies": {
-    "@prisma/cli": "2.13.0",
-    "nodemon": "2.0.6",
-    "rimraf": "3.0.2",
-    "typescript": "4.1.3"
+  "peerDependencies": {
+    "express": ">= 4"
   },
   "engines": {
     "node": ">= 12"

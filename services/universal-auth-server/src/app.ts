@@ -11,7 +11,7 @@ import * as helmet from 'helmet';
 import * as pino from 'pino-http';
 
 // import { redis } from './redis';
-import { router } from './routes';
+import { signinRouter } from './routes/mod';
 
 export const app = express();
 
@@ -31,4 +31,4 @@ app.use(
   })
 );
 app.use(json());
-app.use(router);
+app.use(signinRouter);

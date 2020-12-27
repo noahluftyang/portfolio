@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
+import { useCachedResources, useColorScheme } from 'hooks/mod';
 import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { useCachedResources, useColorScheme } from './hooks/mod';
-import { Navigation } from './navigation/mod';
+import { Navigation } from './src/Navigation';
 
 const App = () => {
   const isLoadingComplete = useCachedResources();

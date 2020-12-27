@@ -1,0 +1,6 @@
+{
+  "extends": "../../.eslintrc",
+  "rules": {
+    "react/forbid-component-props": "off"
+  }
+}
