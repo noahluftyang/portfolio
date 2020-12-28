@@ -1,5 +1,7 @@
 {
   "hooks": {
+    "post-merge": "yarn",
+    "post-install": "lerna run prisma:generate",
     "pre-commit": "lint-staged"
   }
 }

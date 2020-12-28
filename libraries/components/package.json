@@ -1,0 +1,9 @@
+{
+  "name": "@portfolio/components",
+  "version": "0.0.0",
+  "main": "src/mod.ts",
+  "peerDependencies": {
+    "@emotion/react": ">= 11",
+    "react": ">= 16"
+  }
+}

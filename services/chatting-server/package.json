@@ -16,8 +16,9 @@
     "errorhandler": "1.5.1",
     "graphql-tools": "6.2.6",
     "mongoose": "5.10.11",
-    "nexus-prisma": "0.16.2",
-    "swagger-ui-express": "4.1.4"
+    "nexus": "1.0.0",
+    "nexus-plugin-prisma": "0.27.0",
+    "nexus-prisma": "0.16.2"
   },
   "peerDependencies": {
     "express": ">= 4"

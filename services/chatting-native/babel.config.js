@@ -2,7 +2,8 @@ module.exports = api => {
   api.cache(true);
 
   return {
-    presets: ['babel-preset-expo', '@babel/typescript'],
+    extends: '../../.babelrc',
+    presets: ['babel-preset-expo'],
     plugins: [
       [
         'module-resolver',
@@ -13,8 +14,8 @@ module.exports = api => {
             constants: './src/constants',
             hooks: './src/hooks',
             navigators: './src/navigators',
-            requests: './src/requests',
             screens: './src/screens',
+            utils: './src/utils',
           },
         },
       ],

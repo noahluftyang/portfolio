@@ -10,6 +10,7 @@
     "max-lines-per-function": "off",
     "no-eq-null": "off",
     "node/no-unpublished-require": "off",
-    "react/jsx-indent-props": "off"
+    "react/jsx-indent-props": "off",
+    "no-restricted-syntax": "off"
   }
 }

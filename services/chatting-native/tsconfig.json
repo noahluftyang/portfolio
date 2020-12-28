@@ -14,8 +14,8 @@
       "constants/*": ["constants/*"],
       "hooks/*": ["hooks/*"],
       "navigators/*": ["navigators/*"],
-      "requests/*": ["requests/*"],
-      "screens/*": ["screens/*"]
+      "screens/*": ["screens/*"],
+      "utils/*": ["utils/*"]
     }
   }
 }

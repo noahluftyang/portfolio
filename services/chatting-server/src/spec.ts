@@ -1,7 +1,7 @@
 import { resolve } from 'path';
-import swaggerJSDoc from 'swagger-jsdoc';
+import * as swaggerJSDoc from 'swagger-jsdoc';
 
-import packageInfo from '../package.json';
+import * as packageInfo from '../package.json';
 
 const options = {
   apis: [
@@ -9,7 +9,7 @@ const options = {
     resolve(process.cwd(), 'user/user.controller.js'),
   ],
   definition: {
-    info: { title: packageInfo.title, version: packageInfo.version },
+    info: { title: packageInfo.name, version: packageInfo.version },
     openapi: '3.0.0',
   },
 };

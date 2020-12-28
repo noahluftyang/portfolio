@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
 import { Button, Subheading, Text, Title } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as api from 'requests/signin';
+import { authApiClient as api } from 'utils/apiClient';
 
 interface Fields {
   email: string;

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "noEmit": true,
+    "paths": {
+      "models/*": ["models/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

@@ -1,11 +1,11 @@
 import { css } from '@emotion/native';
+import * as api from '@portfolio/auth-api-client';
 import { flex } from '@portfolio/styles';
 import { FormInput } from 'components/mod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Text, Title } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as api from 'requests/signup';
 
 interface Fields {
   username: string;
@@ -55,6 +55,7 @@ export const SignupScreen = () => {
         name="password"
         placeholder="비밀번호"
         rules={{ required: true }}
+        secureTextEntry
         style={css(`margin-top: 16px`)}
       />
       <Button

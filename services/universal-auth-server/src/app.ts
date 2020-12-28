@@ -9,9 +9,11 @@ import * as express from 'express';
 import * as session from 'express-session';
 import * as helmet from 'helmet';
 import * as pino from 'pino-http';
+import { serve, setup } from 'swagger-ui-express';
 
 // import { redis } from './redis';
-import { signinRouter } from './routes/mod';
+import { signinRouter, signupRouter } from './routes/mod';
+import { spec } from './spec';
 
 export const app = express();
 
@@ -32,3 +34,5 @@ app.use(
 );
 app.use(json());
 app.use(signinRouter);
+app.use(signupRouter);
+app.use('/docs', serve, setup(spec));

@@ -5,6 +5,13 @@ import { authenticate } from 'passport';
 
 export const router = Router();
 
+/**
+ * @swagger
+ * /signin:
+ *  post:
+ *    tags:
+ *      - auth
+ */
 router.post('/signin', (req, res) => {
   authenticate('local', { session: false }, (error, user) => {
     if (error != null) {

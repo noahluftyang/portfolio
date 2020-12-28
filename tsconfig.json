@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "noEmit": true,
     "resolveJsonModule": true
   },
   "extends": "@stillmine/tsconfig"
