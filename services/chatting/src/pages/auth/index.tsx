@@ -3,7 +3,7 @@ import { flex, gutter } from '@portfolio/styles';
 import { Button } from 'components/Button';
 import { AUTH_ROUTE } from 'constants/Route';
 
-const AuthPage = () => {
+const AuthLandingPage = () => {
   return (
     <main css={[css(flex({ align: 'flex-end', justify: 'center' })), css(`height: 100vh`)]}>
       <section
@@ -28,4 +28,4 @@ const AuthPage = () => {
   );
 };
 
-export default AuthPage;
+export default AuthLandingPage;

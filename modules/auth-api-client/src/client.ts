@@ -21,5 +21,8 @@ export function createAuthApiClient(baseURL: string) {
     signup(params: SignupRequestParams) {
       return apiClient.post<SignupResponseBody>('/signup', params);
     },
+    user() {
+      return apiClient.get('/user');
+    },
   };
 }

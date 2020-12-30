@@ -1,20 +1,36 @@
+import { Skeleton } from '@material-ui/lab';
+import { Input } from '@portfolio/components';
+import { SSRSuspense } from 'components/mod';
 import { AUTH_ROUTE } from 'constants/Route';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import useSWR from 'swr';
-import { appApiClient as api } from 'utils/apiClient';
+import { authApiClient as api } from 'utils/apiClient';
 
-const AppLandingPage = () => {
-  const { data } = useSWR('user', api.user, { suspense: true });
+const AppContainer = () => {
   const { replace } = useRouter();
+  const { data } = useSWR('user', api.user, { suspense: true });
 
   useEffect(() => {
     if (data == null) {
-      replace(AUTH_ROUTE.Home);
+      replace(AUTH_ROUTE.LANDING);
     }
   }, [data, replace]);
 
-  return <div>landing</div>;
+  return (
+    <div>
+      hello
+      <Input label="라벨" />
+    </div>
+  );
 };
 
-export default AppLandingPage;
+const AppHomePage = () => {
+  return (
+    <SSRSuspense fallback={<Skeleton />}>
+      <AppContainer />
+    </SSRSuspense>
+  );
+};
+
+export default AppHomePage;

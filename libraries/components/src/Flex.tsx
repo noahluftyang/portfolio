@@ -1,9 +1,10 @@
 import { css } from '@emotion/react';
 import { flex, FlexOption } from '@portfolio/styles';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface FlexProps extends FlexOption {
   as?: any;
+  children?: ReactNode;
 }
 
 export const Flex = ({

@@ -1,8 +1,9 @@
-export interface SignupRequestParams {
-  email: string;
+import { SigninRequestParams } from './Signin';
+
+export interface SignupRequestParams extends SigninRequestParams {
   username: string;
-  password: string;
-  service: 'CHATTING' | 'SOCIAL_NETWORKING';
 }
 
-export interface SignupResponseBody {}
+export interface SignupResponseBody {
+  status: string;
+}

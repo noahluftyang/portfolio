@@ -4,7 +4,7 @@ import * as Linking from 'expo-linking';
 import React, { useState } from 'react';
 import { ColorSchemeName } from 'react-native';
 
-import { AuthNavigator, BottomTabNavigator } from './navigators/mod';
+import { AppNavigator, AuthNavigator } from './navigators/mod';
 import NotFoundScreen from './screens/NotFoundScreen';
 import { RootStackParamList } from './types';
 
@@ -47,7 +47,7 @@ export const Navigation = ({ colorScheme }: Props) => {
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {isSignedIn ? (
-          <Stack.Screen component={BottomTabNavigator} name="Chatting" />
+          <Stack.Screen component={AppNavigator} name="Chatting" />
         ) : (
           <Stack.Screen component={AuthNavigator} name="Auth" />
         )}

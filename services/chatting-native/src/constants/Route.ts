@@ -1,10 +1,13 @@
-export enum Route {
-  Signin = 'Signin',
-  Signup = 'Signup',
-}
+const APP_ROUTE_ROOT = '/app';
 
-export enum AuthRoute {
-  Landing = 'Landing',
-  Signin = 'Signin',
-  Signup = 'Signup',
-}
+export const APP_ROUTE = {
+  HOME: APP_ROUTE_ROOT,
+} as const;
+
+const AUTH_ROUTE_ROOT = '/auth';
+
+export const AUTH_ROUTE = {
+  LANDING: AUTH_ROUTE_ROOT,
+  SIGNIN: `${AUTH_ROUTE_ROOT}/signin`,
+  SIGNUP: `${AUTH_ROUTE_ROOT}/signup`,
+} as const;

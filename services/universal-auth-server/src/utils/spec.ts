@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import * as swaggerJSDoc from 'swagger-jsdoc';
 
-import * as packageInfo from '../package.json';
+import * as packageInfo from '../../package.json';
 
 const options = {
   apis: [resolve(process.cwd(), 'routes/signin.ts')],

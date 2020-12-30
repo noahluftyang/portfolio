@@ -1,15 +1,17 @@
-import { createApiClient } from '@portfolio/api-client';
+import { GraphQLClient, gql } from 'graphql-request';
 
-let apiClient;
+let apiClient: GraphQLClient;
 
 export function createAppApiClient(baseURL: string) {
   if (apiClient == null) {
-    apiClient = createApiClient(baseURL);
+    apiClient = new GraphQLClient(baseURL, { credentials: 'include' });
   }
 
   return {
     user() {
-      return apiClient.get('/user');
+      return apiClient.request(gql`
+        User() {}
+      `);
     },
   };
 }

@@ -2,20 +2,13 @@
 ### Do not make changes to this file directly
 
 
-type Auth {
-  accessToken: String
-  refreshToken: String
-}
-
-type Mutation {
-  login(email: String, password: String): Auth
-}
-
 type Query {
   hello: String
+  user: User!
 }
 
 type User {
+  email: String
   id: ID
-  name: String
+  username: String
 }

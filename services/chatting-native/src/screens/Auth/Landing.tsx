@@ -1,12 +1,15 @@
 import { css } from '@emotion/native';
 import { flex } from '@portfolio/styles';
-import { AuthRoute } from 'constants/Route';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { AUTH_ROUTE } from 'constants/Route';
 import React from 'react';
 import { View } from 'react-native';
 import { Button, Title } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export const LandingScreen = ({ navigation }) => {
+export const AuthLandingScreen = ({
+  navigation,
+}: StackNavigationProp<unknown, AUTH_ROUTE.LANDING>) => {
   return (
     <SafeAreaView
       style={[
@@ -19,10 +22,10 @@ export const LandingScreen = ({ navigation }) => {
     >
       <View>
         <Title style={css(`text-align: center`)}>환영합니다</Title>
-        <Button mode="contained" onPress={() => navigation.navigate(AuthRoute.Signup)}>
+        <Button mode="contained" onPress={() => navigation.navigate(AUTH_ROUTE.Signup)}>
           회원가입
         </Button>
-        <Button mode="contained" onPress={() => navigation.navigate(AuthRoute.Signin)}>
+        <Button mode="contained" onPress={() => navigation.navigate(AUTH_ROUTE.Signin)}>
           로그인
         </Button>
       </View>

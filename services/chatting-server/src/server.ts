@@ -5,7 +5,6 @@ import { nexusPrisma } from 'nexus-plugin-prisma';
 import { resolve } from 'path';
 
 import { app } from './app';
-import { config } from './config';
 import * as types from './schema/mod';
 import { AuthService } from './services/auth';
 
@@ -16,6 +15,7 @@ const server = new ApolloServer({
   schema: makeSchema({
     outputs: {
       schema: resolve(process.cwd(), 'src/schema.graphql'),
+      typegen: resolve(process.cwd(), 'src/typegen.ts'),
     },
     plugins: [nexusPrisma()],
     types,
@@ -24,6 +24,7 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app });
 
-app.listen({ port: config.PORT }, () => {
-  console.log(`🚀  Server ready at http://localhost:${config.PORT}/graphql`);
+// NOTE: read PORT from config
+app.listen({ port: 8001 }, () => {
+  console.log(`🚀  Server ready at http://localhost:${8001}/graphql`);
 });

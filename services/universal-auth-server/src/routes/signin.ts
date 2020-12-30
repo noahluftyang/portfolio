@@ -1,7 +1,10 @@
 import { MESSAGES, STATUS } from 'constants/mod';
 import { Router } from 'express';
 import { sign } from 'jsonwebtoken';
-import { authenticate } from 'passport';
+import * as redis from 'src/utils/redis';
+import { v4 as uuid } from 'uuid';
+
+import { authenticate } from '../utils/passport';
 
 export const router = Router();
 
@@ -12,21 +15,25 @@ export const router = Router();
  *    tags:
  *      - auth
  */
-router.post('/signin', (req, res) => {
-  authenticate('local', { session: false }, (error, user) => {
-    if (error != null) {
-      return res.status(500).end();
-    }
+router.post('/signin', async (req, res) => {
+  let user;
 
-    if (!user) {
-      return res.status(401).send({
-        status: STATUS.실패,
-        message: MESSAGES.INVALID_ACCOUNT,
-      });
-    }
+  try {
+    user = await authenticate('local')(req, res);
+  } catch (error) {
+    return res.status(500).end();
+  }
 
-    const accessToken = sign(user, 'secret');
+  if (!user) {
+    return res.status(401).send({
+      status: STATUS.실패,
+      message: MESSAGES.INVALID_ACCOUNT,
+    });
+  }
 
-    return res.status(200).send({ status: STATUS.성공, accessToken });
-  })(req, res);
+  const sessionId = uuid();
+
+  await redis.set(sessionId, sign(user, 'secret'));
+
+  return res.status(200).send({ status: STATUS.성공, token: sessionId });
 });

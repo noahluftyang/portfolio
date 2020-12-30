@@ -7,8 +7,6 @@ export function createApiClient(baseURL: string) {
           method: 'GET',
         });
 
-        console.log(response);
-
         return response.json() as Promise<T>;
       } catch (error) {
         console.error(error);
@@ -20,11 +18,10 @@ export function createApiClient(baseURL: string) {
       try {
         const response = await fetch(`${baseURL}${endpoint}`, {
           body: JSON.stringify(params),
+          credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
           method: 'POST',
         });
-
-        console.log(response);
 
         return response.json() as Promise<T>;
       } catch (error) {

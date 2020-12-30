@@ -10,24 +10,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id           Int           @id @default(autoincrement())
-  email        String        @unique
-  password     String
-  username     String?
-  createdAt    DateTime      @map("created_at") @default(now())
-  updatedAt    DateTime      @map("updated_at") @updatedAt
-  deletedAt    DateTime?     @map("deleted_at")
-  participants Participant[] @relation("user_participants")
-  chats        Chat[]        @relation("user_chats")
-
-  @@map("users")
-}
-
 model Room {
   id           Int           @id @default(autoincrement())
-  createdAt    DateTime      @map("created_at") @default(now())
-  updatedAt    DateTime      @map("updated_at") @updatedAt
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
   deletedAt    DateTime?     @map("deleted_at")
   participants Participant[] @relation("room_participants")
   chats        Chat[]        @relation("room_chats")
@@ -39,7 +25,6 @@ model Participant {
   roomId Int
   room   Room @relation("room_participants", fields: [roomId], references: [id])
   userId Int
-  user   User @relation("user_participants", fields: [userId], references: [id])
 
   @@id([roomId, userId])
   @@map("participants")
@@ -49,11 +34,10 @@ model Chat {
   id        Int       @id @default(autoincrement())
   content   String
   senderId  Int
-  sender    User      @relation("user_chats", fields: [senderId], references: [id])
   roomId    Int
   room      Room      @relation("room_chats", fields: [roomId], references: [id])
-  createdAt DateTime  @map("created_at") @default(now())
-  updatedAt DateTime  @map("updated_at") @updatedAt
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
 
   @@map("chats")

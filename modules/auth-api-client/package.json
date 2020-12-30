@@ -1,5 +1,9 @@
 {
   "name": "@portfolio/auth-api-client",
   "version": "0.0.0",
-  "main": "src/mod.ts"
+  "main": "src/mod.ts",
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc"
+  }
 }

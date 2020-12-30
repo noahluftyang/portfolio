@@ -4,6 +4,7 @@
   "main": "src/mod.ts",
   "peerDependencies": {
     "@emotion/react": ">= 11",
+    "@stillmine/component": "*",
     "react": ">= 16"
   }
 }

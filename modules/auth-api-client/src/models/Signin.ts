@@ -1,8 +1,9 @@
 export interface SigninRequestParams {
-  readonly email: string;
-  readonly password: string;
+  email: string;
+  password: string;
+  service: 'CHATTING' | 'SOCIAL_NETWORKING';
 }
 
 export interface SigninResponseBody {
-  token: string;
+  status: string;
 }

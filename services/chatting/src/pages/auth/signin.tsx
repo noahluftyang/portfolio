@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { Button, Typography } from '@material-ui/core';
 import { Flex, Stack } from '@portfolio/components';
 import { FormInput } from 'components/mod';
+import { APP_ROUTE } from 'constants/Route';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { authApiClient as api } from 'utils/apiClient';
@@ -40,15 +41,13 @@ const AuthSigninPage = () => {
         css={css(`align-self: stretch`)}
         space={24}
         onSubmit={handleSubmit(async fields => {
-          const { status, ...responseBody } = await api.signin({
+          const { status } = await api.signin({
             ...fields,
             service: 'CHATTING',
           });
 
-          console.log(responseBody);
-
           if (status === 'SUCCESS') {
-            replace('/app');
+            replace(APP_ROUTE.HOME);
           }
         })}
       >
@@ -60,6 +59,7 @@ const AuthSigninPage = () => {
           placeholder="이메일"
           rules={{ required: true }}
           type="email"
+          variant="filled"
         />
         <FormInput.Text
           control={control}
@@ -67,6 +67,7 @@ const AuthSigninPage = () => {
           placeholder="비밀번호"
           rules={{ required: true }}
           type="password"
+          variant="filled"
         />
         <Button disabled={isSubmitting || !isValid} type="submit" variant="contained">
           로그인
