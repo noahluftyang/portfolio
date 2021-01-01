@@ -1,0 +1,12 @@
+{
+  "name": "@portfolio/validator",
+  "version": "0.0.0",
+  "main": "src/mod.ts",
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc"
+  },
+  "peerDependencies": {
+    "uuid": ">= 8"
+  }
+}

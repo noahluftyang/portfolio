@@ -5,11 +5,6 @@ export const User = objectType({
   definition(t) {
     t.id('id');
     t.string('email');
-    t.string('username', {
-      resolve(parent) {
-        return parent.username;
-      },
-    });
   },
 });
 

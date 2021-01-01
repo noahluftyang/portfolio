@@ -1,9 +1,8 @@
 import { Suspense } from 'react';
+import { isClient } from 'utils/isClient';
 
 export const SSRSuspense = ({ fallback, ...props }) => {
-  const isClient = typeof window !== 'undefined';
-
-  if (isClient) {
+  if (isClient()) {
     return <Suspense fallback={fallback} {...props} />;
   }
 

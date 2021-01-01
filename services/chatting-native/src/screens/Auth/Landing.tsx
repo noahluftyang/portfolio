@@ -22,10 +22,10 @@ export const AuthLandingScreen = ({
     >
       <View>
         <Title style={css(`text-align: center`)}>환영합니다</Title>
-        <Button mode="contained" onPress={() => navigation.navigate(AUTH_ROUTE.Signup)}>
+        <Button mode="contained" onPress={() => navigation.navigate(AUTH_ROUTE.SIGNUP)}>
           회원가입
         </Button>
-        <Button mode="contained" onPress={() => navigation.navigate(AUTH_ROUTE.Signin)}>
+        <Button mode="contained" onPress={() => navigation.navigate(AUTH_ROUTE.SIGNIN)}>
           로그인
         </Button>
       </View>

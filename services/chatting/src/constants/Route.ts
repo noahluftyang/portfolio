@@ -2,6 +2,7 @@ const APP_ROUTE_ROOT = '/app';
 
 export const APP_ROUTE = {
   HOME: APP_ROUTE_ROOT,
+  ROOM: `${APP_ROUTE_ROOT}/room`,
 } as const;
 
 const AUTH_ROUTE_ROOT = '/auth';

@@ -2,6 +2,7 @@ const APP_ROUTE_ROOT = '/app';
 
 export const APP_ROUTE = {
   HOME: APP_ROUTE_ROOT,
+  CHAT: `${APP_ROUTE_ROOT}/chat`,
 } as const;
 
 const AUTH_ROUTE_ROOT = '/auth';

@@ -10,15 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "apollo-datasource-rest": "0.9.6",
     "apollo-server": "2.19.1",
     "apollo-server-express": "2.19.1",
-    "errorhandler": "1.5.1",
     "graphql-tools": "7.0.2",
     "mongoose": "5.11.9",
-    "nexus": "1.0.0",
-    "nexus-plugin-prisma": "0.27.0",
-    "nexus-prisma": "0.16.2"
+    "nexus": "1.0.0"
   },
   "peerDependencies": {
     "express": ">= 4"

@@ -1,7 +1,8 @@
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as Linking from 'expo-linking';
-import React, { useState } from 'react';
+import { useUser } from 'hooks/useUser';
+import React from 'react';
 import { ColorSchemeName } from 'react-native';
 
 import { AppNavigator, AuthNavigator } from './navigators/mod';
@@ -38,7 +39,7 @@ interface Props {
 }
 
 export const Navigation = ({ colorScheme }: Props) => {
-  const [isSignedIn] = useState(false);
+  const { isSignedin } = useUser();
 
   return (
     <NavigationContainer
@@ -46,7 +47,7 @@ export const Navigation = ({ colorScheme }: Props) => {
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {isSignedIn ? (
+        {isSignedin ? (
           <Stack.Screen component={AppNavigator} name="Chatting" />
         ) : (
           <Stack.Screen component={AuthNavigator} name="Auth" />

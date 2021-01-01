@@ -1,9 +1,11 @@
 export function createApiClient(baseURL: string) {
   return {
-    async get<T>(endpoint: string): Promise<T> {
+    async get<T>(endpoint: string, token?: string): Promise<T> {
+      const headers = new Headers({ Authorization: token != null ? `Bearer ${token}` : null });
+
       try {
         const response = await fetch(`${baseURL}${endpoint}`, {
-          credentials: 'include',
+          headers,
           method: 'GET',
         });
 

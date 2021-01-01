@@ -2,13 +2,14 @@
 ### Do not make changes to this file directly
 
 
-type Query {
-  hello: String
-  user: User!
+type Mutation {
+  createRoom: Room!
 }
 
-type User {
-  email: String
+type Query {
+  rooms: [Room]
+}
+
+type Room {
   id: ID
-  username: String
 }
