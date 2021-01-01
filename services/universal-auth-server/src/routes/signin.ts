@@ -1,10 +1,8 @@
 import { MESSAGES, STATUS } from 'constants/mod';
 import { Router } from 'express';
-import { sign } from 'jsonwebtoken';
-import * as redis from 'src/utils/redis';
-import { v4 as uuid } from 'uuid';
 
 import { authenticate } from '../utils/passport';
+import { session } from '../utils/session';
 
 export const router = Router();
 
@@ -31,9 +29,7 @@ router.post('/signin', async (req, res) => {
     });
   }
 
-  const sessionId = uuid();
-
-  await redis.set(sessionId, sign(user, 'secret'));
+  const sessionId = await session.create(user);
 
   return res.status(200).send({ status: STATUS.성공, token: sessionId });
 });

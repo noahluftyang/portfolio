@@ -4,9 +4,9 @@ import { appApiClient as api } from 'utils/apiClient';
 import { useAuthToken } from './useAuthToken';
 
 export function useRooms() {
-  const [authToken] = useAuthToken();
+  const { authToken, isSignedin } = useAuthToken();
 
-  return useSWR(authToken != null ? ['rooms', authToken] : null, (_, token) => api.rooms(token), {
+  return useSWR(isSignedin ? ['rooms', authToken] : null, (_, token) => api.rooms(token), {
     suspense: true,
   });
 }

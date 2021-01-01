@@ -1,7 +1,7 @@
 import { STATUS } from 'constants/mod';
 import { Router } from 'express';
-import { verify } from 'jsonwebtoken';
-import * as redis from 'src/utils/redis';
+
+import { session } from '../utils/session';
 
 export const router = Router();
 
@@ -15,16 +15,8 @@ router.get(
   async (req, res, next) => {
     const [, sessionId] = req.headers.authorization.split('Bearer ');
 
-    let token;
-
     try {
-      token = await redis.get(sessionId);
-    } catch (error) {
-      return res.status(500).end();
-    }
-
-    try {
-      const user = verify(token, 'secret');
+      const user = await session.verify(sessionId);
 
       req.user = user;
     } catch (error) {

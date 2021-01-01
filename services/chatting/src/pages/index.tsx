@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import Head from 'next/head';
 
-import { Layout } from '../components/mod';
-
 const Main = styled.main`
   display: flex;
   flex-direction: column;
@@ -17,7 +15,7 @@ const Navigation = styled.nav`
 `;
 
 const HomePage = () => (
-  <Layout>
+  <div>
     <Head>
       <title>Create Next App</title>
       <link rel="icon" href="/favicon.ico" />
@@ -28,7 +26,7 @@ const HomePage = () => (
     <footer>
       <Navigation>1</Navigation>
     </footer>
-  </Layout>
+  </div>
 );
 
 export default HomePage;

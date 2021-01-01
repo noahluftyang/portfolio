@@ -2,27 +2,26 @@
   "name": "@portfolio/universal-auth-server",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "dist/server.ts",
+  "main": "src/server.ts",
   "scripts": {
     "postinstall": "yarn prisma:generate",
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "develop": "nodemon src/server.ts",
+    "develop": "nodemon",
     "prisma:generate": "prisma generate",
-    "start": "node ."
+    "start": "node .",
+    "test": "jest"
   },
   "dependencies": {
     "@okta/oidc-middleware": "4.0.2",
+    "@prisma/client": "2.13.1",
     "bcrypt": "5.0.0",
     "body-parser": "1.19.0",
     "class-sanitizer": "1.0.1",
     "class-transformer": "0.3.1",
     "class-validator": "0.12.2",
     "compression": "1.7.4",
-    "connect-redis": "5.0.0",
-    "cookie-parser": "1.4.5",
     "cors": "2.8.5",
-    "express-session": "1.17.1",
     "passport": "0.4.1",
     "passport-facebook": "3.0.0",
     "passport-github": "1.1.0",
@@ -30,11 +29,7 @@
     "passport-jwt": "4.0.0",
     "passport-kakao": "1.0.0",
     "passport-local": "1.0.0",
-    "passport-twitter": "1.0.4",
-    "redis": "3.0.2"
-  },
-  "peerDependencies": {
-    "express": ">= 4"
+    "passport-twitter": "1.0.4"
   },
   "engines": {
     "node": ">= 12"
