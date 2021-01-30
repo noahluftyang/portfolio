@@ -5,12 +5,14 @@
     "es6": true
   },
   "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-extra-parens": "off",
     "eqeqeq": ["error", "always", { "null": "ignore" }],
     "max-lines-per-function": "off",
     "no-eq-null": "off",
     "node/no-unpublished-require": "off",
     "react/jsx-indent-props": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "simple-import-sort/sort": "off"
   }
 }
