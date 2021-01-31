@@ -4,20 +4,22 @@ import getConfig from 'next/config';
 
 const { publicRuntimeConfig } = getConfig();
 
-const instance = axios.create();
+const instance = axios.create({
+  baseURL: 'https://api.themoviedb.org/3',
+});
 
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
-  config.headers.commons.Authorization = `Bearer ${publicRuntimeConfig.TMDB_ACCESS_TOKEN}`;
+  config.headers.common.Authorization = `Bearer ${publicRuntimeConfig.TMDB_ACCESS_TOKEN}`;
 
   return config;
 });
 
 instance.interceptors.response.use((response: AxiosResponse) => {
   if (response.data != null) {
-    return camelizeKeys(response.data);
+    response.data = camelizeKeys(response.data);
   }
 
-  return response;
+  return response.data;
 });
 
 export const apiClient = {

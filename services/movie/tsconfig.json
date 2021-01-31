@@ -13,6 +13,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
+    "strictNullChecks": true,
     "target": "es5",
     "paths": {
       "apis/*": ["src/apis/*"],

@@ -5,14 +5,37 @@
     "es6": true
   },
   "rules": {
-    "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-extra-parens": "off",
     "eqeqeq": ["error", "always", { "null": "ignore" }],
     "max-lines-per-function": "off",
     "no-eq-null": "off",
     "node/no-unpublished-require": "off",
     "react/jsx-indent-props": "off",
     "no-restricted-syntax": "off",
-    "simple-import-sort/sort": "off"
-  }
+    "simple-import-sort/sort": "off",
+    "react/function-component-definition": [
+      "warn",
+      { "namedComponents": "function-declaration", "unnamedComponents": "arrow-function" }
+    ],
+    "multiline-ternary": "off",
+    "no-ternary": "off",
+    "react/jsx-max-props-per-line": ["warn", { "maximum": 1, "when": "multiline" }],
+    "consistent-return": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-extra-parens": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/restrict-template-expressions": ["warn", { "allowNumber": true }],
+        "@typescript-eslint/prefer-readonly-parameter-types": "off"
+      }
+    }
+  ]
 }

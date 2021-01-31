@@ -4910,6 +4910,7 @@ __metadata:
     "@types/humps": 2.0.0
     "@types/node": 14.14.22
     "@types/react": 17.0.0
+    "@types/react-window": 1.8.2
     axios: 0.21.1
     babel-plugin-lodash: 3.3.4
     babel-plugin-macros: 3.0.1
@@ -4918,12 +4919,15 @@ __metadata:
     humps: 2.0.1
     next: 10.0.6
     react: 17.0.1
+    react-content-loader: 6.0.1
     react-dom: 17.0.1
     react-error-boundary: 3.1.0
     react-hook-form: 6.13.1
     react-table: 7.6.2
     react-use: 15.3.8
     react-use-auth: 2.0.2
+    react-virtualized-auto-sizer: 1.0.4
+    react-window: 1.8.6
     recoil: 0.1.2
     sanitize.css: 12.0.1
     swr: 0.4.1
@@ -6255,6 +6259,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: b761f70623ca2a386a310536886e7ceed15087e59a3b6c68478c9965d38edd819c5b29e3fb79a5d911ee4b1db5ab397ae0ebb5a5ddf98f08708a6d592cb7c256
+  languageName: node
+  linkType: hard
+
+"@types/react-window@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@types/react-window@npm:1.8.2"
+  dependencies:
+    "@types/react": "*"
+  checksum: 9124565e95741f7cc0082aeeb9638cb4bb756c7921f04983f99d86582d1c4caeec1806d3231250e39e0270ba222b6e7e05d55e7afdb59f394219362ab7f76648
   languageName: node
   linkType: hard
 
@@ -19106,6 +19119,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"memoize-one@npm:>=3.1.1 <6":
+  version: 5.1.1
+  resolution: "memoize-one@npm:5.1.1"
+  checksum: e7c4a9cceca71334bf09c38818c375a280dc6e8ec03a92701c16199763269ce756b7b0b370f4b464c071045349fb7b3e4a3cc7460a3f46a277f394d8634a6eb5
+  languageName: node
+  linkType: hard
+
 "memoizee@npm:^0.4.14":
   version: 0.4.14
   resolution: "memoizee@npm:0.4.14"
@@ -23357,6 +23377,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"react-content-loader@npm:6.0.1":
+  version: 6.0.1
+  resolution: "react-content-loader@npm:6.0.1"
+  peerDependencies:
+    react: ">=16.0.0"
+  checksum: 571a018a5764979cb755c16a83484764185b83ae121e59b5e3e90963d7d20533ad44a85b5879f9ad2e216808510a9bda7451ab0cbaf9d4bab7b24588f47e350b
+  languageName: node
+  linkType: hard
+
 "react-devtools-core@npm:^4.6.0":
   version: 4.10.1
   resolution: "react-devtools-core@npm:4.10.1"
@@ -23636,6 +23665,29 @@ fsevents@~2.3.1:
     react: ^16.8.0  || ^17.0.0
     react-dom: ^16.8.0  || ^17.0.0
   checksum: 2ab02d39df7b834f83376b1631a4354a9bb7be9eba8ee88bb5f6838908ae3caa150b517745d97117ece21d02bb00f8918f14ee48d8a5c8c0cfcba871db04d5ef
+  languageName: node
+  linkType: hard
+
+"react-virtualized-auto-sizer@npm:1.0.4":
+  version: 1.0.4
+  resolution: "react-virtualized-auto-sizer@npm:1.0.4"
+  peerDependencies:
+    react: ^15.3.0 || ^16.0.0-alpha
+    react-dom: ^15.3.0 || ^16.0.0-alpha
+  checksum: 091e260be01e5c1ea82376d3dbe430d41319deaabf5cb5d9ef7923e9f998ad05ed849ff1334c5f509955f25b4e9d864a482476c53040c7e55885d089ba7ed497
+  languageName: node
+  linkType: hard
+
+"react-window@npm:1.8.6":
+  version: 1.8.6
+  resolution: "react-window@npm:1.8.6"
+  dependencies:
+    "@babel/runtime": ^7.0.0
+    memoize-one: ">=3.1.1 <6"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0
+    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: e2bfdfbe39f165c8ca4005b36837288546db5701fc6b53da0acb352317f5dad14cd7abbdff3b13644a8615074fa9841996249b2776f8f94e7efa4e37236b06a4
   languageName: node
   linkType: hard
 

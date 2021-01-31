@@ -4,5 +4,7 @@ module.exports = {
     locales: ['en-US', 'ko-KR'],
   },
   images: {},
-  publicRuntimeConfig: {},
+  publicRuntimeConfig: {
+    TMDB_ACCESS_TOKEN: process.env.TMDB_ACCESS_TOKEN,
+  },
 };
