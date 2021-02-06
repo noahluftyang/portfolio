@@ -11,8 +11,7 @@
     "email": "euihyun.yang.9x@gmail.com"
   },
   "scripts": {
-    "lint": "lerna run lint",
-    "typecheck": "lerna run typecheck"
+    "new": "hygen"
   },
   "dependencies": {
     "dotenv": "8.2.0",
@@ -27,6 +26,8 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
     "@emotion/babel-preset-css-prop": "11.0.0",
     "@prisma/cli": "2.13.1",
     "@stillmine/eslint-config": "0.21.0",
