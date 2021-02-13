@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "noEmit": true
-  },
-  "exclude": ["node_modules"]
-}

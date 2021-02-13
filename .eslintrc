@@ -4,10 +4,11 @@
   "env": {
     "es6": true
   },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "rules": {
-    "eqeqeq": ["error", "always", { "null": "ignore" }],
     "max-lines-per-function": "off",
-    "no-eq-null": "off",
     "node/no-unpublished-require": "off",
     "react/jsx-indent-props": "off",
     "no-restricted-syntax": "off",
@@ -16,17 +17,12 @@
       "warn",
       { "namedComponents": "function-declaration", "unnamedComponents": "arrow-function" }
     ],
-    "multiline-ternary": "off",
-    "no-ternary": "off",
     "react/jsx-max-props-per-line": ["warn", { "maximum": 1, "when": "multiline" }],
     "consistent-return": "off"
   },
   "overrides": [
     {
       "files": ["**/*.ts", "**/*.tsx"],
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      },
       "rules": {
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-extra-parens": "off",
