@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
+import { Card } from 'components/Card';
+import { MovieSearchForm } from 'components/MovieSearchForm';
 import { TopNavigation } from 'components/TopNavigation';
 import { useMovies } from 'hooks/useMovies';
-import { Movie } from 'models/Movie';
-import Link from 'next/link';
 
-export default function MainPage() {
+const MainPage = () => {
   const {
     data: { results },
   } = useMovies();
@@ -12,6 +12,13 @@ export default function MainPage() {
   return (
     <section>
       <TopNavigation showBackButton={false} />
+      <section
+        css={css`
+          padding-top: 32px;
+        `}
+      >
+        <MovieSearchForm />
+      </section>
       <div
         css={css`
           display: grid;
@@ -25,20 +32,6 @@ export default function MainPage() {
       </div>
     </section>
   );
-}
+};
 
-function Card({ id, posterPath, title }: Movie) {
-  return (
-    <Link href={`/movie/${id}`}>
-      <a>
-        {posterPath == null ? null : (
-          <img
-            alt={title}
-            css={css(`max-width: 100%`)}
-            src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
-          />
-        )}
-      </a>
-    </Link>
-  );
-}
+export default MainPage;

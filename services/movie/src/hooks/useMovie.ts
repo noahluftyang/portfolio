@@ -14,7 +14,7 @@ export function useMovie() {
     return query.id;
   }, [query]);
   const { data } = useSWR(
-    id != null ? ['getMovie', id, locale] : null,
+    id == null ? null : ['getMovie', id, locale],
     () => getMovie(Number(id!), { language: locale }),
     { suspense: true }
   );

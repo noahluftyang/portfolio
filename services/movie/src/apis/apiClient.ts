@@ -4,9 +4,7 @@ import getConfig from 'next/config';
 
 const { publicRuntimeConfig } = getConfig();
 
-const instance = axios.create({
-  baseURL: 'https://api.themoviedb.org/3',
-});
+const instance = axios.create({ baseURL: 'https://api.themoviedb.org/3' });
 
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
   config.headers.common.Authorization = `Bearer ${publicRuntimeConfig.TMDB_ACCESS_TOKEN}`;

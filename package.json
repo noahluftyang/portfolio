@@ -30,7 +30,7 @@
     "@commitlint/config-conventional": "11.0.0",
     "@emotion/babel-preset-css-prop": "11.0.0",
     "@prisma/cli": "2.13.1",
-    "@stillmine/eslint-config": "0.24.0",
+    "@stillmine/eslint-config": "0.25.1",
     "@stillmine/tsconfig": "0.23.0",
     "@types/bcrypt": "3.0.0",
     "@types/compression": "1.7.0",

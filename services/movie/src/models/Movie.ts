@@ -1,6 +1,10 @@
 export interface GetMoviesRequest {
-  language?: string;
+  language: string;
   page: number;
+}
+
+export interface SearchMoviesRequest extends GetMoviesRequest {
+  query: string;
 }
 
 export interface GetMoviesResponse {
@@ -34,7 +38,7 @@ export interface GetMovieRequest {
 export interface GetMovieResponse {
   adult: boolean;
   backdropPath: string | null;
-  belongsToCollection: Object | null;
+  belongsToCollection: Record<string, unknown> | null;
   budget: number;
   genres: Genre[];
   homepage: string | null;

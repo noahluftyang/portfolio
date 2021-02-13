@@ -1,8 +1,5 @@
 {
   "*.js": "eslint",
   "*.md": "textlint",
-  "*.{ts,tsx}": [
-    "tsc --noEmit",
-    "eslint"
-  ]
+  "*.{ts,tsx}": "eslint"
 }

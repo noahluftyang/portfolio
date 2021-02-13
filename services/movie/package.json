@@ -4,11 +4,15 @@
   "license": "MIT",
   "scripts": {
     "build": "next build",
-    "develop": "next"
+    "develop": "next",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "11.1.4",
     "@emotion/styled": "11.0.0",
+    "@stillmine/react-components": "0.7.1",
+    "@stillmine/styles": "0.4.1",
     "axios": "0.21.1",
     "date-fns": "2.16.1",
     "facepaint": "1.2.1",
@@ -37,6 +41,7 @@
     "@types/react-window": "1.8.2",
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-macros": "3.0.1",
+    "eslint": "7.20.0",
     "typescript": "4.1.3"
   }
 }

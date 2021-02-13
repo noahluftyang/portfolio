@@ -4,9 +4,14 @@ import {
   GetMovieResponse,
   GetMoviesRequest,
   GetMoviesResponse,
+  SearchMoviesRequest,
 } from 'models/Movie';
 
-export function getMovies(params?: GetMoviesRequest) {
+export function searchMovies(params?: SearchMoviesRequest) {
+  return apiClient.get<GetMoviesResponse>('/search/movie', { params });
+}
+
+export function getMovies(params?: Partial<GetMoviesRequest>) {
   return apiClient.get<GetMoviesResponse>('/movie/popular', { params });
 }
 
