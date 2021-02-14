@@ -466,3 +466,7 @@ media/*
 # firebase
 firebase-config.json
 service-account.json
+
+# netlify
+out_functions
+out_publish
