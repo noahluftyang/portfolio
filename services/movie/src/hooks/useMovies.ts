@@ -1,12 +1,13 @@
 import { getMovies, searchMovies } from 'apis/movies';
 import { useMoviesSearchParams } from 'hooks/useMoviesSearchParams';
+import { MovieType } from 'models/Movie';
 import useSWR from 'swr';
 
 export function useMovies() {
   const { locale, movieType } = useMoviesSearchParams();
   const { data } = useSWR(
     ['getMovies', movieType, locale],
-    () => getMovies(movieType, { language: locale }),
+    () => getMovies(movieType as MovieType, { language: locale }),
     { suspense: true }
   );
 
@@ -14,10 +15,10 @@ export function useMovies() {
 }
 
 export function useMoviesByKeyword() {
-  const { keyword } = useMoviesSearchParams();
+  const { locale, keyword } = useMoviesSearchParams();
   const { data } = useSWR(
-    keyword == null ? null : ['searchMovies', keyword],
-    () => searchMovies({ query: keyword! }),
+    keyword == null ? null : ['searchMovies', keyword, locale],
+    () => searchMovies({ language: locale, query: keyword! }),
     { suspense: true }
   );
 

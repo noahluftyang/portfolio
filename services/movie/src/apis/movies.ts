@@ -12,7 +12,7 @@ export function searchMovies(params?: SearchMoviesRequest) {
   return apiClient.get<GetMoviesResponse>('/search/movie', { params });
 }
 
-export function getMovies(movieType: MovieType, params?: Partial<GetMoviesRequest>) {
+export function getMovies(movieType: MovieType, params?: GetMoviesRequest) {
   return apiClient.get<GetMoviesResponse>(`/movie/${movieType}`, { params });
 }
 

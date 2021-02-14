@@ -5,8 +5,8 @@ export enum MovieType {
 }
 
 export interface GetMoviesRequest {
-  language: string;
-  page: number;
+  language?: string;
+  page?: number;
 }
 
 export interface SearchMoviesRequest extends GetMoviesRequest {

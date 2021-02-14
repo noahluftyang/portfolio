@@ -1,3 +1,6 @@
 {
-  "extends": "@stillmine/tsconfig"
+  "extends": "@stillmine/tsconfig",
+  "compilerOptions": {
+    "tsBuildInfoFile": ".tsbuildinfo"
+  }
 }

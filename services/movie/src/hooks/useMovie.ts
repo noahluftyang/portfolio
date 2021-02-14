@@ -1,8 +1,8 @@
+import { isArray } from '@stillmine/utils';
 import { getMovie } from 'apis/movies';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import useSWR from 'swr';
-import { isArray } from 'utils/is';
 
 export function useMovie() {
   const { locale, query } = useRouter();
@@ -11,11 +11,11 @@ export function useMovie() {
       return;
     }
 
-    return query.id;
+    return Number(query.id);
   }, [query]);
   const { data } = useSWR(
     id == null ? null : ['getMovie', id, locale],
-    () => getMovie(Number(id!), { language: locale }),
+    () => getMovie(id!, { language: locale }),
     { suspense: true }
   );
 
