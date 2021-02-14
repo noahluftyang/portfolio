@@ -6,8 +6,12 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -17,15 +21,35 @@
     "strictNullChecks": true,
     "target": "es5",
     "paths": {
-      "apis/*": ["src/apis/*"],
-      "components/*": ["src/components/*"],
-      "constants/*": ["src/constants/*"],
-      "hooks/*": ["src/hooks/*"],
-      "models/*": ["src/models/*"],
-      "styles/*": ["src/styles/*"],
-      "utils/*": ["src/utils/*"]
+      "apis/*": [
+        "src/apis/*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "constants/*": [
+        "src/constants/*"
+      ],
+      "hooks/*": [
+        "src/hooks/*"
+      ],
+      "models/*": [
+        "src/models/*"
+      ],
+      "styles/*": [
+        "src/styles/*"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ]
     }
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

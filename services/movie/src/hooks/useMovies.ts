@@ -1,19 +1,23 @@
 import { getMovies, searchMovies } from 'apis/movies';
-import { SearchMoviesRequest } from 'models/Movie';
-import { useRouter } from 'next/router';
+import { useMoviesSearchParams } from 'hooks/useMoviesSearchParams';
 import useSWR from 'swr';
 
 export function useMovies() {
-  const { locale, query } = useRouter();
+  const { locale, movieType } = useMoviesSearchParams();
   const { data } = useSWR(
-    ['getMovies', locale, query],
-    () => {
-      if (Object.keys(query).length === 0) {
-        return getMovies({ language: locale });
-      }
+    ['getMovies', movieType, locale],
+    () => getMovies(movieType, { language: locale }),
+    { suspense: true }
+  );
 
-      return searchMovies((query as unknown) as SearchMoviesRequest);
-    },
+  return { data: data! };
+}
+
+export function useMoviesByKeyword() {
+  const { keyword } = useMoviesSearchParams();
+  const { data } = useSWR(
+    keyword == null ? null : ['searchMovies', keyword],
+    () => searchMovies({ query: keyword! }),
     { suspense: true }
   );
 

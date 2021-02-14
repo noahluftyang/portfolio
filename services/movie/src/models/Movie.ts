@@ -1,3 +1,9 @@
+export enum MovieType {
+  '인기 상영작' = 'popular',
+  '현재 상영작' = 'now_playing',
+  '상영 예정작' = 'upcoming',
+}
+
 export interface GetMoviesRequest {
   language: string;
   page: number;
