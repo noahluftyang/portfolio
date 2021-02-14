@@ -4,7 +4,6 @@
   "license": "MIT",
   "main": "src/server.ts",
   "scripts": {
-    "postinstall": "yarn prisma:generate",
     "prebuild": "rimraf dist",
     "build": "tsc",
     "develop": "nodemon",
