@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.2.0",
+    "@netlify/plugin-nextjs": "2.0.1",
     "@next/env": "10.0.6",
     "@types/facepaint": "1.2.1",
     "@types/humps": "2.0.0",
