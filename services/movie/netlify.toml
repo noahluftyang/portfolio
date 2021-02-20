@@ -1,6 +1,6 @@
 [build]
-  base = "services/movie"
   command = "yarn build"
-  functions = "out_functions"
-  ignore = "git diff --quiet HEAD^ HEAD sub_dir/"
-  publish = "out_publish"
+  publish = "out"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

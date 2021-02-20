@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "next build && next-on-netlify",
+    "build": "next build",
     "develop": "next",
     "lint": "eslint src/**/*.{ts,tsx}",
     "typecheck": "tsc --noEmit"
@@ -44,7 +44,6 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-macros": "3.0.1",
     "eslint": "7.20.0",
-    "next-on-netlify": "2.8.7",
     "typescript": "4.1.5"
   }
 }
