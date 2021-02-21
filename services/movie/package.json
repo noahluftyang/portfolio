@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "next build",
+    "build": "next build && next export",
     "develop": "next",
     "lint": "eslint src/**/*.{ts,tsx}",
     "typecheck": "tsc --noEmit"
@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.2.0",
-    "@netlify/plugin-nextjs": "2.0.1",
     "@next/env": "10.0.6",
     "@types/facepaint": "1.2.1",
     "@types/humps": "2.0.0",
