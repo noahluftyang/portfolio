@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@prisma/client": "2.13.1",
-    "apollo-server": "2.19.1",
-    "apollo-server-express": "2.19.1",
+    "apollo-server": "2.21.0",
+    "apollo-server-express": "2.21.0",
     "mongoose": "5.11.9",
     "nexus": "1.0.0"
   },
