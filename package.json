@@ -22,7 +22,7 @@
     "pino-http": "5.5.0",
     "swagger-jsdoc": "6.0.0",
     "swagger-ui-express": "4.1.6",
-    "tailwindcss": "2.0.2",
+    "tailwindcss": "2.0.3",
     "uuid": "8.3.2"
   },
   "devDependencies": {
