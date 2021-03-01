@@ -14,7 +14,7 @@
     "@prisma/client": "2.13.1",
     "apollo-server": "2.21.0",
     "apollo-server-express": "2.21.0",
-    "mongoose": "5.11.17",
+    "mongoose": "5.11.18",
     "nexus": "1.0.0"
   },
   "engines": {
