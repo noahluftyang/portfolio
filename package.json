@@ -31,7 +31,7 @@
     "@emotion/babel-preset-css-prop": "11.0.0",
     "@prisma/cli": "2.13.1",
     "@stillmine/eslint-config": "0.21.0",
-    "@stillmine/tsconfig": "0.23.0",
+    "@stillmine/tsconfig": "0.21.0",
     "@types/bcrypt": "3.0.0",
     "@types/compression": "1.7.0",
     "@types/cors": "2.8.9",
