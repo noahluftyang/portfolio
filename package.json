@@ -87,6 +87,6 @@
   ],
   "resolutions": {
     "@stillmine/eslint-config": "0.25.1",
-    "@stillmine/tsconfig": "0.23.0"
+    "@stillmine/tsconfig": "0.21.0"
   }
 }
