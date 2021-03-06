@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.2.0",
-    "@next/env": "10.0.6",
     "@types/facepaint": "1.2.1",
     "@types/humps": "2.0.0",
     "@types/node": "14.14.31",
