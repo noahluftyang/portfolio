@@ -28,7 +28,7 @@
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
-    "@emotion/babel-preset-css-prop": "11.0.0",
+    "@emotion/babel-preset-css-prop": "11.2.0",
     "@prisma/cli": "2.13.1",
     "@stillmine/eslint-config": "0.21.0",
     "@stillmine/tsconfig": "0.21.0",
