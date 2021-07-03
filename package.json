@@ -60,6 +60,7 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-module-resolver": "4.1.0",
     "eslint": "7.20.0",
+    "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
@@ -72,6 +73,7 @@
     "hygen": "6.0.4",
     "jest": "26.6.3",
     "lint-staged": "10.5.3",
+    "next": "^11.0.1",
     "nodemon": "2.0.7",
     "prettier": "2.2.1",
     "rimraf": "3.0.2",
@@ -80,7 +82,7 @@
     "ts-loader": "8.0.17",
     "ts-node": "9.1.1",
     "tsconfig-paths": "3.9.0",
-    "typescript": "4.1.3"
+    "typescript": "^4.3.5"
   },
   "private": true,
   "workspaces": [
@@ -90,6 +92,7 @@
   ],
   "resolutions": {
     "@stillmine/eslint-config": "0.25.1",
-    "@stillmine/tsconfig": "0.23.0"
+    "@stillmine/tsconfig": "0.23.0",
+    "typescript": "patch:typescript@npm:4.3.5#.yarn/patches/typescript@4.3.5.patch"
   }
 }
