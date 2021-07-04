@@ -46,7 +46,7 @@
     "services/*"
   ],
   "resolutions": {
-    "@stillmine/eslint-config": "0.25.1",
+    "@stillmine/eslint-config": "0.21.0",
     "@stillmine/tsconfig": "0.23.0",
     "typescript": "patch:typescript@npm:4.3.5#.yarn/patches/typescript@4.3.5.patch"
   }
