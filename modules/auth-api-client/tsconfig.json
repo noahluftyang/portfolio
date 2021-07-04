@@ -1,9 +1,10 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "noEmit": true,
     "paths": {
-      "models/*": ["models/*"]
+      "models/*": ["src/models/*"]
     }
   },
   "exclude": ["node_modules"]

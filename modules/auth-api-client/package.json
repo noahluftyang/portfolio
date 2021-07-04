@@ -4,6 +4,13 @@
   "main": "src/mod.ts",
   "scripts": {
     "lint": "eslint",
-    "typecheck": "tsc"
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@portfolio/api-client": "workspace:libraries/api-client"
+  },
+  "devDependencies": {
+    "eslint": "7.20.0",
+    "typescript": "^4.3.5"
   }
 }

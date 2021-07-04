@@ -5964,29 +5964,30 @@ __metadata:
 "@portfolio/api-client@workspace:libraries/api-client":
   version: 0.0.0-use.local
   resolution: "@portfolio/api-client@workspace:libraries/api-client"
+  dependencies:
+    "@portfolio/utils": "workspace:libraries/utils"
+    eslint: 7.20.0
+    typescript: ^4.3.5
   languageName: unknown
   linkType: soft
 
 "@portfolio/auth-api-client@workspace:modules/auth-api-client":
   version: 0.0.0-use.local
   resolution: "@portfolio/auth-api-client@workspace:modules/auth-api-client"
-  languageName: unknown
-  linkType: soft
-
-"@portfolio/auth-session-client@workspace:modules/auth-session-client":
-  version: 0.0.0-use.local
-  resolution: "@portfolio/auth-session-client@workspace:modules/auth-session-client"
   dependencies:
-    jsonwebtoken: 8.5.1
-    redis: 3.0.2
-  peerDependencies:
-    uuid: ">= 8"
+    "@portfolio/api-client": "workspace:libraries/api-client"
+    eslint: 7.20.0
+    typescript: ^4.3.5
   languageName: unknown
   linkType: soft
 
 "@portfolio/chatting-api-client@workspace:modules/chatting-api-client":
   version: 0.0.0-use.local
   resolution: "@portfolio/chatting-api-client@workspace:modules/chatting-api-client"
+  dependencies:
+    eslint: 7.20.0
+    graphql-request: ^3.4.0
+    typescript: ^4.3.5
   peerDependencies:
     graphql-request: ">= 3"
   languageName: unknown
@@ -6058,6 +6059,7 @@ __metadata:
     "@emotion/babel-plugin": ^11.3.0
     "@emotion/react": 11.4.0
     "@emotion/styled": 11.3.0
+    "@portfolio/api-client": "workspace:libraries/api-client"
     "@types/node": ^16.0.0
     "@types/react": ^17.0.13
     eslint: ^7.30.0
@@ -6183,6 +6185,9 @@ __metadata:
 "@portfolio/types@workspace:libraries/types":
   version: 0.0.0-use.local
   resolution: "@portfolio/types@workspace:libraries/types"
+  dependencies:
+    eslint: 7.20.0
+    typescript: ^4.3.5
   peerDependencies:
     react: ">= 16"
   languageName: unknown
@@ -6209,6 +6214,15 @@ __metadata:
     passport-kakao: 1.0.1
     passport-local: 1.0.0
     passport-twitter: 1.0.4
+  languageName: unknown
+  linkType: soft
+
+"@portfolio/utils@workspace:libraries/utils":
+  version: 0.0.0-use.local
+  resolution: "@portfolio/utils@workspace:libraries/utils"
+  dependencies:
+    eslint: 7.20.0
+    typescript: ^4.3.5
   languageName: unknown
   linkType: soft
 
@@ -16244,7 +16258,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"graphql-request@npm:3.4.0":
+"graphql-request@npm:3.4.0, graphql-request@npm:^3.4.0":
   version: 3.4.0
   resolution: "graphql-request@npm:3.4.0"
   dependencies:
@@ -19637,7 +19651,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"jsonwebtoken@npm:8.5.1, jsonwebtoken@npm:^8.2.0, jsonwebtoken@npm:^8.5.1":
+"jsonwebtoken@npm:^8.2.0, jsonwebtoken@npm:^8.5.1":
   version: 8.5.1
   resolution: "jsonwebtoken@npm:8.5.1"
   dependencies:
@@ -25805,41 +25819,6 @@ fsevents@~2.1.2:
     indent-string: ^4.0.0
     strip-indent: ^3.0.0
   checksum: 78c8aa0a1076f47e0e198bfc8a9aa7d4ae3163c6951bd5de1015e47661bba62ea36573337bbeb4b309b48cc71954edbe43ae4aa3163db1996a781b757c5c47d7
-  languageName: node
-  linkType: hard
-
-"redis-commands@npm:^1.5.0":
-  version: 1.6.0
-  resolution: "redis-commands@npm:1.6.0"
-  checksum: 11ad01e57fab4927c7410817fcaaf71079d5b50ebb05f9b38ba5719b9461e7b78f7a3f1f8a6d352336a6af336ef4fdc9a21ff1abb5111890edb71d56634ff53f
-  languageName: node
-  linkType: hard
-
-"redis-errors@npm:^1.0.0, redis-errors@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "redis-errors@npm:1.2.0"
-  checksum: b260bb64a1c8523d32a56701681ac3e5cc6bb0a4eb09f1d30729ebba397021d274216ff189909c08fe3c6b706ec8b74948e20ea410b6f69d31b35bda3fb82a59
-  languageName: node
-  linkType: hard
-
-"redis-parser@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "redis-parser@npm:3.0.0"
-  dependencies:
-    redis-errors: ^1.0.0
-  checksum: 45dbcb05bed2c80a4aac288bbefed2347ecf3508c24d542ab42efa21fd63b5aaca4208b206f05818835a2ac43abe09250c2638c11c3b0b66a5d67e83985e350f
-  languageName: node
-  linkType: hard
-
-"redis@npm:3.0.2":
-  version: 3.0.2
-  resolution: "redis@npm:3.0.2"
-  dependencies:
-    denque: ^1.4.1
-    redis-commands: ^1.5.0
-    redis-errors: ^1.2.0
-    redis-parser: ^3.0.0
-  checksum: 74858b9f5ae3859ed55435d413315ab3f911aa483a3817c0d1ebe46b966c7061f43ea0d3d5170b540ff4a1f15edd5ea2bc0e107d0e6e516c4d61ea489460f5dc
   languageName: node
   linkType: hard
 

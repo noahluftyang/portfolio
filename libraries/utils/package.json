@@ -1,13 +1,10 @@
 {
-  "name": "@portfolio/api-client",
+  "name": "@portfolio/utils",
   "version": "0.0.0",
   "main": "src/mod.ts",
   "scripts": {
     "lint": "eslint",
     "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@portfolio/utils": "workspace:libraries/utils"
   },
   "devDependencies": {
     "eslint": "7.20.0",

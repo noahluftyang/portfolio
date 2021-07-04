@@ -31,12 +31,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:libraries/types"
       },
       {
-        "name": "@portfolio/auth-api-client",
-        "reference": "workspace:modules/auth-api-client"
+        "name": "@portfolio/utils",
+        "reference": "workspace:libraries/utils"
       },
       {
-        "name": "@portfolio/auth-session-client",
-        "reference": "workspace:modules/auth-session-client"
+        "name": "@portfolio/auth-api-client",
+        "reference": "workspace:modules/auth-api-client"
       },
       {
         "name": "@portfolio/chatting-api-client",
@@ -81,7 +81,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@noahluftyang/portfolio", ["workspace:."]],
       ["@portfolio/api-client", ["workspace:libraries/api-client"]],
       ["@portfolio/auth-api-client", ["workspace:modules/auth-api-client"]],
-      ["@portfolio/auth-session-client", ["workspace:modules/auth-session-client"]],
       ["@portfolio/chatting", ["workspace:services/chatting"]],
       ["@portfolio/chatting-api-client", ["workspace:modules/chatting-api-client"]],
       ["@portfolio/chatting-native", ["workspace:services/chatting-native"]],
@@ -91,7 +90,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@portfolio/social-networking", ["workspace:services/social-networking"]],
       ["@portfolio/social-networking-server", ["workspace:services/social-networking-server"]],
       ["@portfolio/types", ["workspace:libraries/types"]],
-      ["@portfolio/universal-auth-server", ["workspace:services/universal-auth-server"]]
+      ["@portfolio/universal-auth-server", ["workspace:services/universal-auth-server"]],
+      ["@portfolio/utils", ["workspace:libraries/utils"]]
     ],
     "fallbackPool": [
     ],
@@ -11102,7 +11102,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:libraries/api-client", {
           "packageLocation": "./libraries/api-client/",
           "packageDependencies": [
-            ["@portfolio/api-client", "workspace:libraries/api-client"]
+            ["@portfolio/api-client", "workspace:libraries/api-client"],
+            ["@portfolio/utils", "workspace:libraries/utils"],
+            ["eslint", "npm:7.20.0"],
+            ["typescript", "patch:typescript@patch%3Atypescript@npm%253A4.3.5%23.yarn/patches/typescript@4.3.5.patch%3A%3Aversion=4.3.5&hash=0fe4d8&locator=%2540noahluftyang%252Fportfolio%2540workspace%253A.#builtin<compat/typescript>::version=4.3.5&hash=ddfc1b"]
           ],
           "linkType": "SOFT",
         }]
@@ -11111,18 +11114,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:modules/auth-api-client", {
           "packageLocation": "./modules/auth-api-client/",
           "packageDependencies": [
-            ["@portfolio/auth-api-client", "workspace:modules/auth-api-client"]
-          ],
-          "linkType": "SOFT",
-        }]
-      ]],
-      ["@portfolio/auth-session-client", [
-        ["workspace:modules/auth-session-client", {
-          "packageLocation": "./modules/auth-session-client/",
-          "packageDependencies": [
-            ["@portfolio/auth-session-client", "workspace:modules/auth-session-client"],
-            ["jsonwebtoken", "npm:8.5.1"],
-            ["redis", "npm:3.0.2"]
+            ["@portfolio/auth-api-client", "workspace:modules/auth-api-client"],
+            ["@portfolio/api-client", "workspace:libraries/api-client"],
+            ["eslint", "npm:7.20.0"],
+            ["typescript", "patch:typescript@patch%3Atypescript@npm%253A4.3.5%23.yarn/patches/typescript@4.3.5.patch%3A%3Aversion=4.3.5&hash=0fe4d8&locator=%2540noahluftyang%252Fportfolio%2540workspace%253A.#builtin<compat/typescript>::version=4.3.5&hash=ddfc1b"]
           ],
           "linkType": "SOFT",
         }]
@@ -11146,7 +11141,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:modules/chatting-api-client", {
           "packageLocation": "./modules/chatting-api-client/",
           "packageDependencies": [
-            ["@portfolio/chatting-api-client", "workspace:modules/chatting-api-client"]
+            ["@portfolio/chatting-api-client", "workspace:modules/chatting-api-client"],
+            ["eslint", "npm:7.20.0"],
+            ["graphql-request", "virtual:46fb49ac22c4c05a5b4733f7767286f8dd770313700682db2544e28b66bd999aa98246ec56ffe7e2ae2ef06387787d4c7ee7f2adc7039365b0e7e9a24ddbd3f8#npm:3.4.0"],
+            ["typescript", "patch:typescript@patch%3Atypescript@npm%253A4.3.5%23.yarn/patches/typescript@4.3.5.patch%3A%3Aversion=4.3.5&hash=0fe4d8&locator=%2540noahluftyang%252Fportfolio%2540workspace%253A.#builtin<compat/typescript>::version=4.3.5&hash=ddfc1b"]
           ],
           "linkType": "SOFT",
         }]
@@ -11209,6 +11207,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/babel-plugin", "virtual:e76701a01cea8a5f2c151831a5315896fd8e2f8995bd7aba9d389dc8c215b6efa513117d8e30f1ca77d1d5f7ccd2732609089b86c48f10a03b25e350d1abb409#npm:11.3.0"],
             ["@emotion/react", "virtual:60e86e68a0f97153d200c67425457857691ca0f49825899f102b735823d5c3935a7c2b6be5e55e01171ffd9882239ac8c6c188dd16cf9d8c717d0672d040bbf9#npm:11.4.0"],
             ["@emotion/styled", "virtual:60e86e68a0f97153d200c67425457857691ca0f49825899f102b735823d5c3935a7c2b6be5e55e01171ffd9882239ac8c6c188dd16cf9d8c717d0672d040bbf9#npm:11.3.0"],
+            ["@portfolio/api-client", "workspace:libraries/api-client"],
             ["@types/node", "npm:16.0.0"],
             ["@types/react", "npm:17.0.13"],
             ["eslint", "npm:7.30.0"],
@@ -11342,7 +11341,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:libraries/types", {
           "packageLocation": "./libraries/types/",
           "packageDependencies": [
-            ["@portfolio/types", "workspace:libraries/types"]
+            ["@portfolio/types", "workspace:libraries/types"],
+            ["eslint", "npm:7.20.0"],
+            ["typescript", "patch:typescript@patch%3Atypescript@npm%253A4.3.5%23.yarn/patches/typescript@4.3.5.patch%3A%3Aversion=4.3.5&hash=0fe4d8&locator=%2540noahluftyang%252Fportfolio%2540workspace%253A.#builtin<compat/typescript>::version=4.3.5&hash=ddfc1b"]
           ],
           "linkType": "SOFT",
         }]
@@ -11369,6 +11370,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["passport-kakao", "npm:1.0.1"],
             ["passport-local", "npm:1.0.0"],
             ["passport-twitter", "npm:1.0.4"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@portfolio/utils", [
+        ["workspace:libraries/utils", {
+          "packageLocation": "./libraries/utils/",
+          "packageDependencies": [
+            ["@portfolio/utils", "workspace:libraries/utils"],
+            ["eslint", "npm:7.20.0"],
+            ["typescript", "patch:typescript@patch%3Atypescript@npm%253A4.3.5%23.yarn/patches/typescript@4.3.5.patch%3A%3Aversion=4.3.5&hash=0fe4d8&locator=%2540noahluftyang%252Fportfolio%2540workspace%253A.#builtin<compat/typescript>::version=4.3.5&hash=ddfc1b"]
           ],
           "linkType": "SOFT",
         }]
@@ -23897,6 +23909,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
+        ["virtual:46fb49ac22c4c05a5b4733f7767286f8dd770313700682db2544e28b66bd999aa98246ec56ffe7e2ae2ef06387787d4c7ee7f2adc7039365b0e7e9a24ddbd3f8#npm:3.4.0", {
+          "packageLocation": "./.yarn/$$virtual/graphql-request-virtual-22d617c18c/0/cache/graphql-request-npm-3.4.0-404d79e135-d564874ff4.zip/node_modules/graphql-request/",
+          "packageDependencies": [
+            ["graphql-request", "virtual:46fb49ac22c4c05a5b4733f7767286f8dd770313700682db2544e28b66bd999aa98246ec56ffe7e2ae2ef06387787d4c7ee7f2adc7039365b0e7e9a24ddbd3f8#npm:3.4.0"],
+            ["@types/graphql", null],
+            ["cross-fetch", "npm:3.0.6"],
+            ["extract-files", "npm:9.0.0"],
+            ["form-data", "npm:3.0.0"],
+            ["graphql", null]
+          ],
+          "packagePeers": [
+            "@types/graphql",
+            "graphql"
+          ],
+          "linkType": "HARD",
+        }],
         ["virtual:49f8d636c742eb002e475543b5779b2461581caabf917b58936b04a68194d176b66f35279675f9f3f620ee53b441fcc8f865be9743240e8bece2bada263955b4#npm:3.4.0", {
           "packageLocation": "./.yarn/$$virtual/graphql-request-virtual-56abe87583/0/cache/graphql-request-npm-3.4.0-404d79e135-d564874ff4.zip/node_modules/graphql-request/",
           "packageDependencies": [
@@ -35049,47 +35077,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["redent", "npm:3.0.0"],
             ["indent-string", "npm:4.0.0"],
             ["strip-indent", "npm:3.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["redis", [
-        ["npm:3.0.2", {
-          "packageLocation": "./.yarn/cache/redis-npm-3.0.2-488560e37e-74858b9f5a.zip/node_modules/redis/",
-          "packageDependencies": [
-            ["redis", "npm:3.0.2"],
-            ["denque", "npm:1.4.1"],
-            ["redis-commands", "npm:1.6.0"],
-            ["redis-errors", "npm:1.2.0"],
-            ["redis-parser", "npm:3.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["redis-commands", [
-        ["npm:1.6.0", {
-          "packageLocation": "./.yarn/cache/redis-commands-npm-1.6.0-e3f98be1b2-11ad01e57f.zip/node_modules/redis-commands/",
-          "packageDependencies": [
-            ["redis-commands", "npm:1.6.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["redis-errors", [
-        ["npm:1.2.0", {
-          "packageLocation": "./.yarn/cache/redis-errors-npm-1.2.0-a81fd9b0f1-b260bb64a1.zip/node_modules/redis-errors/",
-          "packageDependencies": [
-            ["redis-errors", "npm:1.2.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["redis-parser", [
-        ["npm:3.0.0", {
-          "packageLocation": "./.yarn/cache/redis-parser-npm-3.0.0-7ebe40abcb-45dbcb05be.zip/node_modules/redis-parser/",
-          "packageDependencies": [
-            ["redis-parser", "npm:3.0.0"],
-            ["redis-errors", "npm:1.2.0"]
           ],
           "linkType": "HARD",
         }]
