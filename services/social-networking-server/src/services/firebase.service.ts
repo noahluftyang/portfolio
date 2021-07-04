@@ -12,6 +12,6 @@ export class FirebaseService {
     const imageBuffer = Buffer.from(media64Str, 'base64');
     const imageByteArray = new Uint8Array(imageBuffer);
 
-    return file.save(imageByteArray);
+    return file.save(imageByteArray as any);
   }
 }

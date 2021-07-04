@@ -10,8 +10,8 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { serve, setup } from 'swagger-ui-express';
 
 import { signinRouter, signupRouter, userRouter } from './routes/mod';
+import { docs } from './utils/docs';
 import { prisma } from './utils/prisma';
-import { spec } from './utils/spec';
 
 // NOTE: passport
 passport.use(
@@ -47,4 +47,4 @@ app.use(json());
 app.use(signinRouter);
 app.use(signupRouter);
 app.use(userRouter);
-app.use('/docs', serve, setup(spec));
+app.use('/docs', serve, setup(docs));
