@@ -1,0 +1,13 @@
+diff --git a/lib/tsserver.js b/lib/tsserver.js
+index f9cc0bc1e728e8c5da84fe6544ec0392702cec46..5cdb592bc3bf5d00a38b842251209f645e026306 100644
+--- a/lib/tsserver.js
++++ b/lib/tsserver.js
+@@ -142367,7 +142367,7 @@ var ts;
+         }
+         function getSymbolName(sourceFile, checker, symbolToken, compilerOptions) {
+             var parent = symbolToken.parent;
+-            if ((ts.isJsxOpeningLikeElement(parent) || ts.isJsxClosingElement(parent)) && parent.tagName === symbolToken && compilerOptions.jsx !== 4 /* ReactJSX */ && compilerOptions.jsx !== 5 /* ReactJSXDev */) {
++            if ((ts.isJsxOpeningLikeElement(parent) || ts.isJsxClosingElement(parent)) && parent.tagName === symbolToken && compilerOptions.jsx !== 1 /* Preserve */ && compilerOptions.jsx !== 4 /* ReactJSX */ && compilerOptions.jsx !== 5 /* ReactJSXDev */) {
+                 var jsxNamespace = checker.getJsxNamespace(sourceFile);
+                 if (ts.isIntrinsicJsxName(symbolToken.text) || !checker.resolveName(jsxNamespace, parent, 111551 /* Value */, /*excludeGlobals*/ true)) {
+                     return jsxNamespace;

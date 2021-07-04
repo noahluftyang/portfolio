@@ -7,22 +7,22 @@ import {
   SignupResponseBody,
 } from './models/mod';
 
-let apiClient;
+let authApi: ReturnType<typeof createApiClient>;
 
 export function createAuthApiClient(baseURL: string) {
-  if (apiClient == null) {
-    apiClient = createApiClient(baseURL);
+  if (authApi == null) {
+    authApi = createApiClient({ baseURL });
   }
 
   return {
     signin(params: SigninRequestParams) {
-      return apiClient.post<SigninResponseBody>('/signin', params);
+      return authApi.post<SigninResponseBody>('/signin', { params });
     },
     signup(params: SignupRequestParams) {
-      return apiClient.post<SignupResponseBody>('/signup', params);
+      return authApi.post<SignupResponseBody>('/signup', { params });
     },
-    user(token: string) {
-      return apiClient.get('/user', token);
+    user() {
+      return authApi.get('/user');
     },
   };
 }

@@ -1,36 +1,56 @@
-export function createApiClient(baseURL: string) {
+import { notImplemented } from '@portfolio/utils';
+
+interface ApiClientOptions extends Omit<RequestOptions, 'method'> {
+  baseURL?: string;
+}
+
+interface RequestOptions extends MethodOptions {
+  method: 'DELETE' | 'GET' | 'POST' | 'PUT';
+}
+
+interface MethodOptions extends Omit<RequestInit, 'body' | 'method'> {
+  params?: unknown;
+}
+
+export function createApiClient({ baseURL, ...baseOptions }: ApiClientOptions = {}) {
+  async function request<ResponseType>(
+    url: RequestInfo,
+    options: RequestOptions
+  ): Promise<ResponseType> {
+    try {
+      const response = await fetch(`${baseURL}${url}`, {
+        ...baseOptions,
+        ...options,
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed.');
+      }
+
+      return response.json();
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   return {
-    async get<T>(endpoint: string, token?: string): Promise<T> {
-      const headers = new Headers({ Authorization: token != null ? `Bearer ${token}` : null });
-
-      try {
-        const response = await fetch(`${baseURL}${endpoint}`, {
-          headers,
-          method: 'GET',
-        });
-
-        return response.json() as Promise<T>;
-      } catch (error) {
-        console.error(error);
-
-        return Promise.reject(error);
-      }
+    post<ResponseType>(url: RequestInfo, options?: MethodOptions) {
+      return notImplemented();
     },
-    async post<T>(endpoint: string, params: any): Promise<T> {
-      try {
-        const response = await fetch(`${baseURL}${endpoint}`, {
-          body: JSON.stringify(params),
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          method: 'POST',
-        });
-
-        return response.json() as Promise<T>;
-      } catch (error) {
-        console.error(error);
-
-        return Promise.reject(error);
-      }
+    get<ResponseType>(url: RequestInfo, options?: MethodOptions) {
+      return request<ResponseType>(url, {
+        method: 'GET',
+        ...options,
+      });
+    },
+    put() {
+      return notImplemented();
+    },
+    patch() {
+      return notImplemented();
+    },
+    delete() {
+      return notImplemented();
     },
   };
 }

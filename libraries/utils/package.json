@@ -1,0 +1,13 @@
+{
+  "name": "@portfolio/utils",
+  "version": "0.0.0",
+  "main": "src/mod.ts",
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "eslint": "7.20.0",
+    "typescript": "^4.3.5"
+  }
+}

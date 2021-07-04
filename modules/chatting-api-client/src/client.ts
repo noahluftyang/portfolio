@@ -1,17 +1,15 @@
-import { GraphQLClient, gql } from 'graphql-request';
+import { gql, GraphQLClient } from 'graphql-request';
 
-let apiClient: GraphQLClient;
+let chattingApi: GraphQLClient;
 
 export function createAppApiClient(baseURL: string) {
-  if (apiClient == null) {
-    apiClient = new GraphQLClient(`${baseURL}/graphql`);
+  if (chattingApi == null) {
+    chattingApi = new GraphQLClient(`${baseURL}/graphql`);
   }
 
   return {
-    chats(token: string, roomId: number) {
-      const headers = new Headers({ Authorization: token != null ? `Bearer ${token}` : null });
-
-      return apiClient.request(
+    chats(roomId: number) {
+      return chattingApi.request(
         gql`
           query getChats($roomId: ID!) {
             Chat(roomId: $roomId) {
@@ -20,14 +18,11 @@ export function createAppApiClient(baseURL: string) {
             }
           }
         `,
-        { roomId },
-        headers
+        { roomId }
       );
     },
-    rooms(token: string) {
-      const headers = new Headers({ Authorization: token != null ? `Bearer ${token}` : null });
-
-      return apiClient.request(
+    rooms() {
+      return chattingApi.request(
         gql`
           query rooms {
             rooms {
@@ -35,8 +30,7 @@ export function createAppApiClient(baseURL: string) {
             }
           }
         `,
-        null,
-        headers
+        null
       );
     },
   };
