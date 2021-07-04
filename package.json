@@ -11,7 +11,10 @@
     "email": "euihyun.yang.9x@gmail.com"
   },
   "scripts": {
-    "new": "hygen"
+    "lint": "yarn workspaces foreach -pt run lint",
+    "new": "hygen",
+    "test": "yarn workspaces foreach -pt run test",
+    "typecheck": "yarn workspaces foreach -pt run typecheck"
   },
   "dependencies": {
     "dotenv": "8.2.0",

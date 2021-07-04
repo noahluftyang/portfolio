@@ -1,0 +1,53 @@
+name: CI
+on:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  yarn-validate:
+    name: Validate yarn dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: yarn --immutable --immutable-cache
+      - run: yarn dedupe --check
+  typecheck:
+    name: Run typecheck
+    needs: yarn-validate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn typecheck
+  lint:
+    name: Run lint
+    needs: yarn-validate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn lint
+  test:
+    name: Run test
+    needs: yarn-validate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn test
