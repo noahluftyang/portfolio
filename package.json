@@ -23,7 +23,7 @@
     "graphql-request": "3.4.0",
     "helmet": "4.4.1",
     "pino-http": "5.5.0",
-    "swagger-jsdoc": "6.0.0",
+    "swagger-jsdoc": "6.1.0",
     "swagger-ui-express": "4.1.6",
     "tailwindcss": "2.0.3",
     "uuid": "8.3.2"
@@ -51,7 +51,7 @@
     "@types/react-native": "0.63.50",
     "@types/redis": "2.8.28",
     "@types/supertest": "2.0.10",
-    "@types/swagger-jsdoc": "3.0.2",
+    "@types/swagger-jsdoc": "6.0.1",
     "@types/swagger-ui-express": "4.1.2",
     "@types/uuid": "8.3.0",
     "@typescript-eslint/eslint-plugin": "4.15.0",
