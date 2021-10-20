@@ -14,7 +14,7 @@
     "@stillmine/react-components": "0.8.1",
     "@stillmine/styles": "0.5.1",
     "@stillmine/utils": "0.3.0",
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "date-fns": "2.19.0",
     "facepaint": "1.2.1",
     "humps": "2.0.1",
